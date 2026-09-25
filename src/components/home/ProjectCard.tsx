@@ -13,46 +13,47 @@ export default function ProjectCard({ project, index }: { project: FeaturedProje
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative flex flex-col bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-colors"
+      className="group flex flex-col"
     >
-      <div className="relative h-64 overflow-hidden bg-zinc-950">
+      <div className="relative aspect-[4/3] rounded-[32px] overflow-hidden mb-6 bg-black/5">
         <img 
           src={project.coverImage} 
           alt={project.title} 
-          className="object-cover w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+          className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
       </div>
       
-      <div className="flex flex-col flex-1 p-6 z-10 -mt-10">
-        <div className="flex gap-2 flex-wrap mb-3">
-          {project.categoryTags.map((tag, idx) => (
-            <span key={idx} className="text-[10px] font-semibold tracking-wider text-zinc-300 bg-zinc-800/80 px-2 py-1 rounded backdrop-blur-md">
-              {tag.toUpperCase()}
-            </span>
-          ))}
+      <div className="flex flex-col px-2">
+        <div className="flex items-center gap-4 mb-3">
+          <h3 className="text-[28px] font-bold tracking-tight text-black leading-none">{project.title}</h3>
+          <div className="flex gap-2">
+            {project.categoryTags.map((tag, idx) => (
+              <span key={idx} className="text-[13px] font-medium tracking-wide text-black/50 uppercase">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
         
-        <h3 className="text-2xl font-bold text-zinc-100 mb-2">{project.title}</h3>
-        <p className="text-zinc-400 text-sm mb-6 flex-1">{project.description}</p>
+        <p className="text-black/60 text-lg leading-relaxed mb-6 max-w-lg">{project.description}</p>
         
-        <div className="flex items-center gap-4 mt-auto">
+        <div className="flex items-center gap-6 mt-auto">
           {project.demoUrl && (
             <Link 
               href={project.demoUrl} 
               target="_blank" 
-              className="flex items-center gap-2 text-sm font-medium text-zinc-100 hover:text-emerald-400 transition-colors"
+              className="flex items-center gap-2 text-sm font-medium text-black hover:text-black/70 transition-colors"
             >
-              <ExternalLink size={16} /> Live Demo
+              <ExternalLink size={18} /> Live Demo
             </Link>
           )}
           {project.githubUrl && (
             <Link 
               href={project.githubUrl} 
               target="_blank" 
-              className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors"
+              className="flex items-center gap-2 text-sm font-medium text-black/50 hover:text-black transition-colors"
             >
-              <FaGithub size={16} /> Source Code
+              <FaGithub size={18} /> Source Code
             </Link>
           )}
         </div>

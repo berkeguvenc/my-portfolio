@@ -11,34 +11,25 @@ export default async function Home() {
   const data = await getPortfolioData();
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
-      <Navbar resumeUrl={data.personal.resumeUrl} />
+    <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-black/10 selection:text-black">
+      <Navbar />
       
-      <main className="max-w-5xl mx-auto px-6 md:px-12">
+      <main className="max-w-4xl mx-auto px-6 md:px-12 pt-24">
         <Hero personal={data.personal} socials={data.socials} />
 
-        <section id="work" className="py-20 border-t border-zinc-900/50">
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-100 mb-4">Featured Work</h2>
-            <p className="text-zinc-400 max-w-2xl">
-              A selection of projects that showcase my skills in design, frontend, and backend engineering.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section id="work" className="py-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {data.featuredProjects.sort((a, b) => a.order - b.order).map((project, idx) => (
               <ProjectCard key={project.id} project={project} index={idx} />
             ))}
           </div>
         </section>
 
-        <section id="builds" className="py-20 border-t border-zinc-900/50">
+        <section id="builds" className="py-24">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-100 mb-4">Builds & Side Projects</h2>
-            <p className="text-zinc-400 max-w-2xl">
-              Smaller products, tools, and experiments I've built.
-            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-black mb-4">Projects from Design to Launch</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {data.builds.sort((a, b) => a.order - b.order).map((build, idx) => (
               <BuildCard key={build.id} build={build} index={idx} />
             ))}

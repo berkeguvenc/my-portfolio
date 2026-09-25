@@ -18,32 +18,25 @@ export default function Footer({ name, socials }: { name: string; socials: Socia
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="py-12 border-t border-zinc-900/50 mt-20">
+    <footer id="about" className="py-12 border-t border-black/5 mt-20">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-zinc-500 text-sm">
-          © {year} {name}. All rights reserved.
+        <div className="flex items-center gap-6 text-[15px] font-medium text-black/60">
+          {socials.map((social, idx) => (
+            <Link 
+              key={idx} 
+              href={social.url}
+              target="_blank"
+              className="hover:text-black transition-colors"
+              aria-label={social.label}
+            >
+              {social.label}
+            </Link>
+          ))}
+          <Link href="/resume.pdf" target="_blank" className="hover:text-black transition-colors">Resume</Link>
         </div>
-        
-        <div className="flex items-center gap-6">
-          <div className="text-sm font-medium text-zinc-400">
-            Built with Next.js & Tailwind
-          </div>
-          <div className="flex items-center gap-4">
-            {socials.map((social, idx) => {
-              const Icon = iconMap[social.platform] || ExternalLink;
-              return (
-                <Link 
-                  key={idx} 
-                  href={social.url}
-                  target="_blank"
-                  className="text-zinc-500 hover:text-zinc-100 transition-colors"
-                  aria-label={social.label}
-                >
-                  <Icon size={18} />
-                </Link>
-              );
-            })}
-          </div>
+
+        <div className="text-black/40 text-[15px]">
+          © {year} {name}
         </div>
       </div>
     </footer>

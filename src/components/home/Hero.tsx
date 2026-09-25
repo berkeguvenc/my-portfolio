@@ -17,34 +17,35 @@ const iconMap: Record<string, any> = {
 
 export default function Hero({ personal, socials }: { personal: PersonalInfo; socials: SocialLink[] }) {
   return (
-    <section id="top" className="pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-start justify-center min-h-[70vh]">
+    <section id="top" className="pt-24 pb-20 md:pt-32 md:pb-32 flex flex-col items-start justify-center min-h-[60vh]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="w-full"
       >
-        {personal.isAvailableForWork && (
-          <div className="flex items-center gap-2 mb-6 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full w-fit">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="text-xs font-medium text-emerald-400">Available for new projects</span>
-          </div>
+        {personal.avatarUrl && (
+          <img 
+            src={personal.avatarUrl} 
+            alt={personal.name} 
+            className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover mb-12 shadow-sm"
+          />
         )}
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-100 mb-4">
-          {personal.name}
+        <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium tracking-[-0.02em] text-black mb-12 leading-[1.1] max-w-[90%]">
+          Hey, I'm {personal.name.split(' ')[0]}. {personal.bio}
         </h1>
-        <h2 className="text-xl md:text-2xl text-zinc-400 font-medium mb-6">
-          {personal.role}
-        </h2>
-        
-        <p className="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
-          {personal.bio}
-        </p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+          {personal.resumeUrl && (
+            <Link 
+              href={personal.resumeUrl}
+              target="_blank"
+              className="flex items-center gap-2 text-[17px] font-medium text-black/40 hover:text-black transition-colors"
+            >
+              Resume
+            </Link>
+          )}
           {socials.map((social, idx) => {
             const Icon = iconMap[social.platform] || ExternalLink;
             return (
@@ -52,10 +53,11 @@ export default function Hero({ personal, socials }: { personal: PersonalInfo; so
                 key={idx} 
                 href={social.url}
                 target="_blank"
-                className="p-3 bg-zinc-900 border border-zinc-800 rounded-full text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 hover:border-zinc-700 transition-all group"
+                className="flex items-center gap-2 text-[17px] font-medium text-black/80 hover:text-black transition-colors"
                 aria-label={social.label}
               >
-                <Icon size={20} className="group-hover:scale-110 transition-transform" />
+                <Icon size={20} />
+                {social.label}
               </Link>
             );
           })}

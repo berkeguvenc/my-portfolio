@@ -13,48 +13,33 @@ export default function BuildCard({ build, index }: { build: BuildProject; index
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group flex flex-col p-5 bg-zinc-900 border border-zinc-800 rounded-2xl hover:bg-zinc-800/50 hover:border-zinc-700 transition-all"
+      className="group flex flex-col items-center text-center px-4 py-8"
     >
-      <div className="flex justify-between items-start mb-4">
-        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700">
-          {build.iconUrl ? (
-            <img src={build.iconUrl} alt={build.title} className="w-8 h-8 object-contain" />
-          ) : (
-            <div className="w-8 h-8 bg-zinc-700 rounded-lg"></div>
-          )}
-        </div>
-        <span className="text-[10px] font-semibold tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">
-          {build.platformBadge.toUpperCase()}
-        </span>
+      <div className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-[32px] md:rounded-[40px] overflow-hidden mb-8 shadow-sm flex items-center justify-center bg-black/5">
+        {build.iconUrl ? (
+          <img src={build.iconUrl} alt={build.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out" />
+        ) : (
+          <div className="w-1/2 h-1/2 bg-black/10 rounded-2xl"></div>
+        )}
       </div>
       
-      <h3 className="text-lg font-bold text-zinc-100 mb-2">{build.title}</h3>
-      <p className="text-sm text-zinc-400 mb-4 flex-1">{build.description}</p>
-      
-      <div className="flex gap-2 flex-wrap mb-4">
-        {build.roleTags.map((tag, idx) => (
-          <span key={idx} className="text-xs text-zinc-500 bg-zinc-950 px-2 py-1 rounded border border-zinc-800">
-            {tag}
+      <div className="flex flex-col items-center flex-1 w-full">
+        <div className="flex items-center gap-3 mb-2">
+          <h3 className="text-2xl font-bold tracking-tight text-black">{build.title}</h3>
+          <span className="text-[11px] font-semibold tracking-wider text-black/50 uppercase">
+            {build.platformBadge}
           </span>
-        ))}
-      </div>
-
-      <div className="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800/50">
-        {build.links?.website && (
-          <Link href={build.links.website} target="_blank" className="text-zinc-400 hover:text-zinc-100 transition-colors">
-            <ExternalLink size={18} />
-          </Link>
-        )}
-        {build.links?.github && (
-          <Link href={build.links.github} target="_blank" className="text-zinc-400 hover:text-zinc-100 transition-colors">
-            <FaGithub size={18} />
-          </Link>
-        )}
-        {build.links?.appStore && (
-          <Link href={build.links.appStore} target="_blank" className="text-zinc-400 hover:text-zinc-100 transition-colors">
-            <Smartphone size={18} />
-          </Link>
-        )}
+        </div>
+        
+        <p className="text-black/60 text-[15px] leading-relaxed mb-6 max-w-sm">{build.description}</p>
+        
+        <div className="flex gap-2 flex-wrap justify-center mt-auto">
+          {build.roleTags.map((tag, idx) => (
+            <span key={idx} className="text-[13px] text-black/60 font-medium">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
