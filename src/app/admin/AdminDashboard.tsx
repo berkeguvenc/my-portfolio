@@ -93,13 +93,13 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
 
   return (
     <div className="space-y-6 mt-6">
-      <div className="flex items-center justify-between">
-        <div className="flex gap-2 bg-zinc-900 p-1 rounded-lg border border-zinc-800">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div className="flex w-full lg:w-auto overflow-x-auto no-scrollbar gap-1 bg-zinc-900 p-1 rounded-lg border border-zinc-800">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+              className={`whitespace-nowrap px-4 py-2 text-sm font-medium rounded-md transition-colors ${
                 activeTab === tab.id
                   ? 'bg-zinc-800 text-zinc-100'
                   : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50'
@@ -110,18 +110,18 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
           ))}
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 w-full lg:w-auto justify-end flex-shrink-0">
           {message && <span className="text-sm text-emerald-400">{message}</span>}
           <button
             onClick={copyJson}
-            className="flex items-center gap-2 px-3 py-2 text-sm font-medium bg-zinc-900 border border-zinc-800 rounded-md hover:bg-zinc-800 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 text-sm font-medium bg-zinc-900 border border-zinc-800 rounded-md hover:bg-zinc-800 transition-colors whitespace-nowrap"
           >
             <Copy size={16} /> JSON Kopyala
           </button>
           <button
             onClick={handleSave}
             disabled={isSaving}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-zinc-100 text-zinc-950 rounded-md hover:bg-white transition-colors disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-zinc-100 text-zinc-950 rounded-md hover:bg-white transition-colors disabled:opacity-50 whitespace-nowrap"
           >
             {isSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
             {isSaving ? 'Kaydediliyor...' : 'Değişiklikleri Kaydet'}
