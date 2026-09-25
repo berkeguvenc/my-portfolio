@@ -13,8 +13,8 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-black/10 selection:text-black">
       <Navbar />
-      
-      <main className="max-w-4xl mx-auto px-6 md:px-12 pt-24">
+
+      <main className="max-w-5xl mx-auto px-4 md:px-6 pt-24">
         <Hero personal={data.personal} socials={data.socials} />
 
         <section id="work" className="py-24">
@@ -38,7 +38,7 @@ export default async function Home() {
 
         <SkillsSection skills={data.skills} tools={data.tools} />
         <ExperienceSection experiences={data.experiences} />
-        
+
         <Footer name={data.personal.name} socials={data.socials} />
       </main>
     </div>

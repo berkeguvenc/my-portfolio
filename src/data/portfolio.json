@@ -1,117 +1,162 @@
 {
-  "meta": {
-    "title": "Portfolio — Product Designer & Builder",
-    "description": "Building useful, aesthetic products with code and design.",
-    "ogImage": "/og.png"
-  },
-  "personal": {
-    "name": "Your Name",
-    "role": "Product Designer & Builder",
-    "bio": "A multidisciplinary engineer and maker building modern digital experiences with design, code, and AI.",
-    "location": "Istanbul, Turkey",
-    "avatarUrl": "/uploads/img-7424--1--1790363107353.jpg",
-    "resumeUrl": "/resume.pdf",
-    "statusText": "Available for new projects",
-    "isAvailableForWork": true
-  },
-  "socials": [
-    {
-      "platform": "github",
-      "label": "GitHub",
-      "url": "https://github.com"
+    "meta": {
+        "title": "Portfolio — Product Designer & Builder",
+        "description": "Building useful, aesthetic products with code and design.",
+        "ogImage": "/og.png"
     },
-    {
-      "platform": "x",
-      "label": "X (Twitter)",
-      "url": "https://x.com"
+    "personal": {
+        "name": "Your Name",
+        "role": "Product Designer & Builder",
+        "bio": "A multidisciplinary engineer and maker building modern digital experiences with design, code, and AI.",
+        "location": "Istanbul, Turkey",
+        "avatarUrl": "/uploads/img-7424--1--1790363107353.jpg",
+        "resumeUrl": "/resume.pdf",
+        "statusText": "Available for new projects",
+        "isAvailableForWork": true
     },
-    {
-      "platform": "linkedin",
-      "label": "LinkedIn",
-      "url": "https://linkedin.com"
-    },
-    {
-      "platform": "email",
-      "label": "Email",
-      "url": "mailto:hello@example.com"
-    }
-  ],
-  "featuredProjects": [
-    {
-      "id": "proj-1",
-      "title": "Enliq Platform",
-      "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
-      "categoryTags": [
-        "DASHBOARD",
-        "LANDING PAGE"
-      ],
-      "coverImage": "/projects/enliq.webp",
-      "demoUrl": "https://example.com",
-      "featured": true,
-      "order": 1
-    }
-  ],
-  "builds": [
-    {
-      "id": "build-1",
-      "title": "PopAir",
-      "description": "All-in-one AI copilot utility application.",
-      "platformBadge": "MACOS APP",
-      "roleTags": [
-        "Design",
-        "Frontend",
-        "Backend"
-      ],
-      "iconUrl": "/builds/popair.webp",
-      "links": {
-        "website": "https://example.com"
-      },
-      "order": 1
-    }
-  ],
-  "skills": [
-    {
-      "categoryName": "Frontend & Architecture",
-      "skills": [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Micro-interactions"
-      ]
-    },
-    {
-      "categoryName": "Backend & Cloud",
-      "skills": [
-        "Node.js",
-        "PostgreSQL",
-        "Docker",
-        "REST APIs"
-      ]
-    }
-  ],
-  "tools": [
-    {
-      "name": "VS Code",
-      "iconName": "vscode"
-    },
-    {
-      "name": "Figma",
-      "iconName": "figma"
-    },
-    {
-      "name": "Docker",
-      "iconName": "docker"
-    }
-  ],
-  "experiences": [
-    {
-      "id": "exp-1",
-      "period": "2024 - Present",
-      "company": "Tech Studio",
-      "role": "Senior Engineer",
-      "companyUrl": "https://example.com",
-      "order": 1
-    }
-  ]
+    "socials": [
+        {
+            "platform": "github",
+            "label": "GitHub",
+            "url": "https://github.com"
+        },
+        {
+            "platform": "x",
+            "label": "X (Twitter)",
+            "url": "https://x.com"
+        },
+        {
+            "platform": "linkedin",
+            "label": "LinkedIn",
+            "url": "https://linkedin.com"
+        },
+        {
+            "platform": "email",
+            "label": "Email",
+            "url": "mailto:hello@example.com"
+        }
+    ],
+    "featuredProjects": [
+        {
+            "id": "proj-1",
+            "title": "Enliq Platform",
+            "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
+            "categoryTags": [
+                "DASHBOARD",
+                "LANDING PAGE"
+            ],
+            "coverImage": "/projects/enliq.webp",
+            "demoUrl": "https://example.com",
+            "featured": true,
+            "order": 1
+        },
+        {
+            "id": "proj-2",
+            "title": "Enliq Platform",
+            "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
+            "categoryTags": [
+                "DASHBOARD",
+                "LANDING PAGE"
+            ],
+            "coverImage": "/projects/enliq.webp",
+            "demoUrl": "https://example.com",
+            "featured": true,
+            "order": 1
+        }
+    ],
+    "builds": [
+        {
+            "id": "build-1",
+            "title": "PopAir",
+            "description": "All-in-one AI copilot utility application.",
+            "platformBadge": "MACOS APP",
+            "roleTags": [
+                "Design",
+                "Frontend",
+                "Backend"
+            ],
+            "iconUrl": "/builds/popair.webp",
+            "links": {
+                "website": "https://example.com"
+            },
+            "order": 1
+        },
+        {
+            "id": "build-2",
+            "title": "PopAir",
+            "description": "All-in-one AI copilot utility application.",
+            "platformBadge": "MACOS APP",
+            "roleTags": [
+                "Design",
+                "Frontend",
+                "Backend"
+            ],
+            "iconUrl": "/builds/popair.webp",
+            "links": {
+                "website": "https://example.com"
+            },
+            "order": 1
+        }
+    ],
+    "skills": [
+        {
+            "categoryName": "Frontend & Architecture",
+            "skills": [
+                "React",
+                "Next.js",
+                "TypeScript",
+                "Tailwind CSS",
+                "Micro-interactions"
+            ]
+        },
+        {
+            "categoryName": "Backend & Cloud",
+            "skills": [
+                "Node.js",
+                "PostgreSQL",
+                "Docker",
+                "REST APIs"
+            ]
+        }
+    ],
+    "tools": [
+        {
+            "name": "VS Code",
+            "iconName": "vscode"
+        },
+        {
+            "name": "Figma",
+            "iconName": "figma"
+        },
+        {
+            "name": "Docker",
+            "iconName": "docker"
+        }
+    ],
+    "experiences": [
+        {
+            "id": "exp-1",
+            "period": "2024 - Present",
+            "company": "Tech Studio",
+            "role": "Senior Engineer",
+            "companyUrl": "https://example.com",
+            "order": 1
+        },
+        {
+            "id": "exp-2",
+            "period": "2024 - Present",
+            "company": "Tech Studio",
+            "role": "Senior Engineer",
+            "companyUrl": "https://example.com",
+            "order": 1
+        },
+        {
+            "id": "exp-3",
+            "period": "2024 - Present",
+            "company": "Tech Studio",
+            "role": "Senior Engineer",
+            "companyUrl": "https://example.com",
+            "order": 1
+        }
+    ]
 }
