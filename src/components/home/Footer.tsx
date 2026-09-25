@@ -18,24 +18,24 @@ export default function Footer({ name, socials }: { name: string; socials: Socia
   const year = new Date().getFullYear();
 
   return (
-    <footer id="about" className="py-12 border-t border-black/5 mt-20">
+    <footer id="about" className="py-12 border-t border-gray-100 mt-20">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex items-center gap-6 text-[15px] font-medium text-black/60">
+        <div className="flex items-center gap-6 text-sm font-medium text-gray-500">
           {socials.map((social, idx) => (
             <Link 
               key={idx} 
               href={social.url}
               target="_blank"
-              className="hover:text-black transition-colors"
+              className="hover:text-gray-900 transition-colors"
               aria-label={social.label}
             >
               {social.label}
             </Link>
           ))}
-          <Link href="/resume.pdf" target="_blank" className="hover:text-black transition-colors">Resume</Link>
+          <Link href="/resume.pdf" target="_blank" className="hover:text-gray-900 transition-colors">Resume</Link>
         </div>
 
-        <div className="text-black/40 text-[15px]">
+        <div className="text-gray-400 text-sm">
           © {year} {name}
         </div>
       </div>
