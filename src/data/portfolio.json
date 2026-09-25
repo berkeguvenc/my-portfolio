@@ -1,14 +1,14 @@
 {
     "meta": {
-        "title": "Portfolio — Product Designer & Builder",
-        "description": "Building useful, aesthetic products with code and design.",
+        "title": "Yağız Berke Güvenç — Senior Full Stack Engineer",
+        "description": "Senior Full Stack Engineer with 6+ years of experience in React, Next.js, React Native, and Node.js ecosystems.",
         "ogImage": "/og.png"
     },
     "personal": {
-        "name": "Your Name",
-        "role": "Product Designer & Builder",
-        "bio": "A multidisciplinary engineer and maker building modern digital experiences with design, code, and AI.",
-        "location": "Istanbul, Turkey",
+        "name": "Yağız Berke Güvenç",
+        "role": "Senior Full Stack Engineer",
+        "bio": "Senior Full Stack Engineer with 6+ years of experience in the React, Next.js, React Native, and Node.js ecosystems. Experienced in end-to-end architecture, multi-tenant SaaS systems, real-time data streaming, and modern DevOps workflows.",
+        "location": "İstanbul, Türkiye",
         "avatarUrl": "/uploads/img-7424--1--1790363107353.jpg",
         "resumeUrl": "/resume.pdf",
         "statusText": "Available for new projects",
@@ -18,40 +18,22 @@
         {
             "platform": "github",
             "label": "GitHub",
-            "url": "https://github.com"
-        },
-        {
-            "platform": "x",
-            "label": "X (Twitter)",
-            "url": "https://x.com"
+            "url": "https://github.com/berkeguvenc"
         },
         {
             "platform": "linkedin",
             "label": "LinkedIn",
-            "url": "https://linkedin.com"
+            "url": "https://linkedin.com/in/berkeguvenc"
         },
         {
             "platform": "email",
             "label": "Email",
-            "url": "mailto:hello@example.com"
+            "url": "mailto:berke.guvenc@outlook.com"
         }
     ],
     "featuredProjects": [
         {
             "id": "proj-1",
-            "title": "Enliq Platform",
-            "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
-            "categoryTags": [
-                "DASHBOARD",
-                "LANDING PAGE"
-            ],
-            "coverImage": "/projects/enliq.webp",
-            "demoUrl": "https://example.com",
-            "featured": true,
-            "order": 1
-        },
-        {
-            "id": "proj-2",
             "title": "Enliq Platform",
             "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
             "categoryTags": [
@@ -80,53 +62,68 @@
                 "website": "https://example.com"
             },
             "order": 1
-        },
-        {
-            "id": "build-2",
-            "title": "PopAir",
-            "description": "All-in-one AI copilot utility application.",
-            "platformBadge": "MACOS APP",
-            "roleTags": [
-                "Design",
-                "Frontend",
-                "Backend"
-            ],
-            "iconUrl": "/builds/popair.webp",
-            "links": {
-                "website": "https://example.com"
-            },
-            "order": 1
         }
     ],
     "skills": [
         {
-            "categoryName": "Frontend & Architecture",
+            "categoryName": "Programming Languages",
             "skills": [
-                "React",
-                "Next.js",
                 "TypeScript",
-                "Tailwind CSS",
-                "Micro-interactions"
+                "JavaScript (ES6+)",
+                "PHP",
+                "SQL",
+                "HTML5",
+                "CSS3 / SCSS"
             ]
         },
         {
-            "categoryName": "Backend & Cloud",
+            "categoryName": "Frontend & UI",
             "skills": [
-                "Node.js",
+                "React & Next.js",
+                "Redux Toolkit",
+                "Zustand",
+                "TanStack Query",
+                "Tailwind CSS",
+                "Material-UI"
+            ]
+        },
+        {
+            "categoryName": "Backend & API",
+            "skills": [
+                "Node.js & Express.js",
+                "Prisma ORM",
+                "RESTful API & Socket.io",
+                "Microservices",
+                "Zod & JWT"
+            ]
+        },
+        {
+            "categoryName": "Mobile & DevOps",
+            "skills": [
+                "React Native & Expo",
                 "PostgreSQL",
-                "Docker",
-                "REST APIs"
+                "Docker Compose",
+                "Dokploy (PaaS)",
+                "Cloudflare & Git"
             ]
         }
     ],
     "tools": [
         {
-            "name": "VS Code",
-            "iconName": "vscode"
+            "name": "TypeScript",
+            "iconName": "typescript"
         },
         {
-            "name": "Figma",
-            "iconName": "figma"
+            "name": "React",
+            "iconName": "react"
+        },
+        {
+            "name": "Next.js",
+            "iconName": "nextjs"
+        },
+        {
+            "name": "Node.js",
+            "iconName": "nodejs"
         },
         {
             "name": "Docker",
@@ -136,27 +133,38 @@
     "experiences": [
         {
             "id": "exp-1",
-            "period": "2024 - Present",
-            "company": "Tech Studio",
-            "role": "Senior Engineer",
-            "companyUrl": "https://example.com",
+            "period": "Feb 2026 - Present",
+            "company": "Freelance",
+            "role": "Senior Full Stack Engineer",
             "order": 1
         },
         {
             "id": "exp-2",
-            "period": "2024 - Present",
-            "company": "Tech Studio",
-            "role": "Senior Engineer",
-            "companyUrl": "https://example.com",
-            "order": 1
+            "period": "Apr 2025 - Oct 2025",
+            "company": "Renault Türkiye",
+            "role": "Senior Frontend Engineer",
+            "order": 2
         },
         {
             "id": "exp-3",
-            "period": "2024 - Present",
-            "company": "Tech Studio",
-            "role": "Senior Engineer",
-            "companyUrl": "https://example.com",
-            "order": 1
+            "period": "Jan 2023 - Mar 2025",
+            "company": "Renault Türkiye",
+            "role": "Middle Frontend Developer",
+            "order": 3
+        },
+        {
+            "id": "exp-4",
+            "period": "Mar 2021 - Dec 2022",
+            "company": "Biçözüm",
+            "role": "Junior Full Stack Developer",
+            "order": 4
+        },
+        {
+            "id": "exp-5",
+            "period": "Aug 2020 - Feb 2021",
+            "company": "Anatolia System",
+            "role": "Junior Full Stack Developer",
+            "order": 5
         }
     ]
 }
