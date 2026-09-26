@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build: .
+    container_name: nextjs-portfolio
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - ENABLE_ADMIN_PANEL=true
+      # Add other production environment variables here if needed
+    volumes:
+      # Persist uploaded images
+      - ./public/uploads:/app/public/uploads
+      # Persist portfolio data changes made from admin panel
+      - ./src/data/portfolio.json:/app/src/data/portfolio.json

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 export default async function AdminPage() {
   // Extra safety check in page as well, though layout handles it
-  if (process.env.NODE_ENV === 'production' || process.env.ENABLE_ADMIN_PANEL !== 'true') {
+  if (process.env.NODE_ENV === 'production' && process.env.ENABLE_ADMIN_PANEL !== 'true') {
     notFound();
   }
 
