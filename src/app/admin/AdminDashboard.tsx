@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { PortfolioData } from '@/types/portfolio';
+import { PortfolioData, SocialLink } from '@/types/portfolio';
 import { Save, Copy, Loader2, Image as ImageIcon, X, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -188,7 +188,7 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
             <CardContent className="space-y-3">
               {data.socials.map((social, idx) => (
                 <div key={idx} className="flex gap-2 items-center">
-                  <Input value={social.platform} onChange={(e) => { const s = [...data.socials]; s[idx].platform = e.target.value; setData({ ...data, socials: s }) }} placeholder="Platform (github vb.)" className="w-1/4" />
+                  <Input value={social.platform} onChange={(e) => { const s = [...data.socials]; s[idx].platform = e.target.value as SocialLink['platform']; setData({ ...data, socials: s }) }} placeholder="Platform (github vb.)" className="w-1/4" />
                   <Input value={social.label} onChange={(e) => { const s = [...data.socials]; s[idx].label = e.target.value; setData({ ...data, socials: s }) }} placeholder="Görünecek İsim" className="w-1/4" />
                   <Input value={social.url} onChange={(e) => { const s = [...data.socials]; s[idx].url = e.target.value; setData({ ...data, socials: s }) }} placeholder="URL" />
                   <Button variant="ghost" className="text-red-400 hover:text-red-500 hover:bg-red-400/10" onClick={() => setData({ ...data, socials: data.socials.filter((_, i) => i !== idx) })}>X</Button>
@@ -338,7 +338,7 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
           <Card>
             <CardHeader className="flex flex-row justify-between items-center">
               <CardTitle>Araçlar & Teknolojiler</CardTitle>
-              <Button variant="outline" size="sm" onClick={() => setData({ ...data, tools: [...(data.tools || []), { name: 'Yeni Araç' }] })}>
+              <Button variant="outline" size="sm" onClick={() => setData({ ...data, tools: [...(data.tools || []), { name: 'Yeni Araç', iconName: '' }] })}>
                 + Araç Ekle
               </Button>
             </CardHeader>
