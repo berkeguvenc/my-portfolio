@@ -42,7 +42,7 @@
         "DASHBOARD",
         "LANDING PAGE"
       ],
-      "coverImage": "/projects/enliq.webp",
+      "coverImage": "https://s3-cdn.cmlabs.co/page/2024/02/03/what-is-a-platform-definition-functions-types-examples-379001.webp",
       "demoUrl": "https://example.com",
       "featured": true,
       "order": 1
@@ -59,7 +59,7 @@
         "Frontend",
         "Backend"
       ],
-      "iconUrl": "/builds/popair.webp",
+      "iconUrl": "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-large_2x.jpg",
       "links": {
         "website": "https://example.com"
       },
