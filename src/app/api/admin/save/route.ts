@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 export async function POST(request: Request) {
-  if (process.env.NODE_ENV === 'production' || process.env.ENABLE_ADMIN_PANEL !== 'true') {
+  if (process.env.NODE_ENV === 'production' && process.env.ENABLE_ADMIN_PANEL !== 'true') {
     return new NextResponse(null, { status: 404 });
   }
 
