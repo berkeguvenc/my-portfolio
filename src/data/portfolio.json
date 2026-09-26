@@ -9,12 +9,12 @@
     "role": "Senior Software Engineer",
     "bio": "Senior Software Engineer with experience in building scalable web applications and microservices.",
     "location": "San Francisco, CA",
-    "avatarUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    "avatarUrl": "https://images.stockcake.com/public/2/5/b/25b212d6-d108-450a-b6d1-d497cbe9d1e2_large/handsome-man-portrait-stockcake.jpg",
     "resumeUrl": "/resume.pdf",
     "statusText": "Available for new projects",
     "isAvailableForWork": true,
     "about": "I am a passionate software engineer with a strong focus on building scalable and maintainable applications. Over the years, I have worked with various technologies and frameworks, delivering high-quality solutions for clients worldwide. I love open-source and contributing to the developer community.",
-    "aboutImage": "/uploads/img-7424--1--1790363107353.jpg"
+    "aboutImage": "https://images.stockcake.com/public/2/5/b/25b212d6-d108-450a-b6d1-d497cbe9d1e2_large/handsome-man-portrait-stockcake.jpg"
   },
   "socials": [
     {
@@ -81,9 +81,7 @@
         "typescript",
         "javascript",
         "php",
-        "mysql",
-        "html5",
-        "css3"
+        "mysql"
       ]
     },
     {
@@ -100,8 +98,7 @@
         "react",
         "redux",
         "reactquery",
-        "tailwindcss",
-        "mui"
+        "tailwindcss"
       ]
     },
     {
