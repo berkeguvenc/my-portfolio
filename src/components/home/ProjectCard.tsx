@@ -17,7 +17,7 @@ export default function ProjectCard({ project, index }: { project: FeaturedProje
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Link href={mainUrl} target={mainUrl !== '#' ? "_blank" : "_self"} className="group block">
+      <div className="group block">
         <div className="flex flex-col gap-2 transition-all duration-300 ease-out group-hover:scale-[1.02] md:gap-4">
           
           {/* Image Wrapper */}
@@ -55,23 +55,31 @@ export default function ProjectCard({ project, index }: { project: FeaturedProje
               {project.description}
             </p>
 
-            {/* Optional Links Row (only visible on hover or if specifically needed, but keeping it subtle) */}
-            <div className="flex items-center gap-4 mt-2">
+            {/* Clickable Action Links */}
+            <div className="flex items-center gap-4 mt-2 relative z-10">
               {project.demoUrl && (
-                <span className="group-hover:text-black flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] transition-colors md:text-[16px] md:tracking-[-0.32px]">
-                  <ExternalLink size={16} /> Live Demo
-                </span>
+                <Link
+                  href={project.demoUrl}
+                  target="_blank"
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <ExternalLink size={16} /> <span className="group-hover/link:underline">Live Demo</span>
+                </Link>
               )}
               {project.githubUrl && (
-                <span className="group-hover:text-black flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] transition-colors md:text-[16px] md:tracking-[-0.32px]">
-                  <FaGithub size={16} /> Source Code
-                </span>
+                <Link
+                  href={project.githubUrl}
+                  target="_blank"
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <FaGithub size={16} /> <span className="group-hover/link:underline">Source Code</span>
+                </Link>
               )}
             </div>
           </div>
 
         </div>
-      </Link>
+      </div>
     </motion.div>
   );
 }

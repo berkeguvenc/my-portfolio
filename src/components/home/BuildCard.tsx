@@ -4,11 +4,10 @@ import { motion } from 'framer-motion';
 import { BuildProject } from '@/types/portfolio';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGooglePlay, FaApple } from 'react-icons/fa';
 
 export default function BuildCard({ build, index }: { build: BuildProject; index: number }) {
-  // Try to use a relevant link for the card wrapper
-  const mainUrl = build.demoUrl || build.githubUrl || '#';
+  const mainUrl = build.links?.website || build.links?.appStore || build.links?.googlePlay || '#';
 
   return (
     <motion.div
@@ -17,7 +16,7 @@ export default function BuildCard({ build, index }: { build: BuildProject; index
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      <Link href={mainUrl} target={mainUrl !== '#' ? "_blank" : "_self"} className="group block">
+      <div className="group block relative">
         <div className="flex flex-col gap-2 transition-all duration-300 ease-out group-hover:scale-[1.02] md:gap-4">
           
           <div className="h-[240px] overflow-hidden rounded-xl bg-[#f8f8f8] md:h-[339px]">
@@ -59,23 +58,40 @@ export default function BuildCard({ build, index }: { build: BuildProject; index
                 ))}
               </div>
             )}
-
-            {/* Optional Links Row (only visible on hover or if specifically needed, but keeping it subtle) */}
+            
+            {/* Clickable Action Links */}
             <div className="flex items-center gap-4 mt-2">
-              {build.demoUrl && (
-                <span className="group-hover:text-black flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] transition-colors md:text-[16px] md:tracking-[-0.32px]">
-                  <ExternalLink size={16} /> Live Demo
-                </span>
+              {build.links?.website && (
+                <Link
+                  href={build.links.website}
+                  target="_blank"
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <ExternalLink size={16} /> <span className="group-hover/link:underline">Website</span>
+                </Link>
               )}
-              {build.githubUrl && (
-                <span className="group-hover:text-black flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] transition-colors md:text-[16px] md:tracking-[-0.32px]">
-                  <FaGithub size={16} /> Source Code
-                </span>
+              {build.links?.googlePlay && (
+                <Link
+                  href={build.links.googlePlay}
+                  target="_blank"
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <FaGooglePlay size={15} /> <span className="group-hover/link:underline">Play Store</span>
+                </Link>
+              )}
+              {build.links?.appStore && (
+                <Link
+                  href={build.links.appStore}
+                  target="_blank"
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <FaApple size={17} className="-mt-0.5" /> <span className="group-hover/link:underline">App Store</span>
+                </Link>
               )}
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     </motion.div>
   );
 }

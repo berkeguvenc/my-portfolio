@@ -336,8 +336,8 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                       <Input value={build.links?.website || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, website: e.target.value }; setData({ ...data, builds: n }) }} />
                     </div>
                     <div className="space-y-1">
-                      <Label>Github URL</Label>
-                      <Input value={build.links?.github || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, github: e.target.value }; setData({ ...data, builds: n }) }} />
+                      <Label>Google Play URL</Label>
+                      <Input value={build.links?.googlePlay || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, googlePlay: e.target.value }; setData({ ...data, builds: n }) }} />
                     </div>
                     <div className="space-y-1">
                       <Label>App Store URL</Label>

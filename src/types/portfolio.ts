@@ -38,7 +38,7 @@ export interface BuildProject {
     iconUrl: string;
     links: {
         website?: string;
-        github?: string;
+        googlePlay?: string;
         appStore?: string;
     };
     order: number;
