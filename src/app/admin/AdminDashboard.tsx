@@ -171,6 +171,17 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                 <Label>Biyografi</Label>
                 <Textarea value={data.personal.bio} onChange={(e) => setData({ ...data, personal: { ...data.personal, bio: e.target.value } })} rows={3} />
               </div>
+              <div className="space-y-1">
+                <Label>Hakkında (About)</Label>
+                <Textarea value={data.personal.about || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, about: e.target.value } })} rows={5} />
+              </div>
+              <div className="space-y-1">
+                <Label>Hakkında (About) Görseli</Label>
+                <div className="flex gap-2">
+                  <Input value={data.personal.aboutImage || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, aboutImage: e.target.value } })} />
+                  <Button variant="outline" onClick={() => openImageModal((url) => setData({ ...data, personal: { ...data.personal, aboutImage: url } }))} className="gap-2 whitespace-nowrap"><ImageIcon size={16} /> Seç</Button>
+                </div>
+              </div>
               <div className="flex items-center gap-2 pt-2">
                 <input type="checkbox" id="isAvailable" checked={data.personal.isAvailableForWork} onChange={(e) => setData({ ...data, personal: { ...data.personal, isAvailableForWork: e.target.checked } })} className="w-4 h-4 rounded border-zinc-800 bg-zinc-950" />
                 <Label htmlFor="isAvailable" className="cursor-pointer">Yeni projeler için uygun (Available for work)</Label>
@@ -194,6 +205,31 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                   <Button variant="ghost" className="text-red-400 hover:text-red-500 hover:bg-red-400/10" onClick={() => setData({ ...data, socials: data.socials.filter((_, i) => i !== idx) })}>X</Button>
                 </div>
               ))}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row justify-between items-center">
+              <CardTitle>Footer Ayarları</CardTitle>
+              <Button variant="outline" size="sm" onClick={() => setData({ ...data, footer: { ...data.footer, links: [...(data.footer?.links || []), { label: 'Yeni Link', url: '' }] } })}>
+                + Link Ekle
+              </Button>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-1">
+                <Label>Footer Metni (Telif Hakkı vs.)</Label>
+                <Input value={data.footer?.text || ''} onChange={(e) => setData({ ...data, footer: { ...data.footer, text: e.target.value } })} placeholder="Örn: © 2026 John Doe" />
+              </div>
+              <div className="space-y-3">
+                <Label className="text-zinc-400">Özel Linkler</Label>
+                {(data.footer?.links || []).map((link, idx) => (
+                  <div key={idx} className="flex gap-2 items-center">
+                    <Input value={link.label} onChange={(e) => { const l = [...(data.footer?.links || [])]; l[idx].label = e.target.value; setData({ ...data, footer: { ...data.footer, links: l } }) }} placeholder="Link Adı (Örn: Özgeçmiş)" className="w-1/2" />
+                    <Input value={link.url} onChange={(e) => { const l = [...(data.footer?.links || [])]; l[idx].url = e.target.value; setData({ ...data, footer: { ...data.footer, links: l } }) }} placeholder="URL (/resume.pdf)" />
+                    <Button variant="ghost" className="text-red-400 hover:text-red-500 hover:bg-red-400/10" onClick={() => setData({ ...data, footer: { ...data.footer, links: (data.footer?.links || []).filter((_, i) => i !== idx) } })}>X</Button>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>

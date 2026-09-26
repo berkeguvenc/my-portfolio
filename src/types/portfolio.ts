@@ -8,6 +8,8 @@ export interface PersonalInfo {
     name: string;
     role: string;
     bio: string;
+    about?: string;
+    aboutImage?: string;
     location?: string;
     avatarUrl?: string;
     resumeUrl?: string;
@@ -63,6 +65,11 @@ export interface SiteMeta {
     ogImage: string;
 }
 
+export interface FooterInfo {
+    text?: string;
+    links?: { label: string; url: string }[];
+}
+
 export interface PortfolioData {
     meta: SiteMeta;
     personal: PersonalInfo;
@@ -71,4 +78,5 @@ export interface PortfolioData {
     builds: BuildProject[];
     skills: SkillCategory[];
     experiences: ExperienceItem[];
+    footer?: FooterInfo;
 }

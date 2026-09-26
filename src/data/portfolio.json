@@ -1,175 +1,186 @@
 {
-    "meta": {
-        "title": "Yağız Berke Güvenç — Senior Full Stack Engineer",
-        "description": "Senior Full Stack Engineer with 6+ years of experience in React, Next.js, React Native, and Node.js ecosystems.",
-        "ogImage": "/og.png"
+  "meta": {
+    "title": "John Doe — Senior Software Engineer",
+    "description": "Senior Software Engineer with 6+ years of experience.",
+    "ogImage": "/og.png"
+  },
+  "personal": {
+    "name": "John Doe",
+    "role": "Senior Software Engineer",
+    "bio": "Senior Software Engineer with experience in building scalable web applications and microservices.",
+    "location": "San Francisco, CA",
+    "avatarUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    "resumeUrl": "/resume.pdf",
+    "statusText": "Available for new projects",
+    "isAvailableForWork": true,
+    "about": "I am a passionate software engineer with a strong focus on building scalable and maintainable applications. Over the years, I have worked with various technologies and frameworks, delivering high-quality solutions for clients worldwide. I love open-source and contributing to the developer community.",
+    "aboutImage": "/uploads/img-7424--1--1790363107353.jpg"
+  },
+  "socials": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://example.com"
     },
-    "personal": {
-        "name": "Yağız Berke Güvenç",
-        "role": "Senior Full Stack Engineer",
-        "bio": "Senior Full Stack Engineer with 6+ years of experience in the React, Next.js, React Native, and Node.js ecosystems. Experienced in end-to-end architecture, multi-tenant SaaS systems, real-time data streaming, and modern DevOps workflows.",
-        "location": "İstanbul, Türkiye",
-        "avatarUrl": "/uploads/img-7424--1--1790363107353.jpg",
-        "resumeUrl": "/resume.pdf",
-        "statusText": "Available for new projects",
-        "isAvailableForWork": true
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://example.com"
     },
-    "socials": [
-        {
-            "platform": "github",
-            "label": "GitHub",
-            "url": "https://github.com/berkeguvenc"
-        },
-        {
-            "platform": "linkedin",
-            "label": "LinkedIn",
-            "url": "https://linkedin.com/in/berkeguvenc"
-        },
-        {
-            "platform": "email",
-            "label": "Email",
-            "url": "mailto:berke.guvenc@outlook.com"
-        }
-    ],
-    "featuredProjects": [
-        {
-            "id": "proj-1",
-            "title": "Enliq Platform",
-            "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
-            "categoryTags": [
-                "DASHBOARD",
-                "LANDING PAGE"
-            ],
-            "coverImage": "/projects/enliq.webp",
-            "demoUrl": "https://example.com",
-            "featured": true,
-            "order": 1
-        }
-    ],
-    "builds": [
-        {
-            "id": "build-1",
-            "title": "PopAir",
-            "description": "All-in-one AI copilot utility application.",
-            "platformBadge": "MACOS APP",
-            "roleTags": [
-                "Design",
-                "Frontend",
-                "Backend"
-            ],
-            "iconUrl": "/builds/popair.webp",
-            "links": {
-                "website": "https://example.com"
-            },
-            "order": 1
-        }
-    ],
-    "skills": [
-        {
-            "categoryName": "Programming Languages",
-            "skills": [
-                "TypeScript",
-                "JavaScript (ES6+)",
-                "PHP",
-                "SQL",
-                "HTML5",
-                "CSS3 / SCSS"
-            ],
-            "icons": [
-                "typescript",
-                "javascript",
-                "php",
-                "mysql",
-                "html5",
-                "css3"
-            ]
-        },
-        {
-            "categoryName": "Frontend & UI",
-            "skills": [
-                "React & Next.js",
-                "Redux Toolkit",
-                "Zustand",
-                "TanStack Query",
-                "Tailwind CSS",
-                "Material-UI"
-            ],
-            "icons": [
-                "react",
-                "redux",
-                "reactquery",
-                "tailwindcss",
-                "mui"
-            ]
-        },
-        {
-            "categoryName": "Backend & API",
-            "skills": [
-                "Node.js & Express.js",
-                "Prisma ORM",
-                "RESTful API & Socket.io",
-                "Microservices",
-                "Zod & JWT"
-            ],
-            "icons": [
-                "nodedotjs",
-                "prisma",
-                "socketdotio",
-                "zod"
-            ]
-        },
-        {
-            "categoryName": "Mobile & DevOps",
-            "skills": [
-                "React Native & Expo",
-                "PostgreSQL",
-                "Docker Compose",
-                "Dokploy (PaaS)",
-                "Cloudflare & Git"
-            ],
-            "icons": [
-                "expo",
-                "mysql",
-                "docker",
-                "cloudflare"
-            ]
-        }
-    ],
-    "experiences": [
-        {
-            "id": "exp-1",
-            "period": "Feb 2026 - Present",
-            "company": "Freelance",
-            "role": "Senior Full Stack Engineer",
-            "order": 1
-        },
-        {
-            "id": "exp-2",
-            "period": "Apr 2025 - Oct 2025",
-            "company": "Renault Türkiye",
-            "role": "Senior Frontend Engineer",
-            "order": 2
-        },
-        {
-            "id": "exp-3",
-            "period": "Jan 2023 - Mar 2025",
-            "company": "Renault Türkiye",
-            "role": "Middle Frontend Developer",
-            "order": 3
-        },
-        {
-            "id": "exp-4",
-            "period": "Mar 2021 - Dec 2022",
-            "company": "Biçözüm",
-            "role": "Junior Full Stack Developer",
-            "order": 4
-        },
-        {
-            "id": "exp-5",
-            "period": "Aug 2020 - Feb 2021",
-            "company": "Anatolia System",
-            "role": "Junior Full Stack Developer",
-            "order": 5
-        }
+    {
+      "platform": "email",
+      "label": "Email",
+      "url": "https://example.com"
+    }
+  ],
+  "featuredProjects": [
+    {
+      "id": "proj-1",
+      "title": "Enliq Platform",
+      "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
+      "categoryTags": [
+        "DASHBOARD",
+        "LANDING PAGE"
+      ],
+      "coverImage": "/projects/enliq.webp",
+      "demoUrl": "https://example.com",
+      "featured": true,
+      "order": 1
+    }
+  ],
+  "builds": [
+    {
+      "id": "build-1",
+      "title": "PopAir",
+      "description": "All-in-one AI copilot utility application.",
+      "platformBadge": "MACOS APP",
+      "roleTags": [
+        "Design",
+        "Frontend",
+        "Backend"
+      ],
+      "iconUrl": "/builds/popair.webp",
+      "links": {
+        "website": "https://example.com"
+      },
+      "order": 1
+    }
+  ],
+  "skills": [
+    {
+      "categoryName": "Programming Languages",
+      "skills": [
+        "TypeScript",
+        "JavaScript (ES6+)",
+        "PHP",
+        "SQL",
+        "HTML5",
+        "CSS3 / SCSS"
+      ],
+      "icons": [
+        "typescript",
+        "javascript",
+        "php",
+        "mysql",
+        "html5",
+        "css3"
+      ]
+    },
+    {
+      "categoryName": "Frontend & UI",
+      "skills": [
+        "React & Next.js",
+        "Redux Toolkit",
+        "Zustand",
+        "TanStack Query",
+        "Tailwind CSS",
+        "Material-UI"
+      ],
+      "icons": [
+        "react",
+        "redux",
+        "reactquery",
+        "tailwindcss",
+        "mui"
+      ]
+    },
+    {
+      "categoryName": "Backend & API",
+      "skills": [
+        "Node.js & Express.js",
+        "Prisma ORM",
+        "RESTful API & Socket.io",
+        "Microservices",
+        "Zod & JWT"
+      ],
+      "icons": [
+        "nodedotjs",
+        "prisma",
+        "socketdotio",
+        "zod"
+      ]
+    },
+    {
+      "categoryName": "Mobile & DevOps",
+      "skills": [
+        "React Native & Expo",
+        "PostgreSQL",
+        "Docker Compose",
+        "Dokploy (PaaS)",
+        "Cloudflare & Git"
+      ],
+      "icons": [
+        "expo",
+        "mysql",
+        "docker",
+        "cloudflare"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "id": "exp-1",
+      "period": "Feb 2026 - Present",
+      "company": "Tech Company 1",
+      "role": "Senior Full Stack Engineer",
+      "order": 1
+    },
+    {
+      "id": "exp-2",
+      "period": "Apr 2025 - Oct 2025",
+      "company": "Tech Company 2",
+      "role": "Senior Frontend Engineer",
+      "order": 2
+    },
+    {
+      "id": "exp-3",
+      "period": "Jan 2023 - Mar 2025",
+      "company": "Tech Company 3",
+      "role": "Middle Frontend Developer",
+      "order": 3
+    },
+    {
+      "id": "exp-4",
+      "period": "Mar 2021 - Dec 2022",
+      "company": "Tech Company 4",
+      "role": "Junior Full Stack Developer",
+      "order": 4
+    },
+    {
+      "id": "exp-5",
+      "period": "Aug 2020 - Feb 2021",
+      "company": "Tech Company 5",
+      "role": "Junior Full Stack Developer",
+      "order": 5
+    }
+  ],
+  "footer": {
+    "text": "© 2026 John Doe",
+    "links": [
+      {
+        "label": "Resume",
+        "url": "/resume.pdf"
+      }
     ]
+  }
 }
