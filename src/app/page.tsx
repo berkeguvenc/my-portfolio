@@ -36,7 +36,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <SkillsSection skills={data.skills} tools={data.tools} />
+        <SkillsSection skills={data.skills} />
         <ExperienceSection experiences={data.experiences} />
 
         <Footer name={data.personal.name} socials={data.socials} />

@@ -326,32 +326,27 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
               {data.skills.map((category, idx) => (
                 <div key={idx} className="flex gap-4 items-start p-4 border border-zinc-800 rounded-lg">
                   <div className="flex-1 space-y-3">
-                    <Input value={category.categoryName} onChange={(e) => { const n = [...data.skills]; n[idx].categoryName = e.target.value; setData({ ...data, skills: n }); }} placeholder="Kategori Adı" className="font-bold border-none px-0 text-lg shadow-none" />
-                    <Input value={category.skills.join(', ')} onChange={(e) => { const n = [...data.skills]; n[idx].skills = e.target.value.split(',').map(s => s.trim()).filter(Boolean); setData({ ...data, skills: n }); }} placeholder="Yetenekler (virgülle ayırın)" />
+                    <div className="flex justify-between items-center">
+                      <Input value={category.categoryName} onChange={(e) => { const n = [...data.skills]; n[idx].categoryName = e.target.value; setData({ ...data, skills: n }); }} placeholder="Kategori Adı" className="font-bold border-none px-0 text-lg shadow-none" />
+                      <Button variant="ghost" className="text-red-400" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>Kategoriyi Sil</Button>
+                    </div>
+                    <div className="space-y-3 mt-2">
+                      <div className="space-y-1">
+                        <Label className="text-xs text-zinc-400">Yetenekler (Virgülle ayırın)</Label>
+                        <Input value={category.skills.join(', ')} onChange={(e) => { const n = [...data.skills]; n[idx].skills = e.target.value.split(',').map(s => s.trim()).filter(Boolean); setData({ ...data, skills: n }); }} placeholder="Örn: TypeScript, React, Node.js" />
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs text-zinc-400">İkonlar (SimpleIcons slug, virgülle ayırın)</Label>
+                        <Input value={(category.icons || []).join(', ')} onChange={(e) => { const n = [...data.skills]; n[idx].icons = e.target.value.split(',').map(s => s.trim()).filter(Boolean); setData({ ...data, skills: n }); }} placeholder="Örn: typescript, react, nodedotjs" />
+                      </div>
+                    </div>
                   </div>
-                  <Button variant="ghost" className="text-red-400" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>Sil</Button>
                 </div>
               ))}
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader className="flex flex-row justify-between items-center">
-              <CardTitle>Araçlar & Teknolojiler</CardTitle>
-              <Button variant="outline" size="sm" onClick={() => setData({ ...data, tools: [...(data.tools || []), { name: 'Yeni Araç', iconName: '' }] })}>
-                + Araç Ekle
-              </Button>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {(data.tools || []).map((tool, idx) => (
-                <div key={idx} className="flex gap-2 items-center">
-                  <Input value={tool.name} onChange={(e) => { const t = [...data.tools]; t[idx].name = e.target.value; setData({ ...data, tools: t }); }} placeholder="Araç Adı (Örn: Figma)" className="flex-1" />
-                  <Input value={tool.iconName || ''} onChange={(e) => { const t = [...data.tools]; t[idx].iconName = e.target.value; setData({ ...data, tools: t }); }} placeholder="İkon Adı (opsiyonel)" className="w-1/3" />
-                  <Button variant="ghost" className="text-red-400 hover:text-red-500 hover:bg-red-400/10" onClick={() => setData({ ...data, tools: data.tools.filter((_, i) => i !== idx) })}>X</Button>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+
         </TabsContent>
 
         <TabsContent value="experience" className="space-y-6">

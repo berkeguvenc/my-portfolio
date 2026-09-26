@@ -1,13 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SkillCategory, ToolItem } from '@/types/portfolio';
+import { SkillCategory } from '@/types/portfolio';
 
-export default function SkillsSection({ skills, tools }: { skills: SkillCategory[]; tools: ToolItem[] }) {
+export default function SkillsSection({ skills }: { skills: SkillCategory[] }) {
   return (
     <section id="skills" className="py-24">
       <div className="mb-20">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-16">Skills & Tools</h2>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-16">Skills</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {skills.map((category, idx) => (
@@ -28,40 +28,28 @@ export default function SkillsSection({ skills, tools }: { skills: SkillCategory
               
               <div className="flex flex-col gap-4">
                 <h3 className="text-xl font-bold text-gray-900">{category.categoryName}</h3>
-                <ul className="flex flex-col gap-2.5 list-none">
+                <ul className="flex flex-col gap-3 list-none">
                   {category.skills.map((skill, sIdx) => (
-                    <li key={sIdx} className="text-gray-500 text-base font-normal flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
+                    <li key={sIdx} className="text-gray-500 text-lg font-normal">
                       {skill}
                     </li>
                   ))}
                 </ul>
+                
+                {category.icons && category.icons.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-3 mt-2">
+                    {category.icons.map((iconSlug, iIdx) => (
+                      <div key={iIdx} className="flex items-center justify-center w-12 h-12 rounded-xl border border-gray-100 bg-white shadow-sm p-2.5">
+                        <img src={`https://cdn.simpleicons.org/${iconSlug}`} alt={iconSlug} className="w-full h-full object-contain" />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-
-      {tools && tools.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mt-16 flex gap-8 items-center"
-        >
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
-            {tools.map((tool, idx) => (
-              <div 
-                key={idx} 
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors cursor-default"
-              >
-                <span>{tool.name}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 }

@@ -45,11 +45,7 @@ export interface BuildProject {
 export interface SkillCategory {
     categoryName: string;
     skills: string[];
-}
-
-export interface ToolItem {
-    name: string;
-    iconName: string;
+    icons?: string[];
 }
 
 export interface ExperienceItem {
@@ -74,6 +70,5 @@ export interface PortfolioData {
     featuredProjects: FeaturedProject[];
     builds: BuildProject[];
     skills: SkillCategory[];
-    tools: ToolItem[];
     experiences: ExperienceItem[];
 }

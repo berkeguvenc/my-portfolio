@@ -74,6 +74,14 @@
                 "SQL",
                 "HTML5",
                 "CSS3 / SCSS"
+            ],
+            "icons": [
+                "typescript",
+                "javascript",
+                "php",
+                "mysql",
+                "html5",
+                "css3"
             ]
         },
         {
@@ -85,6 +93,13 @@
                 "TanStack Query",
                 "Tailwind CSS",
                 "Material-UI"
+            ],
+            "icons": [
+                "react",
+                "redux",
+                "reactquery",
+                "tailwindcss",
+                "mui"
             ]
         },
         {
@@ -95,6 +110,12 @@
                 "RESTful API & Socket.io",
                 "Microservices",
                 "Zod & JWT"
+            ],
+            "icons": [
+                "nodedotjs",
+                "prisma",
+                "socketdotio",
+                "zod"
             ]
         },
         {
@@ -105,29 +126,13 @@
                 "Docker Compose",
                 "Dokploy (PaaS)",
                 "Cloudflare & Git"
+            ],
+            "icons": [
+                "expo",
+                "mysql",
+                "docker",
+                "cloudflare"
             ]
-        }
-    ],
-    "tools": [
-        {
-            "name": "TypeScript",
-            "iconName": "typescript"
-        },
-        {
-            "name": "React",
-            "iconName": "react"
-        },
-        {
-            "name": "Next.js",
-            "iconName": "nextjs"
-        },
-        {
-            "name": "Node.js",
-            "iconName": "nodejs"
-        },
-        {
-            "name": "Docker",
-            "iconName": "docker"
         }
     ],
     "experiences": [
