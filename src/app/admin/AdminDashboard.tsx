@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { PortfolioData, SocialLink } from '@/types/portfolio';
 import * as LucideIcons from 'lucide-react';
-import { Save, Copy, Loader2, Image as ImageIcon, X, Upload } from 'lucide-react';
+import { Save, Copy, Loader2, Image as ImageIcon, X, Upload, LayoutGrid } from 'lucide-react';
 
 import IconPickerModal from '@/components/admin/IconPickerModal';
 import HelpModals from '@/components/admin/HelpModals';
@@ -237,7 +237,7 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                 <div key={idx} className="flex flex-col md:flex-row gap-3 items-start md:items-center p-3 md:p-0 border border-zinc-800 md:border-none rounded-lg">
                   <div className="w-full md:w-[30%] flex gap-2">
                     <Input value={social.platform} onChange={(e) => { const s = [...data.socials]; s[idx].platform = e.target.value; setData({ ...data, socials: s }) }} placeholder="İkon (örn: Github)" />
-                    <Button variant="outline" size="icon" className="shrink-0 h-10 w-10 bg-zinc-800" title="İkon Seç" onClick={() => {
+                    <Button variant="outline" size="icon" className="shrink-0 h-9 w-9 bg-zinc-800" title="İkon Seç" onClick={() => {
                         setIconModalTarget(() => (iconName: string) => {
                           const s = [...data.socials];
                           s[idx].platform = iconName;
@@ -246,9 +246,9 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                         setIconModalType('socials');
                         setIsIconModalOpen(true);
                       }}>
-                      <ImageIcon size={16} />
+                      <LayoutGrid size={16} />
                     </Button>
-                    <Button variant="ghost" size="icon" className="shrink-0 h-10 w-10 text-zinc-400 hover:text-white" onClick={() => setIsFaHelpOpen(true)} title="Nasıl Kullanılır?">
+                    <Button variant="ghost" size="icon" className="shrink-0 h-9 w-9 text-zinc-400 hover:text-white" onClick={() => setIsFaHelpOpen(true)} title="Nasıl Kullanılır?">
                       ?
                     </Button>
                   </div>
@@ -426,27 +426,28 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                     <div className="space-y-1">
                       <div className="flex justify-between items-center">
                         <Label className="text-xs text-zinc-400">Kategori İkonu (Lucide)</Label>
-                        <div className="flex gap-2">
-                          <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-zinc-400 hover:text-white" onClick={() => setIsLucideHelpOpen(true)} title="Nasıl Kullanılır?">?</Button>
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
-                            className="h-6 text-xs bg-zinc-800"
-                            onClick={() => {
-                              setIconModalTarget(() => (iconName: string) => {
-                                const n = [...data.skills];
-                                n[idx].lucideIcon = iconName;
-                                setData({ ...data, skills: n });
-                              });
-                              setIconModalType('common');
-                              setIsIconModalOpen(true);
-                            }}
-                          >
-                            İkon Seç
-                          </Button>
-                        </div>
+                        <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-zinc-400 hover:text-white" onClick={() => setIsLucideHelpOpen(true)} title="Nasıl Kullanılır?">?</Button>
                       </div>
-                      <Input value={category.lucideIcon || ''} onChange={(e) => { const n = [...data.skills]; n[idx].lucideIcon = e.target.value; setData({ ...data, skills: n }); }} placeholder="Boş bırakırsanız ikon gözükmez" />
+                      <div className="flex gap-2">
+                        <Input value={category.lucideIcon || ''} onChange={(e) => { const n = [...data.skills]; n[idx].lucideIcon = e.target.value; setData({ ...data, skills: n }); }} placeholder="Boş bırakırsanız ikon gözükmez" />
+                        <Button 
+                          variant="outline" 
+                          size="icon" 
+                          className="shrink-0 h-9 w-9 bg-zinc-800"
+                          title="İkon Seç"
+                          onClick={() => {
+                            setIconModalTarget(() => (iconName: string) => {
+                              const n = [...data.skills];
+                              n[idx].lucideIcon = iconName;
+                              setData({ ...data, skills: n });
+                            });
+                            setIconModalType('common');
+                            setIsIconModalOpen(true);
+                          }}
+                        >
+                          <LayoutGrid size={16} />
+                        </Button>
+                      </div>
                     </div>
                     <div className="space-y-1">
                       <div className="flex justify-between items-center">
