@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ExperienceItem } from '@/types/portfolio';
 import { ExternalLink } from 'lucide-react';
 
-export default function ExperienceSection({ experiences }: { experiences: ExperienceItem[] }) {
+export default function ExperienceSection({ experiences, title = "Experience" }: { experiences: ExperienceItem[]; title?: string }) {
   const sortedExperiences = [...experiences].sort((a, b) => a.order - b.order);
 
   return (
@@ -12,7 +12,7 @@ export default function ExperienceSection({ experiences }: { experiences: Experi
       <div className="space-y-10 md:space-y-14">
         <div>
           <h2 className="text-[24px] leading-[32px] font-semibold tracking-[-0.48px] text-black md:text-[32px] md:leading-[40px] md:tracking-[-0.64px]">
-            Experience
+            {title}
           </h2>
         </div>
 

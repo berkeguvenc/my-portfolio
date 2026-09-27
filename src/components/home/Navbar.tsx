@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { NavTitles } from '@/types/portfolio';
 
-export default function Navbar() {
+export default function Navbar({ navTitles }: { navTitles?: NavTitles }) {
   const [activeSection, setActiveSection] = useState('work');
 
   useEffect(() => {
@@ -40,10 +41,10 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { id: 'work', label: 'Work' },
-    { id: 'builds', label: 'Builds' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'about', label: 'About' }
+    { id: 'work', label: navTitles?.work || 'Work' },
+    { id: 'builds', label: navTitles?.builds || 'Builds' },
+    { id: 'skills', label: navTitles?.skills || 'Skills' },
+    { id: 'about', label: navTitles?.about || 'About' }
   ];
 
   return (

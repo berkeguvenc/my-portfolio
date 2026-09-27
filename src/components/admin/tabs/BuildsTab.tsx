@@ -21,6 +21,7 @@ export default function BuildsTab({ data, setData, openImageModal }: BuildsTabPr
           + Yeni Ürün Ekle
         </Button>
       </div>
+
       <div className="grid gap-6">
         {data.builds.map((build, idx) => (
           <Card key={build.id} className="relative group">

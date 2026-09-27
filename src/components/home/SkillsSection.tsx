@@ -5,13 +5,13 @@ import { SkillCategory } from '@/types/portfolio';
 
 import * as LucideIcons from 'lucide-react';
 
-export default function SkillsSection({ skills }: { skills: SkillCategory[] }) {
+export default function SkillsSection({ skills, title = "Skills & Tools" }: { skills: SkillCategory[]; title?: string }) {
   return (
     <div id="skills" className="scroll-mt-[64px] md:scroll-mt-[120px]">
       <div className="space-y-10 md:space-y-14">
         <div>
           <h2 className="text-[24px] leading-[32px] font-semibold tracking-[-0.48px] text-black md:text-[32px] md:leading-[40px] md:tracking-[-0.64px]">
-            Skills & Tools
+            {title}
           </h2>
         </div>
         

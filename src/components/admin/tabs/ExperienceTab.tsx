@@ -19,6 +19,7 @@ export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
           + Yeni Deneyim Ekle
         </Button>
       </div>
+
       <div className="grid gap-6">
         {data.experiences.map((exp, idx) => (
           <Card key={exp.id} className="relative group">

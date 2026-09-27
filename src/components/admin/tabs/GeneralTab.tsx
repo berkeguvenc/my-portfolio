@@ -19,29 +19,6 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>SEO Meta Bilgileri</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-1">
-            <Label>Site Başlığı</Label>
-            <Input value={data.meta.title} onChange={(e) => setData({ ...data, meta: { ...data.meta, title: e.target.value } })} />
-          </div>
-          <div className="space-y-1">
-            <Label>Site Açıklaması</Label>
-            <Textarea value={data.meta.description} onChange={(e) => setData({ ...data, meta: { ...data.meta, description: e.target.value } })} />
-          </div>
-          <div className="space-y-1">
-            <Label>OG Görseli</Label>
-            <div className="flex gap-2">
-              <Input value={data.meta.ogImage} onChange={(e) => setData({ ...data, meta: { ...data.meta, ogImage: e.target.value } })} />
-              <Button variant="outline" onClick={() => openImageModal((url) => setData({ ...data, meta: { ...data.meta, ogImage: url } }))} className="gap-2 whitespace-nowrap"><ImageIcon size={16} /> Seç</Button>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
           <CardTitle>Kişisel Bilgiler</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -67,7 +44,7 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
             </div>
           </div>
           <div className="space-y-1">
-            <Label>Özgeçmiş URL (Resume)</Label>
+            <Label>Özgeçmiş URL</Label>
             <Input value={data.personal.resumeUrl || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, resumeUrl: e.target.value } })} />
           </div>
           <div className="space-y-1">
@@ -80,7 +57,7 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
           </div>
           
           <div className="space-y-1">
-            <Label>Hakkımda (Uzun Biyografi)</Label>
+            <Label>Hakkımda</Label>
             <Textarea value={data.personal.about || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, about: e.target.value } })} rows={5} />
           </div>
           <div className="space-y-1">
@@ -92,7 +69,7 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
           </div>
           
           <div className="space-y-1 pt-4 border-t border-zinc-800">
-            <Label className="text-emerald-400 font-semibold mb-2 block">Çalışma Durumu (Müsaitlik)</Label>
+            <Label className="text-emerald-400 font-semibold mb-2 block">Çalışma Durumu</Label>
           </div>
           
           <div className="flex items-center gap-2 mb-2">
@@ -103,7 +80,7 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
               onChange={(e) => setData({ ...data, personal: { ...data.personal, isAvailableForWork: e.target.checked } })}
               className="rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-emerald-500 w-4 h-4"
             />
-            <Label htmlFor="isAvailableForWork" className="cursor-pointer">Yeni projelere açık (Available for work)</Label>
+            <Label htmlFor="isAvailableForWork" className="cursor-pointer">Yeni projelere açık</Label>
           </div>
           
           <div className="space-y-1">

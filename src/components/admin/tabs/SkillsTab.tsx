@@ -22,6 +22,7 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
           + Yeni Kategori Ekle
         </Button>
       </div>
+
       <div className="grid gap-6">
         {data.skills.map((category, idx) => (
           <Card key={idx} className="relative group">

@@ -16,11 +16,12 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-medium">Öne Çıkan Projeler (Work)</h2>
+        <h2 className="text-lg font-medium">Öne Çıkan Projeler (Featured Work)</h2>
         <Button variant="default" onClick={() => setData({ ...data, featuredProjects: [...data.featuredProjects, { id: Date.now().toString(), title: 'Yeni Proje', description: '', categoryTags: [], coverImage: '', demoUrl: '', githubUrl: '', featured: true, order: data.featuredProjects.length }] })}>
           + Yeni Proje Ekle
         </Button>
       </div>
+
       <div className="grid gap-6">
         {data.featuredProjects.map((project, idx) => (
           <Card key={project.id} className="relative group">

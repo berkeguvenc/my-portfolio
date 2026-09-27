@@ -14,6 +14,7 @@ import ProjectsTab from '@/components/admin/tabs/ProjectsTab';
 import BuildsTab from '@/components/admin/tabs/BuildsTab';
 import SkillsTab from '@/components/admin/tabs/SkillsTab';
 import ExperienceTab from '@/components/admin/tabs/ExperienceTab';
+import SettingsTab from '@/components/admin/tabs/SettingsTab';
 
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -121,12 +122,13 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
       </div>
 
       <Tabs defaultValue="genel">
-        <TabsList className="grid grid-cols-5 bg-zinc-900/50 p-1 mb-6 rounded-lg w-full max-w-3xl overflow-x-auto">
+        <TabsList className="grid grid-cols-6 bg-zinc-900/50 p-1 mb-6 rounded-lg w-full overflow-x-auto">
           <TabsTrigger value="genel">Genel & Sosyal</TabsTrigger>
           <TabsTrigger value="work">Projeler</TabsTrigger>
-          <TabsTrigger value="builds">Ürünler (Builds)</TabsTrigger>
+          <TabsTrigger value="builds">Ürünler</TabsTrigger>
           <TabsTrigger value="skills">Yetenekler</TabsTrigger>
           <TabsTrigger value="experience">Deneyim</TabsTrigger>
+          <TabsTrigger value="settings">Site Ayarları</TabsTrigger>
         </TabsList>
 
         <TabsContent value="genel">
@@ -159,6 +161,10 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
 
         <TabsContent value="experience">
           <ExperienceTab data={data} setData={setData} />
+        </TabsContent>
+
+        <TabsContent value="settings">
+          <SettingsTab data={data} setData={setData} openImageModal={openImageModal} />
         </TabsContent>
       </Tabs>
 
