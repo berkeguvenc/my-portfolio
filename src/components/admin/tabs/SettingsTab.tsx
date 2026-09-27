@@ -46,7 +46,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
           <p className="text-sm text-zinc-400 mb-4">Ana sayfanın en altında bulunan gezinme menüsündeki buton isimlerini buradan değiştirebilirsiniz.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <Label>Work (Öne Çıkanlar)</Label>
+              <Label>Work</Label>
               <Input 
                 value={data.navTitles?.work || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, work: e.target.value } })} 
@@ -54,7 +54,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               />
             </div>
             <div className="space-y-1">
-              <Label>Builds (Ürünler)</Label>
+              <Label>Builds</Label>
               <Input 
                 value={data.navTitles?.builds || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, builds: e.target.value } })} 
@@ -62,7 +62,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               />
             </div>
             <div className="space-y-1">
-              <Label>Skills (Yetenekler)</Label>
+              <Label>Skills</Label>
               <Input 
                 value={data.navTitles?.skills || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, skills: e.target.value } })} 
@@ -70,7 +70,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               />
             </div>
             <div className="space-y-1">
-              <Label>About (Hakkımda)</Label>
+              <Label>About</Label>
               <Input 
                 value={data.navTitles?.about || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, about: e.target.value } })} 
