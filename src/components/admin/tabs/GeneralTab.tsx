@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { PortfolioData } from '@/types/portfolio';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
-import { Image as ImageIcon, LayoutGrid } from 'lucide-react';
+import { Image as ImageIcon, LayoutGrid, Upload, Loader2 } from 'lucide-react';
 
 interface GeneralTabProps {
   data: PortfolioData;
@@ -15,6 +16,30 @@ interface GeneralTabProps {
 }
 
 export default function GeneralTab({ data, setData, openImageModal, openIconModal, openFaHelp }: GeneralTabProps) {
+  const [isUploadingCV, setIsUploadingCV] = useState(false);
+
+  const handleCVUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.[0]) return;
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    setIsUploadingCV(true);
+    try {
+      const res = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      if (res.ok) {
+        const uploadedData = await res.json();
+        setData({ ...data, personal: { ...data.personal, resumeUrl: uploadedData.url } });
+      }
+    } catch (error) {
+      console.error('CV upload failed', error);
+    }
+    setIsUploadingCV(false);
+  };
+
   return (
     <div className="space-y-6">
       <Card>
@@ -44,8 +69,30 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
             </div>
           </div>
           <div className="space-y-1">
-            <Label>Özgeçmiş URL</Label>
-            <Input value={data.personal.resumeUrl || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, resumeUrl: e.target.value } })} />
+            <Label>Özgeçmiş (CV) Dosyası</Label>
+            <div className="flex gap-2">
+              <Input 
+                value={data.personal.resumeUrl || ''} 
+                onChange={(e) => setData({ ...data, personal: { ...data.personal, resumeUrl: e.target.value } })} 
+                placeholder="Örn: /resume.pdf veya direkt dosya yükleyin"
+                className="flex-1"
+              />
+              <div className="relative">
+                <Button variant="outline" className="gap-2 whitespace-nowrap" type="button" disabled={isUploadingCV}>
+                  {isUploadingCV ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
+                  {isUploadingCV ? 'Yükleniyor...' : 'Yükle'}
+                </Button>
+                {!isUploadingCV && (
+                  <input 
+                    type="file" 
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    accept=".pdf,.doc,.docx"
+                    onChange={handleCVUpload}
+                    title="CV Yükle"
+                  />
+                )}
+              </div>
+            </div>
           </div>
           <div className="space-y-1">
             <Label>Biyografi</Label>
