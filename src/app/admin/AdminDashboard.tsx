@@ -96,15 +96,24 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
   };
 
   return (
-    <div className="space-y-6 mt-6">
-      <div className="flex flex-col sm:flex-row justify-between items-center bg-zinc-900 border border-zinc-800 p-4 rounded-xl gap-4">
-        <h2 className="text-xl font-bold">Portfolyo İçerik Yönetimi</h2>
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-zinc-900 border border-zinc-800 p-5 rounded-xl gap-4">
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-3">
+            <h1 className="text-xl font-bold tracking-tight">Portfolyo Yönetim Paneli</h1>
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              Local CMS Aktif
+            </span>
+          </div>
+          <p className="text-sm text-zinc-400">Veriler doğrudan <code className="text-zinc-300">src/data/portfolio.json</code> dosyasına yazılır.</p>
+        </div>
+        
         <div className="flex items-center gap-3">
           {message && <span className="text-sm text-emerald-400 font-medium">{message}</span>}
-          <Button variant="outline" onClick={copyJson} className="gap-2">
+          <Button variant="outline" onClick={copyJson} className="gap-2 h-9">
             <Copy size={16} /> JSON
           </Button>
-          <Button onClick={handleSave} disabled={isSaving} className="gap-2 bg-emerald-600 hover:bg-emerald-700 text-white">
+          <Button onClick={handleSave} disabled={isSaving} className="gap-2 bg-emerald-600 hover:bg-emerald-700 text-white h-9">
             {isSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
             {isSaving ? 'Kaydediliyor...' : 'Değişiklikleri Kaydet'}
           </Button>
