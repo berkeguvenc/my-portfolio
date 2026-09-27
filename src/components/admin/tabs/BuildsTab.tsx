@@ -24,7 +24,6 @@ export default function BuildsTab({ data, setData, openImageModal }: BuildsTabPr
       <div className="grid gap-6">
         {data.builds.map((build, idx) => (
           <Card key={build.id} className="relative group">
-            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity z-10" onClick={() => setData({ ...data, builds: data.builds.filter((_, i) => i !== idx) })}>Sil</Button>
             <CardContent className="pt-6 space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div className="col-span-2 space-y-1">
@@ -70,6 +69,9 @@ export default function BuildsTab({ data, setData, openImageModal }: BuildsTabPr
                   <Label>App Store URL</Label>
                   <Input value={build.links?.appStore || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, appStore: e.target.value }; setData({ ...data, builds: n }) }} />
                 </div>
+              </div>
+              <div className="flex justify-end mt-4">
+                <Button variant="destructive" onClick={() => setData({ ...data, builds: data.builds.filter((_, i) => i !== idx) })}>Ürünü Sil</Button>
               </div>
             </CardContent>
           </Card>

@@ -25,7 +25,6 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
       <div className="grid gap-6">
         {data.skills.map((category, idx) => (
           <Card key={idx} className="relative group">
-            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity z-10" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>Sil</Button>
             <CardContent className="pt-6 space-y-4">
               <div className="space-y-1">
                 <Label>Kategori Adı</Label>
@@ -67,6 +66,9 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
                   </div>
                   <Input value={(category.icons || []).join(',')} onChange={(e) => { const n = [...data.skills]; n[idx].icons = e.target.value.split(','); setData({ ...data, skills: n }); }} placeholder="Örn: typescript, react, nodedotjs" />
                 </div>
+              </div>
+              <div className="flex justify-end mt-4">
+                <Button variant="destructive" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>Kategoriyi Sil</Button>
               </div>
             </CardContent>
           </Card>

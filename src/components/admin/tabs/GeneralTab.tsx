@@ -112,9 +112,9 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
                 </Button>
               </div>
               <Input className="w-full md:w-[25%]" value={social.label} onChange={(e) => { const s = [...data.socials]; s[idx].label = e.target.value; setData({ ...data, socials: s }) }} placeholder="örn: GitHub, Twitter" />
-              <div className="w-full flex-1 flex gap-2">
+              <div className="w-full flex-1 flex gap-3">
                 <Input value={social.url} onChange={(e) => { const s = [...data.socials]; s[idx].url = e.target.value; setData({ ...data, socials: s }) }} placeholder="URL" />
-                <Button variant="destructive" size="icon" onClick={() => { const s = data.socials.filter((_, i) => i !== idx); setData({ ...data, socials: s }) }}>Sil</Button>
+                <Button variant="destructive" className="shrink-0" onClick={() => { const s = data.socials.filter((_, i) => i !== idx); setData({ ...data, socials: s }) }}>Sil</Button>
               </div>
             </div>
           ))}

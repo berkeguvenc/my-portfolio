@@ -24,7 +24,6 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
       <div className="grid gap-6">
         {data.featuredProjects.map((project, idx) => (
           <Card key={project.id} className="relative group">
-            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity z-10" onClick={() => setData({ ...data, featuredProjects: data.featuredProjects.filter((_, i) => i !== idx) })}>Sil</Button>
             <CardContent className="pt-6 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
@@ -60,6 +59,9 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
                   <Label>Github Linki</Label>
                   <Input value={project.githubUrl || ''} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].githubUrl = e.target.value; setData({ ...data, featuredProjects: n }) }} />
                 </div>
+              </div>
+              <div className="flex justify-end mt-4">
+                <Button variant="destructive" onClick={() => setData({ ...data, featuredProjects: data.featuredProjects.filter((_, i) => i !== idx) })}>Projeyi Sil</Button>
               </div>
             </CardContent>
           </Card>

@@ -22,7 +22,6 @@ export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
       <div className="grid gap-6">
         {data.experiences.map((exp, idx) => (
           <Card key={exp.id} className="relative group">
-            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity z-10" onClick={() => setData({ ...data, experiences: data.experiences.filter((_, i) => i !== idx) })}>Sil</Button>
             <CardContent className="pt-6 space-y-4">
               <div className="space-y-1">
                 <Label>Rol / Pozisyon</Label>
@@ -51,6 +50,9 @@ export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
                   <Label>Sıra</Label>
                   <Input type="number" value={exp.order} onChange={(e) => { const n = [...data.experiences]; n[idx].order = Number(e.target.value); setData({ ...data, experiences: n }); }} />
                 </div>
+              </div>
+              <div className="flex justify-end mt-4">
+                <Button variant="destructive" onClick={() => setData({ ...data, experiences: data.experiences.filter((_, i) => i !== idx) })}>Deneyimi Sil</Button>
               </div>
             </CardContent>
           </Card>
