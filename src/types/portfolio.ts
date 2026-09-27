@@ -56,6 +56,7 @@ export interface ExperienceItem {
     period: string;
     company: string;
     role: string;
+    description?: string;
     companyUrl?: string;
     order: number;
 }

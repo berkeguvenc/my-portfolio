@@ -454,15 +454,9 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
               <Card key={exp.id} className="relative group">
                 <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity z-10" onClick={() => setData({ ...data, experiences: data.experiences.filter((_, i) => i !== idx) })}>Sil</Button>
                 <CardContent className="pt-6 space-y-4">
-                  <div className="grid grid-cols-4 gap-4">
-                    <div className="col-span-3 space-y-1">
-                      <Label>Rol / Pozisyon</Label>
-                      <Input value={exp.role} onChange={(e) => { const n = [...data.experiences]; n[idx].role = e.target.value; setData({ ...data, experiences: n }); }} />
-                    </div>
-                    <div className="space-y-1">
-                      <Label>Sıra</Label>
-                      <Input type="number" value={exp.order} onChange={(e) => { const n = [...data.experiences]; n[idx].order = Number(e.target.value); setData({ ...data, experiences: n }); }} />
-                    </div>
+                  <div className="space-y-1">
+                    <Label>Rol / Pozisyon</Label>
+                    <Input value={exp.role} onChange={(e) => { const n = [...data.experiences]; n[idx].role = e.target.value; setData({ ...data, experiences: n }); }} />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
@@ -475,8 +469,18 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <Label>Şirket URL (Opsiyonel)</Label>
-                    <Input value={exp.companyUrl || ''} onChange={(e) => { const n = [...data.experiences]; n[idx].companyUrl = e.target.value; setData({ ...data, experiences: n }); }} />
+                    <Label>Açıklama (Opsiyonel)</Label>
+                    <Textarea value={exp.description || ''} onChange={(e) => { const n = [...data.experiences]; n[idx].description = e.target.value; setData({ ...data, experiences: n }); }} placeholder="Bu rolde neler yaptınız?" rows={3} />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <Label>Şirket URL (Opsiyonel)</Label>
+                      <Input value={exp.companyUrl || ''} onChange={(e) => { const n = [...data.experiences]; n[idx].companyUrl = e.target.value; setData({ ...data, experiences: n }); }} />
+                    </div>
+                    <div className="space-y-1">
+                      <Label>Sıra</Label>
+                      <Input type="number" value={exp.order} onChange={(e) => { const n = [...data.experiences]; n[idx].order = Number(e.target.value); setData({ ...data, experiences: n }); }} />
+                    </div>
                   </div>
                 </CardContent>
               </Card>
