@@ -74,6 +74,42 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
             <Label>Biyografi</Label>
             <Textarea value={data.personal.bio} onChange={(e) => setData({ ...data, personal: { ...data.personal, bio: e.target.value } })} rows={3} />
           </div>
+          
+          <div className="space-y-1 pt-4 border-t border-zinc-800">
+            <Label className="text-emerald-400 font-semibold mb-2 block">Hakkımda Bölümü</Label>
+          </div>
+          
+          <div className="space-y-1">
+            <Label>Hakkımda (Uzun Biyografi)</Label>
+            <Textarea value={data.personal.about || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, about: e.target.value } })} rows={5} />
+          </div>
+          <div className="space-y-1">
+            <Label>Hakkımda Görseli</Label>
+            <div className="flex gap-2">
+              <Input value={data.personal.aboutImage || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, aboutImage: e.target.value } })} />
+              <Button variant="outline" onClick={() => openImageModal((url) => setData({ ...data, personal: { ...data.personal, aboutImage: url } }))} className="gap-2 whitespace-nowrap"><ImageIcon size={16} /> Seç</Button>
+            </div>
+          </div>
+          
+          <div className="space-y-1 pt-4 border-t border-zinc-800">
+            <Label className="text-emerald-400 font-semibold mb-2 block">Çalışma Durumu (Müsaitlik)</Label>
+          </div>
+          
+          <div className="flex items-center gap-2 mb-2">
+            <input 
+              type="checkbox" 
+              id="isAvailableForWork" 
+              checked={data.personal.isAvailableForWork || false} 
+              onChange={(e) => setData({ ...data, personal: { ...data.personal, isAvailableForWork: e.target.checked } })}
+              className="rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-emerald-500 w-4 h-4"
+            />
+            <Label htmlFor="isAvailableForWork" className="cursor-pointer">Yeni projelere açık (Available for work)</Label>
+          </div>
+          
+          <div className="space-y-1">
+            <Label>Durum Metni</Label>
+            <Input value={data.personal.statusText || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, statusText: e.target.value } })} placeholder="Örn: Available for new projects" />
+          </div>
         </CardContent>
       </Card>
 
