@@ -85,7 +85,8 @@
         "javascript",
         "php",
         "mysql"
-      ]
+      ],
+      "lucideIcon": "Globe"
     },
     {
       "categoryName": "Frontend & UI",
@@ -102,7 +103,8 @@
         "redux",
         "reactquery",
         "tailwindcss"
-      ]
+      ],
+      "lucideIcon": "Code"
     },
     {
       "categoryName": "Backend & API",
@@ -118,7 +120,8 @@
         "prisma",
         "socketdotio",
         "zod"
-      ]
+      ],
+      "lucideIcon": "Server"
     },
     {
       "categoryName": "Mobile & DevOps",
@@ -134,7 +137,8 @@
         "mysql",
         "docker",
         "cloudflare"
-      ]
+      ],
+      "lucideIcon": "Smartphone"
     }
   ],
   "experiences": [

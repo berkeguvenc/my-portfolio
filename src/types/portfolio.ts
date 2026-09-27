@@ -46,6 +46,7 @@ export interface BuildProject {
 
 export interface SkillCategory {
     categoryName: string;
+    lucideIcon?: string;
     skills: string[];
     icons?: string[];
 }

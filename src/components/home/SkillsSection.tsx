@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { SkillCategory } from '@/types/portfolio';
 
+import * as LucideIcons from 'lucide-react';
+
 export default function SkillsSection({ skills }: { skills: SkillCategory[] }) {
   return (
     <div id="skills" className="scroll-mt-[64px] md:scroll-mt-[120px]">
@@ -14,7 +16,10 @@ export default function SkillsSection({ skills }: { skills: SkillCategory[] }) {
         </div>
         
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-4">
-          {skills.map((category, idx) => (
+          {skills.map((category, idx) => {
+            const IconComponent = category.lucideIcon ? (LucideIcons as any)[category.lucideIcon] : null;
+
+            return (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -23,12 +28,11 @@ export default function SkillsSection({ skills }: { skills: SkillCategory[] }) {
               transition={{ duration: 0.4, delay: idx * 0.1 }}
               className="flex flex-col"
             >
-              <div className="mb-8 h-10 w-10 md:mb-12 text-gray-900 flex items-center justify-start">
-                {idx === 0 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>}
-                {idx === 1 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>}
-                {idx === 2 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M3 15h6"/><path d="M3 18h6"/></svg>}
-                {idx >= 3 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="m21 16-7.1-7.1c-1.4-1.4-3.5-1.4-4.9 0L2 16"/><path d="m21 12-7.1-7.1c-1.4-1.4-3.5-1.4-4.9 0L2 12"/></svg>}
-              </div>
+              {IconComponent && (
+                <div className="mb-8 h-10 w-10 md:mb-12 text-gray-900 flex items-center justify-start">
+                  <IconComponent size={40} strokeWidth={1.5} />
+                </div>
+              )}
               
               <h3 className="mb-4 text-[20px] leading-[28px] font-semibold tracking-[-0.44px] text-black md:text-[24px] md:leading-[32px] md:tracking-[-0.48px]">
                 {category.categoryName}
@@ -59,7 +63,8 @@ export default function SkillsSection({ skills }: { skills: SkillCategory[] }) {
                 </div>
               )}
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

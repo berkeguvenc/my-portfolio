@@ -2,7 +2,16 @@
 
 import { useState } from 'react';
 import { PortfolioData, SocialLink } from '@/types/portfolio';
+import * as LucideIcons from 'lucide-react';
 import { Save, Copy, Loader2, Image as ImageIcon, X, Upload } from 'lucide-react';
+
+const commonLucideIcons = [
+  'Globe', 'Server', 'PenTool', 'Database', 'Smartphone', 'Monitor', 'Code', 'Cpu', 'Cloud',
+  'Layout', 'Settings', 'Terminal', 'Shield', 'Zap', 'Palette', 'Box', 'Briefcase', 'Camera',
+  'Coffee', 'Compass', 'Figma', 'Folder', 'Headphones', 'Layers', 'Mail', 'Map', 'MessageSquare',
+  'Music', 'Video', 'Wifi', 'Star', 'Heart', 'User', 'Users', 'Search', 'Home'
+];
+
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
@@ -19,6 +28,12 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
   const [imageModalTarget, setImageModalTarget] = useState<((url: string) => void) | null>(null);
   const [availableImages, setAvailableImages] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
+
+  const [isIconModalOpen, setIsIconModalOpen] = useState(false);
+  const [iconModalTarget, setIconModalTarget] = useState<((iconName: string) => void) | null>(null);
+
+  const [isLucideHelpOpen, setIsLucideHelpOpen] = useState(false);
+  const [isSimpleIconsHelpOpen, setIsSimpleIconsHelpOpen] = useState(false);
 
   const openImageModal = async (callback: (url: string) => void) => {
     setImageModalTarget(() => callback);
@@ -64,10 +79,28 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
     setIsSaving(true);
     setMessage('');
     try {
+      // Clean up array fields before saving to remove empty items and trailing spaces
+      const cleanedData = {
+        ...data,
+        featuredProjects: data.featuredProjects.map(p => ({ 
+          ...p, 
+          categoryTags: p.categoryTags.map(t => t.trim()).filter(Boolean) 
+        })),
+        builds: data.builds.map(b => ({ 
+          ...b, 
+          roleTags: b.roleTags.map(t => t.trim()).filter(Boolean) 
+        })),
+        skills: data.skills.map(s => ({ 
+          ...s, 
+          skills: s.skills.map(sk => sk.trim()).filter(Boolean),
+          icons: (s.icons || []).map(ic => ic.trim()).filter(Boolean)
+        }))
+      };
+
       const res = await fetch('/api/admin/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(cleanedData),
       });
       
       if (res.ok) {
@@ -269,7 +302,7 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                   </div>
                   <div className="space-y-1">
                     <Label>Kategori Etiketleri (Virgülle ayırın)</Label>
-                    <Input value={project.categoryTags.join(', ')} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].categoryTags = e.target.value.split(',').map(t=>t.trim()).filter(Boolean); setData({ ...data, featuredProjects: n }) }} />
+                    <Input value={project.categoryTags.join(',')} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].categoryTags = e.target.value.split(','); setData({ ...data, featuredProjects: n }) }} />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
@@ -323,7 +356,7 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <Label>Roller (Virgülle ayırın)</Label>
-                      <Input value={build.roleTags.join(', ')} onChange={(e) => { const n = [...data.builds]; n[idx].roleTags = e.target.value.split(',').map(t=>t.trim()).filter(Boolean); setData({ ...data, builds: n }) }} />
+                      <Input value={build.roleTags.join(',')} onChange={(e) => { const n = [...data.builds]; n[idx].roleTags = e.target.value.split(','); setData({ ...data, builds: n }) }} />
                     </div>
                     <div className="space-y-1">
                       <Label>Sıra</Label>
@@ -350,39 +383,63 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
           </div>
         </TabsContent>
 
-        <TabsContent value="skills" className="space-y-8">
-          <Card>
-            <CardHeader className="flex flex-row justify-between items-center">
-              <CardTitle>Yetenek Kategorileri</CardTitle>
-              <Button variant="outline" size="sm" onClick={() => setData({ ...data, skills: [...data.skills, { categoryName: 'Yeni Kategori', skills: [] }] })}>
-                + Kategori Ekle
-              </Button>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {data.skills.map((category, idx) => (
-                <div key={idx} className="flex gap-4 items-start p-4 border border-zinc-800 rounded-lg">
-                  <div className="flex-1 space-y-3">
-                    <div className="flex justify-between items-center">
-                      <Input value={category.categoryName} onChange={(e) => { const n = [...data.skills]; n[idx].categoryName = e.target.value; setData({ ...data, skills: n }); }} placeholder="Kategori Adı" className="font-bold border-none px-0 text-lg shadow-none" />
-                      <Button variant="ghost" className="text-red-400" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>Kategoriyi Sil</Button>
+        <TabsContent value="skills" className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-medium">Yetenek Kategorileri</h2>
+            <Button variant="default" onClick={() => setData({ ...data, skills: [...data.skills, { categoryName: 'Yeni Kategori', skills: [] }] })}>
+              + Yeni Kategori Ekle
+            </Button>
+          </div>
+          <div className="grid gap-6">
+            {data.skills.map((category, idx) => (
+              <Card key={idx} className="relative group">
+                <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity z-10" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>Sil</Button>
+                <CardContent className="pt-6 space-y-4">
+                  <div className="space-y-1">
+                    <Label>Kategori Adı</Label>
+                    <Input value={category.categoryName} onChange={(e) => { const n = [...data.skills]; n[idx].categoryName = e.target.value; setData({ ...data, skills: n }); }} className="font-medium" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs text-zinc-400">Yetenekler (Virgülle ayırın)</Label>
+                    <Input value={category.skills.join(',')} onChange={(e) => { const n = [...data.skills]; n[idx].skills = e.target.value.split(','); setData({ ...data, skills: n }); }} placeholder="Örn: TypeScript, React, Node.js" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-center">
+                        <Label className="text-xs text-zinc-400">Kategori İkonu (Lucide)</Label>
+                        <div className="flex gap-2">
+                          <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-zinc-400 hover:text-white" onClick={() => setIsLucideHelpOpen(true)} title="Nasıl Kullanılır?">?</Button>
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="h-6 text-xs bg-zinc-800"
+                            onClick={() => {
+                              setIconModalTarget(() => (iconName: string) => {
+                                const n = [...data.skills];
+                                n[idx].lucideIcon = iconName;
+                                setData({ ...data, skills: n });
+                              });
+                              setIsIconModalOpen(true);
+                            }}
+                          >
+                            İkon Seç
+                          </Button>
+                        </div>
+                      </div>
+                      <Input value={category.lucideIcon || ''} onChange={(e) => { const n = [...data.skills]; n[idx].lucideIcon = e.target.value; setData({ ...data, skills: n }); }} placeholder="Boş bırakırsanız ikon gözükmez" />
                     </div>
-                    <div className="space-y-3 mt-2">
-                      <div className="space-y-1">
-                        <Label className="text-xs text-zinc-400">Yetenekler (Virgülle ayırın)</Label>
-                        <Input value={category.skills.join(', ')} onChange={(e) => { const n = [...data.skills]; n[idx].skills = e.target.value.split(',').map(s => s.trim()).filter(Boolean); setData({ ...data, skills: n }); }} placeholder="Örn: TypeScript, React, Node.js" />
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-center">
+                        <Label className="text-xs text-zinc-400">Teknoloji Logoları (SimpleIcons slug)</Label>
+                        <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-zinc-400 hover:text-white" onClick={() => setIsSimpleIconsHelpOpen(true)} title="Nasıl Kullanılır?">?</Button>
                       </div>
-                      <div className="space-y-1">
-                        <Label className="text-xs text-zinc-400">İkonlar (SimpleIcons slug, virgülle ayırın)</Label>
-                        <Input value={(category.icons || []).join(', ')} onChange={(e) => { const n = [...data.skills]; n[idx].icons = e.target.value.split(',').map(s => s.trim()).filter(Boolean); setData({ ...data, skills: n }); }} placeholder="Örn: typescript, react, nodedotjs" />
-                      </div>
+                      <Input value={(category.icons || []).join(',')} onChange={(e) => { const n = [...data.skills]; n[idx].icons = e.target.value.split(','); setData({ ...data, skills: n }); }} placeholder="Örn: typescript, react, nodedotjs" />
                     </div>
                   </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-
-
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </TabsContent>
 
         <TabsContent value="experience" className="space-y-6">
@@ -462,6 +519,75 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                   )}
                 </div>
               </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {isIconModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          <Card className="w-full max-w-3xl max-h-[80vh] flex flex-col">
+            <CardHeader className="flex flex-row justify-between items-center">
+              <CardTitle>Kategori İkonu Seç</CardTitle>
+              <Button variant="ghost" size="sm" onClick={() => setIsIconModalOpen(false)}><X size={20} /></Button>
+            </CardHeader>
+            <CardContent className="overflow-y-auto">
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
+                {commonLucideIcons.map((iconName) => {
+                  const Icon = (LucideIcons as any)[iconName];
+                  if (!Icon) return null;
+                  return (
+                    <div 
+                      key={iconName} 
+                      onClick={() => { if(iconModalTarget) iconModalTarget(iconName); setIsIconModalOpen(false); }} 
+                      className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg border border-zinc-800 bg-zinc-950 cursor-pointer hover:border-emerald-500 hover:text-emerald-400 transition-colors"
+                    >
+                      <Icon size={24} strokeWidth={1.5} />
+                      <span className="text-[10px] text-zinc-400 text-center">{iconName}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {isLucideHelpOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          <Card className="w-full max-w-lg flex flex-col relative bg-zinc-950 border-zinc-800">
+            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-zinc-400 hover:text-white" onClick={() => setIsLucideHelpOpen(false)}><X size={20} /></Button>
+            <CardHeader>
+              <CardTitle className="text-xl">Lucide İkonları Nasıl Kullanılır?</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm text-zinc-300">
+              <p>Eğer "İkon Seç" menüsündeki ikonlar yeterli gelmezse, kütüphanedeki 1000'den fazla ikondan herhangi birini kullanabilirsiniz:</p>
+              <ol className="list-decimal pl-5 space-y-2">
+                <li><a href="https://lucide.dev/icons" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">lucide.dev/icons</a> adresine gidin.</li>
+                <li>İstediğiniz ikonu aratın (İngilizce olarak, örn: "star", "camera").</li>
+                <li>İkonun sayfasına veya üzerine tıkladığınızda çıkan isme bakın.</li>
+                <li>İsmi, kelimelerin baş harfleri büyük olacak şekilde (PascalCase) buradaki kutuya yazın.<br/><span className="text-xs text-zinc-500 mt-1 block">Örnek: `arrow-right` için <strong className="text-white">ArrowRight</strong>, `message-square` için <strong className="text-white">MessageSquare</strong> yazmalısınız.</span></li>
+              </ol>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {isSimpleIconsHelpOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          <Card className="w-full max-w-lg flex flex-col relative bg-zinc-950 border-zinc-800">
+            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-zinc-400 hover:text-white" onClick={() => setIsSimpleIconsHelpOpen(false)}><X size={20} /></Button>
+            <CardHeader>
+              <CardTitle className="text-xl">Teknoloji Logoları (SimpleIcons) Nasıl Kullanılır?</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm text-zinc-300">
+              <p>SimpleIcons kütüphanesinde binlerce markanın orijinal logosu bulunur. Doğru logoyu çekmek için markanın tam kodunu (slug) yazmalısınız.</p>
+              <ol className="list-decimal pl-5 space-y-2">
+                <li><a href="https://simpleicons.org/" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">simpleicons.org</a> adresine gidin.</li>
+                <li>Eklemek istediğiniz teknolojiyi veya markayı aratın (örn: "Node.js").</li>
+                <li>Bulduğunuz logonun ismine tıkladığınızda tam <strong>Slug</strong> değeri kopyalanır.</li>
+                <li>Bu kodu, aralarına virgül koyarak kutucuğa yapıştırın.<br/><span className="text-xs text-zinc-500 mt-1 block">Örnekler: `nodedotjs`, `react`, `nextdotjs`, `amazonwebservices`, `html5` vb.</span></li>
+              </ol>
             </CardContent>
           </Card>
         </div>
