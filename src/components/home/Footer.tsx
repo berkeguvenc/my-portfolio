@@ -1,20 +1,10 @@
 'use client';
 
 import { SocialLink } from '@/types/portfolio';
-import { Mail, ArrowUp } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { ArrowUp } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const iconMap: Record<string, any> = {
-  github: FaGithub,
-  linkedin: FaLinkedin,
-  x: FaTwitter,
-  email: Mail,
-  instagram: FaInstagram,
-  youtube: FaYoutube,
-};
 
 export default function Footer({ name, socials, footer }: { name: string; socials: SocialLink[]; footer?: { text?: string; links?: { label: string; url: string }[] } }) {
   const year = new Date().getFullYear();

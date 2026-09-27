@@ -1,5 +1,5 @@
 export interface SocialLink {
-    platform: 'github' | 'linkedin' | 'x' | 'instagram' | 'email' | 'youtube';
+    platform: string;
     url: string;
     label: string;
 }
@@ -38,7 +38,7 @@ export interface BuildProject {
     iconUrl: string;
     links: {
         website?: string;
-        github?: string;
+        googlePlay?: string;
         appStore?: string;
     };
     order: number;
@@ -46,6 +46,7 @@ export interface BuildProject {
 
 export interface SkillCategory {
     categoryName: string;
+    lucideIcon?: string;
     skills: string[];
     icons?: string[];
 }
@@ -55,6 +56,7 @@ export interface ExperienceItem {
     period: string;
     company: string;
     role: string;
+    description?: string;
     companyUrl?: string;
     order: number;
 }
@@ -70,6 +72,20 @@ export interface FooterInfo {
     links?: { label: string; url: string }[];
 }
 
+export interface NavTitles {
+    work?: string;
+    builds?: string;
+    skills?: string;
+    about?: string;
+}
+
+export interface SectionTitles {
+    featuredProjects?: string;
+    builds?: string;
+    skills?: string;
+    experiences?: string;
+}
+
 export interface PortfolioData {
     meta: SiteMeta;
     personal: PersonalInfo;
@@ -79,4 +95,6 @@ export interface PortfolioData {
     skills: SkillCategory[];
     experiences: ExperienceItem[];
     footer?: FooterInfo;
+    sectionTitles?: SectionTitles;
+    navTitles?: NavTitles;
 }
