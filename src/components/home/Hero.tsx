@@ -2,18 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { PersonalInfo, SocialLink } from '@/types/portfolio';
-import { ExternalLink, Mail } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+import * as FaIcons from 'react-icons/fa';
+import * as LucideIcons from 'lucide-react';
 import Link from 'next/link';
-
-const iconMap: Record<string, any> = {
-  github: FaGithub,
-  linkedin: FaLinkedin,
-  x: FaTwitter,
-  email: Mail,
-  instagram: FaInstagram,
-  youtube: FaYoutube,
-};
 
 export default function Hero({ personal, socials }: { personal: PersonalInfo; socials: SocialLink[] }) {
   return (
@@ -69,7 +60,7 @@ export default function Hero({ personal, socials }: { personal: PersonalInfo; so
         )}
         
         {socials.map((social, idx) => {
-          const Icon = iconMap[social.platform] || ExternalLink;
+          const Icon = social.platform ? (FaIcons as any)[social.platform] || (LucideIcons as any)[social.platform] || LucideIcons.ExternalLink : LucideIcons.ExternalLink;
           return (
             <div key={idx}>
               <Link 

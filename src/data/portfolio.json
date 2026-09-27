@@ -1,190 +1,190 @@
 {
-  "meta": {
-    "title": "John Doe — Senior Software Engineer",
-    "description": "Senior Software Engineer with 6+ years of experience.",
-    "ogImage": "/og.png"
-  },
-  "personal": {
-    "name": "John Doe",
-    "role": "Senior Software Engineer",
-    "bio": "Senior Software Engineer with experience in building scalable web applications and microservices.",
-    "location": "San Francisco, CA",
-    "avatarUrl": "https://images.stockcake.com/public/2/5/b/25b212d6-d108-450a-b6d1-d497cbe9d1e2_large/handsome-man-portrait-stockcake.jpg",
-    "resumeUrl": "/resume.pdf",
-    "statusText": "Available for new projects",
-    "isAvailableForWork": true,
-    "about": "I am a passionate software engineer with a strong focus on building scalable and maintainable applications. Over the years, I have worked with various technologies and frameworks, delivering high-quality solutions for clients worldwide. I love open-source and contributing to the developer community.",
-    "aboutImage": "https://images.stockcake.com/public/2/5/b/25b212d6-d108-450a-b6d1-d497cbe9d1e2_large/handsome-man-portrait-stockcake.jpg"
-  },
-  "socials": [
-    {
-      "platform": "github",
-      "label": "GitHub",
-      "url": "https://example.com"
+    "meta": {
+        "title": "John Doe — Senior Software Engineer",
+        "description": "Senior Software Engineer with 6+ years of experience.",
+        "ogImage": "/og.png"
     },
-    {
-      "platform": "linkedin",
-      "label": "LinkedIn",
-      "url": "https://example.com"
+    "personal": {
+        "name": "John Doe",
+        "role": "Senior Software Engineer",
+        "bio": "Senior Software Engineer with experience in building scalable web applications and microservices.",
+        "location": "San Francisco, CA",
+        "avatarUrl": "https://images.stockcake.com/public/2/5/b/25b212d6-d108-450a-b6d1-d497cbe9d1e2_large/handsome-man-portrait-stockcake.jpg",
+        "resumeUrl": "/resume.pdf",
+        "statusText": "Available for new projects",
+        "isAvailableForWork": true,
+        "about": "I am a passionate software engineer with a strong focus on building scalable and maintainable applications. Over the years, I have worked with various technologies and frameworks, delivering high-quality solutions for clients worldwide. I love open-source and contributing to the developer community.",
+        "aboutImage": "https://images.stockcake.com/public/2/5/b/25b212d6-d108-450a-b6d1-d497cbe9d1e2_large/handsome-man-portrait-stockcake.jpg"
     },
-    {
-      "platform": "email",
-      "label": "Email",
-      "url": "https://example.com"
+    "socials": [
+        {
+            "platform": "FaAccessibleIcon",
+            "label": "GitHub",
+            "url": "https://example.com"
+        },
+        {
+            "platform": "FaLinkedin",
+            "label": "LinkedIn",
+            "url": "https://example.com"
+        },
+        {
+            "platform": "FaEnvelope",
+            "label": "Email",
+            "url": "https://example.com"
+        }
+    ],
+    "featuredProjects": [
+        {
+            "id": "proj-1",
+            "title": "Enliq Platform",
+            "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
+            "categoryTags": [
+                "DASHBOARD",
+                "LANDING PAGE"
+            ],
+            "coverImage": "https://s3-cdn.cmlabs.co/page/2024/02/03/what-is-a-platform-definition-functions-types-examples-379001.webp",
+            "demoUrl": "https://example.com",
+            "featured": true,
+            "order": 1,
+            "githubUrl": "https://github.com/berkeguvenc"
+        }
+    ],
+    "builds": [
+        {
+            "id": "build-1",
+            "title": "PopAir",
+            "description": "All-in-one AI copilot utility application.",
+            "platformBadge": "MACOS APP",
+            "roleTags": [
+                "Design",
+                "Frontend",
+                "Backend"
+            ],
+            "iconUrl": "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-large_2x.jpg",
+            "links": {
+                "website": "https://example.com",
+                "github": "https://example.com",
+                "appStore": "https://example.com"
+            },
+            "order": 1
+        }
+    ],
+    "skills": [
+        {
+            "categoryName": "Programming Languages",
+            "skills": [
+                "TypeScript",
+                "JavaScript (ES6+)",
+                "PHP",
+                "SQL",
+                "HTML5",
+                "CSS3 / SCSS"
+            ],
+            "icons": [
+                "typescript",
+                "javascript",
+                "php",
+                "mysql"
+            ],
+            "lucideIcon": "Globe"
+        },
+        {
+            "categoryName": "Frontend & UI",
+            "skills": [
+                "React & Next.js",
+                "Redux Toolkit",
+                "Zustand",
+                "TanStack Query",
+                "Tailwind CSS",
+                "Material-UI"
+            ],
+            "icons": [
+                "react",
+                "redux",
+                "reactquery",
+                "tailwindcss"
+            ],
+            "lucideIcon": "Code"
+        },
+        {
+            "categoryName": "Backend & API",
+            "skills": [
+                "Node.js & Express.js",
+                "Prisma ORM",
+                "RESTful API & Socket.io",
+                "Microservices",
+                "Zod & JWT"
+            ],
+            "icons": [
+                "nodedotjs",
+                "prisma",
+                "socketdotio",
+                "zod"
+            ],
+            "lucideIcon": "Server"
+        },
+        {
+            "categoryName": "Mobile & DevOps",
+            "skills": [
+                "React Native & Expo",
+                "PostgreSQL",
+                "Docker Compose",
+                "Dokploy (PaaS)",
+                "Cloudflare & Git"
+            ],
+            "icons": [
+                "expo",
+                "mysql",
+                "docker",
+                "cloudflare"
+            ],
+            "lucideIcon": "Smartphone"
+        }
+    ],
+    "experiences": [
+        {
+            "id": "exp-1",
+            "period": "Feb 2026 - Present",
+            "company": "Tech Company 1",
+            "role": "Senior Full Stack Engineer",
+            "order": 1
+        },
+        {
+            "id": "exp-2",
+            "period": "Apr 2025 - Oct 2025",
+            "company": "Tech Company 2",
+            "role": "Senior Frontend Engineer",
+            "order": 2
+        },
+        {
+            "id": "exp-3",
+            "period": "Jan 2023 - Mar 2025",
+            "company": "Tech Company 3",
+            "role": "Middle Frontend Developer",
+            "order": 3
+        },
+        {
+            "id": "exp-4",
+            "period": "Mar 2021 - Dec 2022",
+            "company": "Tech Company 4",
+            "role": "Junior Full Stack Developer",
+            "order": 4
+        },
+        {
+            "id": "exp-5",
+            "period": "Aug 2020 - Feb 2021",
+            "company": "Tech Company 5",
+            "role": "Junior Full Stack Developer",
+            "order": 5
+        }
+    ],
+    "footer": {
+        "text": "© 2026 John Doe",
+        "links": [
+            {
+                "label": "Resume",
+                "url": "/resume.pdf"
+            }
+        ]
     }
-  ],
-  "featuredProjects": [
-    {
-      "id": "proj-1",
-      "title": "Enliq Platform",
-      "description": "Marketing automation and engagement platform that helps brands manage campaigns.",
-      "categoryTags": [
-        "DASHBOARD",
-        "LANDING PAGE"
-      ],
-      "coverImage": "https://s3-cdn.cmlabs.co/page/2024/02/03/what-is-a-platform-definition-functions-types-examples-379001.webp",
-      "demoUrl": "https://example.com",
-      "featured": true,
-      "order": 1,
-      "githubUrl": "https://github.com/berkeguvenc"
-    }
-  ],
-  "builds": [
-    {
-      "id": "build-1",
-      "title": "PopAir",
-      "description": "All-in-one AI copilot utility application.",
-      "platformBadge": "MACOS APP",
-      "roleTags": [
-        "Design",
-        "Frontend",
-        "Backend"
-      ],
-      "iconUrl": "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-large_2x.jpg",
-      "links": {
-        "website": "https://example.com",
-        "github": "https://example.com",
-        "appStore": "https://example.com"
-      },
-      "order": 1
-    }
-  ],
-  "skills": [
-    {
-      "categoryName": "Programming Languages",
-      "skills": [
-        "TypeScript",
-        "JavaScript (ES6+)",
-        "PHP",
-        "SQL",
-        "HTML5",
-        "CSS3 / SCSS"
-      ],
-      "icons": [
-        "typescript",
-        "javascript",
-        "php",
-        "mysql"
-      ],
-      "lucideIcon": "Globe"
-    },
-    {
-      "categoryName": "Frontend & UI",
-      "skills": [
-        "React & Next.js",
-        "Redux Toolkit",
-        "Zustand",
-        "TanStack Query",
-        "Tailwind CSS",
-        "Material-UI"
-      ],
-      "icons": [
-        "react",
-        "redux",
-        "reactquery",
-        "tailwindcss"
-      ],
-      "lucideIcon": "Code"
-    },
-    {
-      "categoryName": "Backend & API",
-      "skills": [
-        "Node.js & Express.js",
-        "Prisma ORM",
-        "RESTful API & Socket.io",
-        "Microservices",
-        "Zod & JWT"
-      ],
-      "icons": [
-        "nodedotjs",
-        "prisma",
-        "socketdotio",
-        "zod"
-      ],
-      "lucideIcon": "Server"
-    },
-    {
-      "categoryName": "Mobile & DevOps",
-      "skills": [
-        "React Native & Expo",
-        "PostgreSQL",
-        "Docker Compose",
-        "Dokploy (PaaS)",
-        "Cloudflare & Git"
-      ],
-      "icons": [
-        "expo",
-        "mysql",
-        "docker",
-        "cloudflare"
-      ],
-      "lucideIcon": "Smartphone"
-    }
-  ],
-  "experiences": [
-    {
-      "id": "exp-1",
-      "period": "Feb 2026 - Present",
-      "company": "Tech Company 1",
-      "role": "Senior Full Stack Engineer",
-      "order": 1
-    },
-    {
-      "id": "exp-2",
-      "period": "Apr 2025 - Oct 2025",
-      "company": "Tech Company 2",
-      "role": "Senior Frontend Engineer",
-      "order": 2
-    },
-    {
-      "id": "exp-3",
-      "period": "Jan 2023 - Mar 2025",
-      "company": "Tech Company 3",
-      "role": "Middle Frontend Developer",
-      "order": 3
-    },
-    {
-      "id": "exp-4",
-      "period": "Mar 2021 - Dec 2022",
-      "company": "Tech Company 4",
-      "role": "Junior Full Stack Developer",
-      "order": 4
-    },
-    {
-      "id": "exp-5",
-      "period": "Aug 2020 - Feb 2021",
-      "company": "Tech Company 5",
-      "role": "Junior Full Stack Developer",
-      "order": 5
-    }
-  ],
-  "footer": {
-    "text": "© 2026 John Doe",
-    "links": [
-      {
-        "label": "Resume",
-        "url": "/resume.pdf"
-      }
-    ]
-  }
 }

@@ -12,6 +12,16 @@ const commonLucideIcons = [
   'Music', 'Video', 'Wifi', 'Star', 'Heart', 'User', 'Users', 'Search', 'Home'
 ];
 
+import * as FaIcons from 'react-icons/fa';
+
+const socialFaIcons = [
+  'FaGithub', 'FaLinkedin', 'FaTwitter', 'FaInstagram', 'FaYoutube', 
+  'FaFacebook', 'FaTwitch', 'FaDribbble', 'FaFigma', 'FaEnvelope', 'FaMedium',
+  'FaReddit', 'FaDiscord', 'FaTiktok', 'FaSnapchat', 'FaWhatsapp', 'FaTelegram',
+  'FaSkype', 'FaSlack', 'FaSpotify', 'FaSoundcloud', 'FaVimeo', 'FaBehance',
+  'FaPinterest', 'FaTumblr', 'FaVk', 'FaWeixin', 'FaLine', 'FaAppStore', 'FaGooglePlay'
+];
+
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
@@ -31,8 +41,10 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
 
   const [isIconModalOpen, setIsIconModalOpen] = useState(false);
   const [iconModalTarget, setIconModalTarget] = useState<((iconName: string) => void) | null>(null);
+  const [iconModalType, setIconModalType] = useState<'common' | 'socials'>('common');
 
   const [isLucideHelpOpen, setIsLucideHelpOpen] = useState(false);
+  const [isFaHelpOpen, setIsFaHelpOpen] = useState(false);
   const [isSimpleIconsHelpOpen, setIsSimpleIconsHelpOpen] = useState(false);
 
   const openImageModal = async (callback: (url: string) => void) => {
@@ -225,17 +237,38 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
           <Card>
             <CardHeader className="flex flex-row justify-between items-center">
               <CardTitle>Sosyal Medya Linkleri</CardTitle>
-              <Button variant="outline" size="sm" onClick={() => setData({ ...data, socials: [...data.socials, { platform: 'x', label: 'Yeni Link', url: '' }] })}>
+              <Button variant="outline" size="sm" onClick={() => setData({ ...data, socials: [...data.socials, { platform: 'Globe', label: 'Yeni Link', url: '' }] })}>
                 + Ekle
               </Button>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-4">
+              <div className="flex gap-3 text-xs text-zinc-400 w-full hidden md:flex mb-2 px-1">
+                <div className="w-[30%]">İkon Seçimi</div>
+                <div className="w-[25%]">Görünecek İsim</div>
+                <div className="flex-1">URL Linki</div>
+              </div>
               {data.socials.map((social, idx) => (
-                <div key={idx} className="flex gap-2 items-center">
-                  <Input value={social.platform} onChange={(e) => { const s = [...data.socials]; s[idx].platform = e.target.value as SocialLink['platform']; setData({ ...data, socials: s }) }} placeholder="Platform (github vb.)" className="w-1/4" />
-                  <Input value={social.label} onChange={(e) => { const s = [...data.socials]; s[idx].label = e.target.value; setData({ ...data, socials: s }) }} placeholder="Görünecek İsim" className="w-1/4" />
-                  <Input value={social.url} onChange={(e) => { const s = [...data.socials]; s[idx].url = e.target.value; setData({ ...data, socials: s }) }} placeholder="URL" />
-                  <Button variant="ghost" className="text-red-400 hover:text-red-500 hover:bg-red-400/10" onClick={() => setData({ ...data, socials: data.socials.filter((_, i) => i !== idx) })}>X</Button>
+                <div key={idx} className="flex flex-col md:flex-row gap-3 items-start md:items-center p-3 md:p-0 border border-zinc-800 md:border-none rounded-lg">
+                  <div className="w-full md:w-[30%] flex gap-2">
+                    <Input value={social.platform} onChange={(e) => { const s = [...data.socials]; s[idx].platform = e.target.value; setData({ ...data, socials: s }) }} placeholder="İkon (örn: Github)" />
+                    <Button variant="outline" size="icon" className="shrink-0 h-10 w-10 bg-zinc-800" title="İkon Seç" onClick={() => {
+                        setIconModalTarget(() => (iconName: string) => {
+                          const s = [...data.socials];
+                          s[idx].platform = iconName;
+                          setData({ ...data, socials: s });
+                        });
+                        setIconModalType('socials');
+                        setIsIconModalOpen(true);
+                      }}>
+                      <ImageIcon size={16} />
+                    </Button>
+                    <Button variant="ghost" size="icon" className="shrink-0 h-10 w-10 text-zinc-400 hover:text-white" onClick={() => setIsFaHelpOpen(true)} title="Nasıl Kullanılır?">
+                      ?
+                    </Button>
+                  </div>
+                  <Input value={social.label} onChange={(e) => { const s = [...data.socials]; s[idx].label = e.target.value; setData({ ...data, socials: s }) }} placeholder="İsim (örn: LinkedIn)" className="w-full md:w-[25%]" />
+                  <Input value={social.url} onChange={(e) => { const s = [...data.socials]; s[idx].url = e.target.value; setData({ ...data, socials: s }) }} placeholder="URL (https://...)" className="w-full md:flex-1" />
+                  <Button variant="ghost" className="text-red-400 hover:text-red-500 hover:bg-red-400/10 w-full md:w-auto mt-1 md:mt-0" onClick={() => setData({ ...data, socials: data.socials.filter((_, i) => i !== idx) })}>Sil</Button>
                 </div>
               ))}
             </CardContent>
@@ -419,6 +452,7 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                                 n[idx].lucideIcon = iconName;
                                 setData({ ...data, skills: n });
                               });
+                              setIconModalType('common');
                               setIsIconModalOpen(true);
                             }}
                           >
@@ -532,13 +566,13 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
           <Card className="w-full max-w-3xl max-h-[80vh] flex flex-col">
             <CardHeader className="flex flex-row justify-between items-center">
-              <CardTitle>Kategori İkonu Seç</CardTitle>
+              <CardTitle>{iconModalType === 'socials' ? 'Sosyal Ağ İkonu Seç' : 'Kategori İkonu Seç'}</CardTitle>
               <Button variant="ghost" size="sm" onClick={() => setIsIconModalOpen(false)}><X size={20} /></Button>
             </CardHeader>
             <CardContent className="overflow-y-auto">
               <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
-                {commonLucideIcons.map((iconName) => {
-                  const Icon = (LucideIcons as any)[iconName];
+                {(iconModalType === 'socials' ? socialFaIcons : commonLucideIcons).map((iconName) => {
+                  const Icon = iconModalType === 'socials' ? (FaIcons as any)[iconName] : (LucideIcons as any)[iconName];
                   if (!Icon) return null;
                   return (
                     <div 
@@ -572,6 +606,34 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
                 <li>İkonun sayfasına veya üzerine tıkladığınızda çıkan isme bakın.</li>
                 <li>İsmi, kelimelerin baş harfleri büyük olacak şekilde (PascalCase) buradaki kutuya yazın.<br/><span className="text-xs text-zinc-500 mt-1 block">Örnek: `arrow-right` için <strong className="text-white">ArrowRight</strong>, `message-square` için <strong className="text-white">MessageSquare</strong> yazmalısınız.</span></li>
               </ol>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {isFaHelpOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          <Card className="w-full max-w-lg relative bg-zinc-950 border-zinc-800 shadow-2xl">
+            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-zinc-400 hover:text-white" onClick={() => setIsFaHelpOpen(false)}><X size={20} /></Button>
+            <CardHeader>
+              <CardTitle className="text-xl">Sosyal Ağ İkonları Nasıl Kullanılır?</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm text-zinc-300">
+              <p>Eğer "İkon Seç" menüsündeki popüler logolar yeterli gelmezse, <strong>react-icons/fa</strong> kütüphanesindeki logoları kullanabilirsiniz:</p>
+              <ol className="list-decimal pl-5 space-y-2">
+                <li><a href="https://react-icons.github.io/react-icons/icons/fa/" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">FontAwesome İkonları</a> adresine gidin.</li>
+                <li>İstediğiniz markanın logosunu aratın (örn: "github", "accessible").</li>
+                <li>İkon ismini, <strong>birebir aynı olacak şekilde (Fa ile başlayan)</strong> buradaki kutuya yazın.</li>
+              </ol>
+              <div className="bg-zinc-900 p-3 rounded-lg border border-zinc-800 mt-2">
+                <span className="text-xs text-zinc-500 mb-1 block">Doğru Kullanım Örnekleri:</span>
+                <ul className="list-disc pl-5 space-y-1 text-white font-mono text-xs">
+                  <li>FaAccessibleIcon</li>
+                  <li>FaGithub</li>
+                  <li>FaTwitter</li>
+                </ul>
+              </div>
+              <p className="text-xs text-zinc-500 mt-2">Not: Sadece "Fa" ile başlayan (FontAwesome) ikonlar desteklenmektedir.</p>
             </CardContent>
           </Card>
         </div>
