@@ -1,0 +1,80 @@
+import { PortfolioData } from '@/types/portfolio';
+import { Card, CardContent } from '@/components/ui/Card';
+import { Label } from '@/components/ui/Label';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
+import { Button } from '@/components/ui/Button';
+import { Image as ImageIcon } from 'lucide-react';
+
+interface BuildsTabProps {
+  data: PortfolioData;
+  setData: (data: PortfolioData) => void;
+  openImageModal: (callback: (url: string) => void) => void;
+}
+
+export default function BuildsTab({ data, setData, openImageModal }: BuildsTabProps) {
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-medium">Ürünler (Builds)</h2>
+        <Button variant="default" onClick={() => setData({ ...data, builds: [...data.builds, { id: Date.now().toString(), title: 'Yeni Build', description: '', platformBadge: 'WEB', roleTags: [], iconUrl: '', links: {}, order: data.builds.length }] })}>
+          + Yeni Ürün Ekle
+        </Button>
+      </div>
+      <div className="grid gap-6">
+        {data.builds.map((build, idx) => (
+          <Card key={build.id} className="relative group">
+            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity z-10" onClick={() => setData({ ...data, builds: data.builds.filter((_, i) => i !== idx) })}>Sil</Button>
+            <CardContent className="pt-6 space-y-4">
+              <div className="grid grid-cols-3 gap-4">
+                <div className="col-span-2 space-y-1">
+                  <Label>Başlık</Label>
+                  <Input value={build.title} onChange={(e) => { const n = [...data.builds]; n[idx].title = e.target.value; setData({ ...data, builds: n }) }} />
+                </div>
+                <div className="space-y-1">
+                  <Label>Platform</Label>
+                  <Input value={build.platformBadge} onChange={(e) => { const n = [...data.builds]; n[idx].platformBadge = e.target.value; setData({ ...data, builds: n }) }} />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <Label>Açıklama</Label>
+                <Textarea value={build.description} onChange={(e) => { const n = [...data.builds]; n[idx].description = e.target.value; setData({ ...data, builds: n }) }} />
+              </div>
+              <div className="space-y-1">
+                <Label>İkon/Logo URL</Label>
+                <div className="flex gap-2">
+                  <Input value={build.iconUrl || ''} onChange={(e) => { const n = [...data.builds]; n[idx].iconUrl = e.target.value; setData({ ...data, builds: n }) }} />
+                  <Button variant="outline" onClick={() => openImageModal((url) => { const n = [...data.builds]; n[idx].iconUrl = url; setData({ ...data, builds: n }) })} className="whitespace-nowrap"><ImageIcon size={16} /> Seç</Button>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <Label>Roller (Virgülle ayırın)</Label>
+                  <Input value={build.roleTags.join(',')} onChange={(e) => { const n = [...data.builds]; n[idx].roleTags = e.target.value.split(','); setData({ ...data, builds: n }) }} />
+                </div>
+                <div className="space-y-1">
+                  <Label>Sıra</Label>
+                  <Input type="number" value={build.order} onChange={(e) => { const n = [...data.builds]; n[idx].order = Number(e.target.value); setData({ ...data, builds: n }) }} />
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="space-y-1">
+                  <Label>Website URL</Label>
+                  <Input value={build.links?.website || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, website: e.target.value }; setData({ ...data, builds: n }) }} />
+                </div>
+                <div className="space-y-1">
+                  <Label>Google Play URL</Label>
+                  <Input value={build.links?.googlePlay || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, googlePlay: e.target.value }; setData({ ...data, builds: n }) }} />
+                </div>
+                <div className="space-y-1">
+                  <Label>App Store URL</Label>
+                  <Input value={build.links?.appStore || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, appStore: e.target.value }; setData({ ...data, builds: n }) }} />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
