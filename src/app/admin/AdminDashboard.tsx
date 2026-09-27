@@ -5,22 +5,8 @@ import { PortfolioData, SocialLink } from '@/types/portfolio';
 import * as LucideIcons from 'lucide-react';
 import { Save, Copy, Loader2, Image as ImageIcon, X, Upload } from 'lucide-react';
 
-const commonLucideIcons = [
-  'Globe', 'Server', 'PenTool', 'Database', 'Smartphone', 'Monitor', 'Code', 'Cpu', 'Cloud',
-  'Layout', 'Settings', 'Terminal', 'Shield', 'Zap', 'Palette', 'Box', 'Briefcase', 'Camera',
-  'Coffee', 'Compass', 'Figma', 'Folder', 'Headphones', 'Layers', 'Mail', 'Map', 'MessageSquare',
-  'Music', 'Video', 'Wifi', 'Star', 'Heart', 'User', 'Users', 'Search', 'Home'
-];
-
-import * as FaIcons from 'react-icons/fa';
-
-const socialFaIcons = [
-  'FaGithub', 'FaLinkedin', 'FaTwitter', 'FaInstagram', 'FaYoutube', 
-  'FaFacebook', 'FaTwitch', 'FaDribbble', 'FaFigma', 'FaEnvelope', 'FaMedium',
-  'FaReddit', 'FaDiscord', 'FaTiktok', 'FaSnapchat', 'FaWhatsapp', 'FaTelegram',
-  'FaSkype', 'FaSlack', 'FaSpotify', 'FaSoundcloud', 'FaVimeo', 'FaBehance',
-  'FaPinterest', 'FaTumblr', 'FaVk', 'FaWeixin', 'FaLine', 'FaAppStore', 'FaGooglePlay'
-];
+import IconPickerModal from '@/components/admin/IconPickerModal';
+import HelpModals from '@/components/admin/HelpModals';
 
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -562,102 +548,25 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
         </div>
       )}
 
-      {isIconModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-          <Card className="w-full max-w-3xl max-h-[80vh] flex flex-col">
-            <CardHeader className="flex flex-row justify-between items-center">
-              <CardTitle>{iconModalType === 'socials' ? 'Sosyal Ağ İkonu Seç' : 'Kategori İkonu Seç'}</CardTitle>
-              <Button variant="ghost" size="sm" onClick={() => setIsIconModalOpen(false)}><X size={20} /></Button>
-            </CardHeader>
-            <CardContent className="overflow-y-auto">
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
-                {(iconModalType === 'socials' ? socialFaIcons : commonLucideIcons).map((iconName) => {
-                  const Icon = iconModalType === 'socials' ? (FaIcons as any)[iconName] : (LucideIcons as any)[iconName];
-                  if (!Icon) return null;
-                  return (
-                    <div 
-                      key={iconName} 
-                      onClick={() => { if(iconModalTarget) iconModalTarget(iconName); setIsIconModalOpen(false); }} 
-                      className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg border border-zinc-800 bg-zinc-950 cursor-pointer hover:border-emerald-500 hover:text-emerald-400 transition-colors"
-                    >
-                      <Icon size={24} strokeWidth={1.5} />
-                      <span className="text-[10px] text-zinc-400 text-center">{iconName}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
+      <IconPickerModal 
+        isOpen={isIconModalOpen}
+        onClose={() => setIsIconModalOpen(false)}
+        type={iconModalType}
+        onSelect={(iconName) => {
+          if (iconModalTarget) {
+            iconModalTarget(iconName);
+          }
+        }}
+      />
 
-      {isLucideHelpOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-          <Card className="w-full max-w-lg flex flex-col relative bg-zinc-950 border-zinc-800">
-            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-zinc-400 hover:text-white" onClick={() => setIsLucideHelpOpen(false)}><X size={20} /></Button>
-            <CardHeader>
-              <CardTitle className="text-xl">Lucide İkonları Nasıl Kullanılır?</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm text-zinc-300">
-              <p>Eğer "İkon Seç" menüsündeki ikonlar yeterli gelmezse, kütüphanedeki 1000'den fazla ikondan herhangi birini kullanabilirsiniz:</p>
-              <ol className="list-decimal pl-5 space-y-2">
-                <li><a href="https://lucide.dev/icons" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">lucide.dev/icons</a> adresine gidin.</li>
-                <li>İstediğiniz ikonu aratın (İngilizce olarak, örn: "star", "camera").</li>
-                <li>İkonun sayfasına veya üzerine tıkladığınızda çıkan isme bakın.</li>
-                <li>İsmi, kelimelerin baş harfleri büyük olacak şekilde (PascalCase) buradaki kutuya yazın.<br/><span className="text-xs text-zinc-500 mt-1 block">Örnek: `arrow-right` için <strong className="text-white">ArrowRight</strong>, `message-square` için <strong className="text-white">MessageSquare</strong> yazmalısınız.</span></li>
-              </ol>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
-      {isFaHelpOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-          <Card className="w-full max-w-lg relative bg-zinc-950 border-zinc-800 shadow-2xl">
-            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-zinc-400 hover:text-white" onClick={() => setIsFaHelpOpen(false)}><X size={20} /></Button>
-            <CardHeader>
-              <CardTitle className="text-xl">Sosyal Ağ İkonları Nasıl Kullanılır?</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm text-zinc-300">
-              <p>Eğer "İkon Seç" menüsündeki popüler logolar yeterli gelmezse, <strong>react-icons/fa</strong> kütüphanesindeki logoları kullanabilirsiniz:</p>
-              <ol className="list-decimal pl-5 space-y-2">
-                <li><a href="https://react-icons.github.io/react-icons/icons/fa/" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">FontAwesome İkonları</a> adresine gidin.</li>
-                <li>İstediğiniz markanın logosunu aratın (örn: "github", "accessible").</li>
-                <li>İkon ismini, <strong>birebir aynı olacak şekilde (Fa ile başlayan)</strong> buradaki kutuya yazın.</li>
-              </ol>
-              <div className="bg-zinc-900 p-3 rounded-lg border border-zinc-800 mt-2">
-                <span className="text-xs text-zinc-500 mb-1 block">Doğru Kullanım Örnekleri:</span>
-                <ul className="list-disc pl-5 space-y-1 text-white font-mono text-xs">
-                  <li>FaAccessibleIcon</li>
-                  <li>FaGithub</li>
-                  <li>FaTwitter</li>
-                </ul>
-              </div>
-              <p className="text-xs text-zinc-500 mt-2">Not: Sadece "Fa" ile başlayan (FontAwesome) ikonlar desteklenmektedir.</p>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
-      {isSimpleIconsHelpOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-          <Card className="w-full max-w-lg flex flex-col relative bg-zinc-950 border-zinc-800">
-            <Button variant="ghost" size="sm" className="absolute top-4 right-4 text-zinc-400 hover:text-white" onClick={() => setIsSimpleIconsHelpOpen(false)}><X size={20} /></Button>
-            <CardHeader>
-              <CardTitle className="text-xl">Teknoloji Logoları (SimpleIcons) Nasıl Kullanılır?</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm text-zinc-300">
-              <p>SimpleIcons kütüphanesinde binlerce markanın orijinal logosu bulunur. Doğru logoyu çekmek için markanın tam kodunu (slug) yazmalısınız.</p>
-              <ol className="list-decimal pl-5 space-y-2">
-                <li><a href="https://simpleicons.org/" target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">simpleicons.org</a> adresine gidin.</li>
-                <li>Eklemek istediğiniz teknolojiyi veya markayı aratın (örn: "Node.js").</li>
-                <li>Bulduğunuz logonun ismine tıkladığınızda tam <strong>Slug</strong> değeri kopyalanır.</li>
-                <li>Bu kodu, aralarına virgül koyarak kutucuğa yapıştırın.<br/><span className="text-xs text-zinc-500 mt-1 block">Örnekler: `nodedotjs`, `react`, `nextdotjs`, `amazonwebservices`, `html5` vb.</span></li>
-              </ol>
-            </CardContent>
-          </Card>
-        </div>
-      )}
+      <HelpModals 
+        isLucideOpen={isLucideHelpOpen}
+        onLucideClose={() => setIsLucideHelpOpen(false)}
+        isFaOpen={isFaHelpOpen}
+        onFaClose={() => setIsFaHelpOpen(false)}
+        isSimpleIconsOpen={isSimpleIconsHelpOpen}
+        onSimpleIconsClose={() => setIsSimpleIconsHelpOpen(false)}
+      />
     </div>
   );
 }
