@@ -20,7 +20,7 @@ export default function BuildsTab({ data, setData, openImageModal }: BuildsTabPr
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium">{t('title')}</h2>
-        <Button variant="default" onClick={() => setData({ ...data, builds: [...data.builds, { id: Date.now().toString(), title: t('newBuild'), description: '', platformBadge: 'WEB', roleTags: [], iconUrl: '', links: {}, order: data.builds.length }] })}>
+        <Button variant="default" onClick={() => setData({ ...data, builds: [...data.builds, { id: Date.now().toString(), title: t('newBuild'), description: '', platformBadge: 'WEB', roleTags: [], iconUrl: '', links: {}, order: data.builds.length > 0 ? Math.max(...data.builds.map(b => b.order || 0)) + 1 : 1 }] })}>
           {t('addBuild')}
         </Button>
       </div>

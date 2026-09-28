@@ -20,7 +20,7 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium">{t('title')}</h2>
-        <Button variant="default" onClick={() => setData({ ...data, featuredProjects: [...data.featuredProjects, { id: Date.now().toString(), title: t('newProjectTitle'), description: '', categoryTags: [], coverImage: '', demoUrl: '', githubUrl: '', featured: true, order: data.featuredProjects.length }] })}>
+        <Button variant="default" onClick={() => setData({ ...data, featuredProjects: [...data.featuredProjects, { id: Date.now().toString(), title: t('newProjectTitle'), description: '', categoryTags: [], coverImage: '', demoUrl: '', githubUrl: '', featured: true, order: data.featuredProjects.length > 0 ? Math.max(...data.featuredProjects.map(p => p.order || 0)) + 1 : 1 }] })}>
           {t('addProject')}
         </Button>
       </div>

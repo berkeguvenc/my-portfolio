@@ -18,7 +18,7 @@ export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium">{t('title')}</h2>
-        <Button variant="default" onClick={() => setData({ ...data, experiences: [...data.experiences, { id: Date.now().toString(), period: 'YYYY - YYYY', company: t('newCompany'), role: t('newExperience'), order: data.experiences.length }] })}>
+        <Button variant="default" onClick={() => setData({ ...data, experiences: [...data.experiences, { id: Date.now().toString(), period: 'YYYY - YYYY', company: t('newCompany'), role: t('newExperience'), order: data.experiences.length > 0 ? Math.max(...data.experiences.map(e => e.order || 0)) + 1 : 1 }] })}>
           {t('addExperience')}
         </Button>
       </div>
