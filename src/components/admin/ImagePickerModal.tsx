@@ -3,6 +3,7 @@ import { Loader2, Upload, X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Label } from '@/components/ui/Label';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { useTranslations } from 'next-intl';
 
 interface ImagePickerModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface ImagePickerModalProps {
 }
 
 export default function ImagePickerModal({ isOpen, onClose, onSelect }: ImagePickerModalProps) {
+  const t = useTranslations('Modals.ImagePicker');
   const [availableImages, setAvailableImages] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
 
@@ -53,7 +55,7 @@ export default function ImagePickerModal({ isOpen, onClose, onSelect }: ImagePic
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
       <Card className="w-full max-w-3xl max-h-[80vh] flex flex-col">
         <CardHeader className="flex flex-row justify-between items-center">
-          <CardTitle>Görsel Seç / Yükle</CardTitle>
+          <CardTitle>{t('title')}</CardTitle>
           <Button variant="ghost" size="sm" onClick={onClose}><X size={20} /></Button>
         </CardHeader>
         <CardContent className="flex flex-col flex-1 overflow-hidden space-y-6">
@@ -61,14 +63,14 @@ export default function ImagePickerModal({ isOpen, onClose, onSelect }: ImagePic
             <label className="flex flex-col items-center justify-center w-full h-32 px-4 transition bg-zinc-950 border-2 border-zinc-800 border-dashed rounded-xl cursor-pointer hover:border-emerald-500/50">
               <div className="flex items-center space-x-2">
                 {isUploading ? <Loader2 className="animate-spin text-zinc-400" size={24} /> : <Upload className="text-zinc-400" size={24} />}
-                <span className="font-medium text-zinc-400">{isUploading ? 'Yükleniyor...' : 'Yeni Görsel Yükle (Tıkla veya Sürükle)'}</span>
+                <span className="font-medium text-zinc-400">{isUploading ? t('uploading') : t('uploadText')}</span>
               </div>
               <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} disabled={isUploading} />
             </label>
           </div>
 
           <div className="flex-1 overflow-y-auto min-h-0">
-            <Label className="mb-4 block">Mevcut Görseller</Label>
+            <Label className="mb-4 block">{t('availableImages')}</Label>
             <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
               {availableImages.map((img, i) => (
                 <div key={i} onClick={() => { onSelect(img); onClose(); }} className="relative aspect-square rounded-lg border border-zinc-800 overflow-hidden bg-zinc-950 cursor-pointer group hover:border-emerald-500">
@@ -79,7 +81,7 @@ export default function ImagePickerModal({ isOpen, onClose, onSelect }: ImagePic
                 </div>
               ))}
               {availableImages.length === 0 && (
-                <div className="col-span-full py-8 text-center text-zinc-500 text-sm">Hiç görsel bulunamadı.</div>
+                <div className="col-span-full py-8 text-center text-zinc-500 text-sm">{t('noImages')}</div>
               )}
             </div>
           </div>

@@ -121,20 +121,22 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
             <Label className="text-emerald-400 font-semibold mb-2 block">{t('workStatus')}</Label>
           </div>
           
-          <div className="flex items-center gap-2 mb-2">
-            <input 
-              type="checkbox" 
-              id="isAvailableForWork" 
-              checked={data.personal.isAvailableForWork || false} 
-              onChange={(e) => setData({ ...data, personal: { ...data.personal, isAvailableForWork: e.target.checked } })}
-              className="rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-emerald-500 w-4 h-4"
-            />
-            <Label htmlFor="isAvailableForWork" className="cursor-pointer">{t('availableForWork')}</Label>
-          </div>
-          
-          <div className="space-y-1">
-            <Label>{t('statusText')}</Label>
-            <Input value={data.personal.statusText || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, statusText: e.target.value } })} placeholder={t('statusPlaceholder')} />
+          <div className="flex flex-col sm:flex-row gap-6 sm:items-end">
+            <div className="flex items-center gap-2 sm:pb-3">
+              <input 
+                type="checkbox" 
+                id="isAvailableForWork" 
+                checked={data.personal.isAvailableForWork || false} 
+                onChange={(e) => setData({ ...data, personal: { ...data.personal, isAvailableForWork: e.target.checked } })}
+                className="rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-emerald-500 w-4 h-4"
+              />
+              <Label htmlFor="isAvailableForWork" className="cursor-pointer">{t('availableForWork')}</Label>
+            </div>
+            
+            <div className="space-y-1 flex-1">
+              <Label>{t('statusText')}</Label>
+              <Input value={data.personal.statusText || ''} onChange={(e) => setData({ ...data, personal: { ...data.personal, statusText: e.target.value } })} placeholder={t('statusPlaceholder')} />
+            </div>
           </div>
         </CardContent>
       </Card>

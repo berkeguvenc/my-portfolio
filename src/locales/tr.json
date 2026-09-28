@@ -33,7 +33,6 @@
     "saving": "Kaydediliyor...",
     "saveSuccess": "Değişiklikler başarıyla kaydedildi!",
     "saveError": "Kaydedilirken hata oluştu.",
-    "jsonCopied": "JSON kopyalandı!",
     "tabs": {
       "general": "Genel & Sosyal",
       "projects": "Projeler",
@@ -127,6 +126,49 @@
     "navNames": "Navigasyon (Menü) İsimleri",
     "navHelp": "Ana sayfanın en altında bulunan gezinme menüsündeki buton isimlerini buradan değiştirebilirsiniz.",
     "sectionTitles": "Ana Sayfa Bölüm Başlıkları",
-    "sectionHelp": "Sayfayı aşağı kaydırdıkça görünen bölümlerin büyük başlıklarını buradan değiştirebilirsiniz. Boş bırakırsanız varsayılan İngilizce başlıklar görünür."
+    "sectionHelp": "Sayfayı aşağı kaydırdıkça görünen bölümlerin büyük başlıklarını buradan değiştirebilirsiniz. Boş bırakırsanız varsayılan İngilizce başlıklar görünür.",
+    "backupRestore": "Yedekleme ve Geri Yükleme",
+    "backupDesc": "Verilerinizi yedeklemek için JSON olarak dışa aktarabilir veya bir JSON yedeğini içe aktarabilirsiniz.",
+    "importJson": "İçe Aktar",
+    "exportJson": "Dışa Aktar",
+    "jsonCopied": "JSON panoya kopyalandı!",
+    "importSuccess": "JSON yüklendi! Kaydetmeyi unutmayın.",
+    "importError": "Geçersiz JSON dosyası."
+  },
+  "Modals": {
+    "HelpModals": {
+      "lucideTitle": "Lucide İkonları Nasıl Kullanılır?",
+      "lucideDesc": "Eğer 'İkon Seç' menüsündeki ikonlar yeterli gelmezse, kütüphanedeki 1000'den fazla ikondan herhangi birini kullanabilirsiniz:",
+      "lucideStep1": "lucide.dev/icons adresine gidin.",
+      "lucideStep2": "İstediğiniz ikonu aratın (İngilizce olarak, örn: 'star', 'camera').",
+      "lucideStep3": "İkonun sayfasına veya üzerine tıkladığınızda çıkan isme bakın.",
+      "lucideStep4": "İsmi, kelimelerin baş harfleri büyük olacak şekilde (PascalCase) buradaki kutuya yazın.",
+      "lucideExample": "Örnek: `arrow-right` için ArrowRight, `message-square` için MessageSquare yazmalısınız.",
+      "faTitle": "Sosyal Ağ İkonları Nasıl Kullanılır?",
+      "faDesc": "Eğer 'İkon Seç' menüsündeki popüler logolar yeterli gelmezse, react-icons/fa kütüphanesindeki logoları kullanabilirsiniz:",
+      "faStep1": "FontAwesome İkonları adresine gidin.",
+      "faStep2": "İstediğiniz markanın logosunu aratın (örn: 'github', 'accessible').",
+      "faStep3": "İkon ismini, birebir aynı olacak şekilde (Fa ile başlayan) buradaki kutuya yazın.",
+      "faGoodExample": "Doğru Kullanım Örnekleri:",
+      "faNote": "Not: Sadece 'Fa' ile başlayan (FontAwesome) ikonlar desteklenmektedir.",
+      "simpleTitle": "SimpleIcons Logoları Nasıl Kullanılır?",
+      "simpleDesc": "SimpleIcons, dünyadaki binlerce marka ve teknolojinin logolarını sağlayan ücretsiz bir kütüphanedir.",
+      "simpleStep1": "simpleicons.org adresine gidin.",
+      "simpleStep2": "İstediğiniz teknolojiyi (örn: 'react', 'next.js') aratın.",
+      "simpleStep3": "İkonun üzerine tıklayıp slug ismini kopyalayın (genellikle her şey küçük harftir).",
+      "simpleStep4": "O ismi virgülle ayırarak buradaki kutuya yazın.",
+      "simpleExample": "Örnek: React için react, Next.js için nextdotjs, Node.js için nodedotjs."
+    },
+    "IconPicker": {
+      "titleSocial": "Sosyal Ağ İkonu Seç",
+      "titleCommon": "Kategori İkonu Seç"
+    },
+    "ImagePicker": {
+      "title": "Görsel Seç / Yükle",
+      "uploading": "Yükleniyor...",
+      "uploadText": "Yeni Görsel Yükle (Tıkla veya Sürükle)",
+      "availableImages": "Mevcut Görseller",
+      "noImages": "Hiç görsel bulunamadı."
+    }
   }
 }

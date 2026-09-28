@@ -33,7 +33,6 @@
     "saving": "Saving...",
     "saveSuccess": "Changes saved successfully!",
     "saveError": "Failed to save changes.",
-    "jsonCopied": "JSON copied!",
     "tabs": {
       "general": "General & Socials",
       "projects": "Projects",
@@ -127,6 +126,49 @@
     "navNames": "Navigation (Menu) Names",
     "navHelp": "You can change the button names in the bottom navigation menu.",
     "sectionTitles": "Home Page Section Titles",
-    "sectionHelp": "You can change the large section titles here. If left empty, default English titles will be shown."
+    "sectionHelp": "You can change the large section titles here. If left empty, default English titles will be shown.",
+    "backupRestore": "Backup & Restore",
+    "backupDesc": "You can export your current data as JSON to back it up, or import a JSON file to restore your portfolio.",
+    "importJson": "Import JSON",
+    "exportJson": "Export JSON",
+    "jsonCopied": "JSON copied to clipboard!",
+    "importSuccess": "JSON loaded! Don't forget to save.",
+    "importError": "Invalid JSON file."
+  },
+  "Modals": {
+    "HelpModals": {
+      "lucideTitle": "How to Use Lucide Icons?",
+      "lucideDesc": "If the icons in the 'Select Icon' menu are not enough, you can use any of the 1000+ icons from the library:",
+      "lucideStep1": "Go to lucide.dev/icons.",
+      "lucideStep2": "Search for the icon you want (e.g., 'star', 'camera').",
+      "lucideStep3": "Look at the name that appears when you click on the icon.",
+      "lucideStep4": "Write the name in the box here with the first letter of each word capitalized (PascalCase).",
+      "lucideExample": "Example: For `arrow-right` write ArrowRight, for `message-square` write MessageSquare.",
+      "faTitle": "How to Use Social Network Icons?",
+      "faDesc": "If the popular logos are not enough, you can use logos from the react-icons/fa library:",
+      "faStep1": "Go to FontAwesome Icons.",
+      "faStep2": "Search for the brand logo (e.g., 'github', 'accessible').",
+      "faStep3": "Write the exact icon name (starting with Fa) in the box here.",
+      "faGoodExample": "Correct Usage Examples:",
+      "faNote": "Note: Only icons starting with 'Fa' (FontAwesome) are supported.",
+      "simpleTitle": "How to Use SimpleIcons Logos?",
+      "simpleDesc": "SimpleIcons is a free library providing logos for thousands of brands and technologies.",
+      "simpleStep1": "Go to simpleicons.org.",
+      "simpleStep2": "Search for the technology you want (e.g., 'react', 'next.js').",
+      "simpleStep3": "Click on the icon and copy its slug name (usually all lowercase).",
+      "simpleStep4": "Write that name in the box here, separated by commas if multiple.",
+      "simpleExample": "Example: For React write react, for Next.js write nextdotjs."
+    },
+    "IconPicker": {
+      "titleSocial": "Select Social Network Icon",
+      "titleCommon": "Select Category Icon"
+    },
+    "ImagePicker": {
+      "title": "Select / Upload Image",
+      "uploading": "Uploading...",
+      "uploadText": "Upload New Image (Click or Drag)",
+      "availableImages": "Available Images",
+      "noImages": "No images found."
+    }
   }
 }

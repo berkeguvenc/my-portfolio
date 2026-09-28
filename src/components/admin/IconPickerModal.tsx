@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { useTranslations } from 'next-intl';
 
 const commonLucideIcons = [
   'Globe', 'Server', 'PenTool', 'Database', 'Smartphone', 'Monitor', 'Code', 'Cpu', 'Cloud',
@@ -27,13 +28,15 @@ interface IconPickerModalProps {
 }
 
 export default function IconPickerModal({ isOpen, onClose, type, onSelect }: IconPickerModalProps) {
+  const t = useTranslations('Modals.IconPicker');
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
       <Card className="w-full max-w-3xl max-h-[80vh] flex flex-col bg-zinc-950 border-zinc-800 shadow-2xl">
         <CardHeader className="flex flex-row justify-between items-center border-b border-zinc-800 pb-4">
-          <CardTitle>{type === 'socials' ? 'Sosyal Ağ İkonu Seç' : 'Kategori İkonu Seç'}</CardTitle>
+          <CardTitle>{type === 'socials' ? t('titleSocial') : t('titleCommon')}</CardTitle>
           <Button variant="ghost" size="sm" onClick={onClose} className="text-zinc-400 hover:text-white">
             <X size={20} />
           </Button>

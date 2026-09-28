@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { PortfolioData } from '@/types/portfolio';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
-import { Image as ImageIcon } from 'lucide-react';
+import { Image as ImageIcon, Upload, Download } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 interface SettingsTabProps {
@@ -15,9 +16,72 @@ interface SettingsTabProps {
 
 export default function SettingsTab({ data, setData, openImageModal }: SettingsTabProps) {
   const t = useTranslations('SettingsTab');
+  const [localMessage, setLocalMessage] = useState('');
+
+  const copyJson = () => {
+    navigator.clipboard.writeText(JSON.stringify(data, null, 2));
+    setLocalMessage(t('jsonCopied'));
+    setTimeout(() => setLocalMessage(''), 3000);
+  };
+
+  const handleImportJson = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const parsed = JSON.parse(event.target?.result as string);
+        if (parsed && parsed.personal) {
+          setData(parsed);
+          setLocalMessage(t('importSuccess'));
+          setTimeout(() => setLocalMessage(''), 3000);
+        } else {
+          setLocalMessage(t('importError'));
+          setTimeout(() => setLocalMessage(''), 3000);
+        }
+      } catch (error) {
+        setLocalMessage(t('importError'));
+        setTimeout(() => setLocalMessage(''), 3000);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
 
   return (
     <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('backupRestore')}</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-sm text-zinc-400 mb-4">{t('backupDesc')}</p>
+          <div className="flex gap-4 items-center flex-wrap">
+            <div className="relative">
+              <Button variant="outline" className="gap-2 text-zinc-300 hover:text-white hover:bg-zinc-800">
+                <Upload size={16} /> {t('importJson')}
+              </Button>
+              <input 
+                type="file" 
+                accept=".json"
+                onChange={handleImportJson}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                title={t('importJson')}
+              />
+            </div>
+            <Button variant="outline" onClick={copyJson} className="gap-2 text-zinc-300 hover:text-white hover:bg-zinc-800">
+              <Download size={16} /> {t('exportJson')}
+            </Button>
+            {localMessage && (
+              <span className="text-sm text-emerald-400 font-medium bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full whitespace-nowrap">
+                {localMessage}
+              </span>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
       <Card>
         <CardHeader>
           <CardTitle>{t('seoMeta')}</CardTitle>

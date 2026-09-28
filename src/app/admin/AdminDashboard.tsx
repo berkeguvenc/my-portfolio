@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { PortfolioData, SocialLink } from '@/types/portfolio';
 import * as LucideIcons from 'lucide-react';
-import { Save, Copy, Loader2, Image as ImageIcon, X, Upload, LayoutGrid } from 'lucide-react';
+import { Save, Loader2, Image as ImageIcon, X, Upload, LayoutGrid } from 'lucide-react';
 
 import IconPickerModal from '@/components/admin/IconPickerModal';
 import HelpModals from '@/components/admin/HelpModals';
@@ -93,12 +93,6 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
     setIsSaving(false);
   };
 
-  const copyJson = () => {
-    navigator.clipboard.writeText(JSON.stringify(data, null, 2));
-    setMessage(t('jsonCopied'));
-    setTimeout(() => setMessage(''), 3000);
-  };
-
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-zinc-900 border border-zinc-800 p-5 rounded-xl gap-4">
@@ -119,10 +113,6 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
             {message && <span className="text-sm text-emerald-400 font-medium bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full shadow-lg whitespace-nowrap">{message}</span>}
           </div>
 
-
-          <Button variant="outline" onClick={copyJson} className="gap-2 h-9">
-            <Copy size={16} /> JSON
-          </Button>
           <Button onClick={handleSave} disabled={isSaving} className="gap-2 bg-emerald-600 hover:bg-emerald-700 text-white h-9">
             {isSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
             {isSaving ? t('saving') : t('saveChanges')}
