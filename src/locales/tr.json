@@ -1,0 +1,28 @@
+{
+  "Admin": {
+    "dashboard": "Gösterge Paneli",
+    "projects": "Projeler",
+    "settings": "Ayarlar",
+    "language": "Dil",
+    "logout": "Çıkış Yap",
+    "addProject": "Proje Ekle",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle"
+  },
+  "ProjectsTab": {
+    "title": "Öne Çıkan Projeler",
+    "addProject": "+ Yeni Proje Ekle",
+    "newProjectTitle": "Yeni Proje",
+    "projectTitle": "Proje Başlığı",
+    "order": "Sıra (Order)",
+    "description": "Açıklama",
+    "imageUrl": "Görsel URL",
+    "select": "Seç",
+    "categoryTags": "Kategori Etiketleri (Virgülle ayırın)",
+    "liveDemo": "Canlı Demo Linki",
+    "githubUrl": "Github Linki",
+    "deleteProject": "Projeyi Sil"
+  }
+}

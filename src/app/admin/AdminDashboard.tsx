@@ -8,6 +8,8 @@ import { Save, Copy, Loader2, Image as ImageIcon, X, Upload, LayoutGrid } from '
 import IconPickerModal from '@/components/admin/IconPickerModal';
 import HelpModals from '@/components/admin/HelpModals';
 import ImagePickerModal from '@/components/admin/ImagePickerModal';
+import LanguageSwitcher from '@/components/admin/LanguageSwitcher';
+
 
 import GeneralTab from '@/components/admin/tabs/GeneralTab';
 import ProjectsTab from '@/components/admin/tabs/ProjectsTab';
@@ -110,6 +112,7 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
         </div>
         
         <div className="flex items-center gap-3">
+          <LanguageSwitcher />
           {message && <span className="text-sm text-emerald-400 font-medium">{message}</span>}
           <Button variant="outline" onClick={copyJson} className="gap-2 h-9">
             <Copy size={16} /> JSON

@@ -1,0 +1,28 @@
+{
+  "Admin": {
+    "dashboard": "Dashboard",
+    "projects": "Projects",
+    "settings": "Settings",
+    "language": "Language",
+    "logout": "Logout",
+    "addProject": "Add Project",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "ProjectsTab": {
+    "title": "Featured Work",
+    "addProject": "+ Add New Project",
+    "newProjectTitle": "New Project",
+    "projectTitle": "Project Title",
+    "order": "Order",
+    "description": "Description",
+    "imageUrl": "Image URL",
+    "select": "Select",
+    "categoryTags": "Category Tags (comma separated)",
+    "liveDemo": "Live Demo URL",
+    "githubUrl": "Github URL",
+    "deleteProject": "Delete Project"
+  }
+}

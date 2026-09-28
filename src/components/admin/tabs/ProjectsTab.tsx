@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
 import { Image as ImageIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ProjectsTabProps {
   data: PortfolioData;
@@ -13,12 +14,14 @@ interface ProjectsTabProps {
 }
 
 export default function ProjectsTab({ data, setData, openImageModal }: ProjectsTabProps) {
+  const t = useTranslations('ProjectsTab');
+  
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-medium">Öne Çıkan Projeler (Featured Work)</h2>
-        <Button variant="default" onClick={() => setData({ ...data, featuredProjects: [...data.featuredProjects, { id: Date.now().toString(), title: 'Yeni Proje', description: '', categoryTags: [], coverImage: '', demoUrl: '', githubUrl: '', featured: true, order: data.featuredProjects.length }] })}>
-          + Yeni Proje Ekle
+        <h2 className="text-lg font-medium">{t('title')}</h2>
+        <Button variant="default" onClick={() => setData({ ...data, featuredProjects: [...data.featuredProjects, { id: Date.now().toString(), title: t('newProjectTitle'), description: '', categoryTags: [], coverImage: '', demoUrl: '', githubUrl: '', featured: true, order: data.featuredProjects.length }] })}>
+          {t('addProject')}
         </Button>
       </div>
 
@@ -28,41 +31,41 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
             <CardContent className="pt-6 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label>Proje Başlığı</Label>
+                  <Label>{t('projectTitle')}</Label>
                   <Input value={project.title} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].title = e.target.value; setData({ ...data, featuredProjects: n }) }} />
                 </div>
                 <div className="space-y-1">
-                  <Label>Sıra (Order)</Label>
+                  <Label>{t('order')}</Label>
                   <Input type="number" value={project.order} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].order = Number(e.target.value); setData({ ...data, featuredProjects: n }) }} />
                 </div>
               </div>
               <div className="space-y-1">
-                <Label>Açıklama</Label>
+                <Label>{t('description')}</Label>
                 <Textarea value={project.description} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].description = e.target.value; setData({ ...data, featuredProjects: n }) }} />
               </div>
               <div className="space-y-1">
-                <Label>Görsel URL</Label>
+                <Label>{t('imageUrl')}</Label>
                 <div className="flex gap-2">
                   <Input value={project.coverImage} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].coverImage = e.target.value; setData({ ...data, featuredProjects: n }) }} />
-                  <Button variant="outline" onClick={() => openImageModal((url) => { const n = [...data.featuredProjects]; n[idx].coverImage = url; setData({ ...data, featuredProjects: n }) })} className="whitespace-nowrap"><ImageIcon size={16} /> Seç</Button>
+                  <Button variant="outline" onClick={() => openImageModal((url) => { const n = [...data.featuredProjects]; n[idx].coverImage = url; setData({ ...data, featuredProjects: n }) })} className="whitespace-nowrap"><ImageIcon size={16} /> {t('select')}</Button>
                 </div>
               </div>
               <div className="space-y-1">
-                <Label>Kategori Etiketleri (Virgülle ayırın)</Label>
+                <Label>{t('categoryTags')}</Label>
                 <Input value={project.categoryTags.join(',')} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].categoryTags = e.target.value.split(','); setData({ ...data, featuredProjects: n }) }} />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label>Canlı Demo Linki</Label>
+                  <Label>{t('liveDemo')}</Label>
                   <Input value={project.demoUrl || ''} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].demoUrl = e.target.value; setData({ ...data, featuredProjects: n }) }} />
                 </div>
                 <div className="space-y-1">
-                  <Label>Github Linki</Label>
+                  <Label>{t('githubUrl')}</Label>
                   <Input value={project.githubUrl || ''} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].githubUrl = e.target.value; setData({ ...data, featuredProjects: n }) }} />
                 </div>
               </div>
               <div className="flex justify-end mt-4">
-                <Button variant="destructive" onClick={() => setData({ ...data, featuredProjects: data.featuredProjects.filter((_, i) => i !== idx) })}>Projeyi Sil</Button>
+                <Button variant="destructive" onClick={() => setData({ ...data, featuredProjects: data.featuredProjects.filter((_, i) => i !== idx) })}>{t('deleteProject')}</Button>
               </div>
             </CardContent>
           </Card>
