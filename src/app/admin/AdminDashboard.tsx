@@ -112,9 +112,14 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
           <p className="text-sm text-zinc-400">{t('dataWrittenTo')} <code className="text-zinc-300">src/data/portfolio.json</code></p>
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 relative">
           <LanguageSwitcher />
-          {message && <span className="text-sm text-emerald-400 font-medium">{message}</span>}
+          
+          <div className="absolute top-full right-0 mt-3 z-50">
+            {message && <span className="text-sm text-emerald-400 font-medium bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full shadow-lg whitespace-nowrap">{message}</span>}
+          </div>
+
+
           <Button variant="outline" onClick={copyJson} className="gap-2 h-9">
             <Copy size={16} /> JSON
           </Button>
