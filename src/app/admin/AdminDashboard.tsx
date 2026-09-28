@@ -9,7 +9,7 @@ import IconPickerModal from '@/components/admin/IconPickerModal';
 import HelpModals from '@/components/admin/HelpModals';
 import ImagePickerModal from '@/components/admin/ImagePickerModal';
 import LanguageSwitcher from '@/components/admin/LanguageSwitcher';
-
+import { useTranslations } from 'next-intl';
 
 import GeneralTab from '@/components/admin/tabs/GeneralTab';
 import ProjectsTab from '@/components/admin/tabs/ProjectsTab';
@@ -26,6 +26,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 
 export default function AdminDashboard({ initialData }: { initialData: PortfolioData }) {
+  const t = useTranslations('AdminDashboard');
   const [data, setData] = useState<PortfolioData>(initialData);
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
@@ -81,20 +82,20 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
       });
       
       if (res.ok) {
-        setMessage('Değişiklikler başarıyla kaydedildi!');
+        setMessage(t('saveSuccess'));
         setTimeout(() => setMessage(''), 3000);
       } else {
-        setMessage('Kaydedilirken hata oluştu.');
+        setMessage(t('saveError'));
       }
     } catch (error) {
-      setMessage('Bir hata oluştu.');
+      setMessage(t('saveError'));
     }
     setIsSaving(false);
   };
 
   const copyJson = () => {
     navigator.clipboard.writeText(JSON.stringify(data, null, 2));
-    setMessage('JSON kopyalandı!');
+    setMessage(t('jsonCopied'));
     setTimeout(() => setMessage(''), 3000);
   };
 
@@ -103,12 +104,12 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-zinc-900 border border-zinc-800 p-5 rounded-xl gap-4">
         <div className="space-y-1.5">
           <div className="flex items-center gap-3">
-            <h1 className="text-xl font-bold tracking-tight">Portfolyo Yönetim Paneli</h1>
+            <h1 className="text-xl font-bold tracking-tight">{t('title')}</h1>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              Local CMS Aktif
+              {t('localCmsActive')}
             </span>
           </div>
-          <p className="text-sm text-zinc-400">Veriler doğrudan <code className="text-zinc-300">src/data/portfolio.json</code> dosyasına yazılır.</p>
+          <p className="text-sm text-zinc-400">{t('dataWrittenTo')} <code className="text-zinc-300">src/data/portfolio.json</code></p>
         </div>
         
         <div className="flex items-center gap-3">
@@ -119,19 +120,19 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
           </Button>
           <Button onClick={handleSave} disabled={isSaving} className="gap-2 bg-emerald-600 hover:bg-emerald-700 text-white h-9">
             {isSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
-            {isSaving ? 'Kaydediliyor...' : 'Değişiklikleri Kaydet'}
+            {isSaving ? t('saving') : t('saveChanges')}
           </Button>
         </div>
       </div>
 
       <Tabs defaultValue="genel">
         <TabsList className="grid grid-cols-6 bg-zinc-900/50 p-1 mb-6 rounded-lg w-full overflow-x-auto">
-          <TabsTrigger value="genel">Genel & Sosyal</TabsTrigger>
-          <TabsTrigger value="work">Projeler</TabsTrigger>
-          <TabsTrigger value="builds">Ürünler</TabsTrigger>
-          <TabsTrigger value="skills">Yetenekler</TabsTrigger>
-          <TabsTrigger value="experience">Deneyim</TabsTrigger>
-          <TabsTrigger value="settings">Site Ayarları</TabsTrigger>
+          <TabsTrigger value="genel">{t('tabs.general')}</TabsTrigger>
+          <TabsTrigger value="work">{t('tabs.projects')}</TabsTrigger>
+          <TabsTrigger value="builds">{t('tabs.builds')}</TabsTrigger>
+          <TabsTrigger value="skills">{t('tabs.skills')}</TabsTrigger>
+          <TabsTrigger value="experience">{t('tabs.experience')}</TabsTrigger>
+          <TabsTrigger value="settings">{t('tabs.settings')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="genel">

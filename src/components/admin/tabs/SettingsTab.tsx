@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
 import { Image as ImageIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface SettingsTabProps {
   data: PortfolioData;
@@ -13,26 +14,28 @@ interface SettingsTabProps {
 }
 
 export default function SettingsTab({ data, setData, openImageModal }: SettingsTabProps) {
+  const t = useTranslations('SettingsTab');
+
   return (
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>SEO Meta Bilgileri</CardTitle>
+          <CardTitle>{t('seoMeta')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-1">
-            <Label>Site Başlığı</Label>
+            <Label>{t('siteTitle')}</Label>
             <Input value={data.meta.title} onChange={(e) => setData({ ...data, meta: { ...data.meta, title: e.target.value } })} />
           </div>
           <div className="space-y-1">
-            <Label>Site Açıklaması</Label>
+            <Label>{t('siteDesc')}</Label>
             <Textarea value={data.meta.description} onChange={(e) => setData({ ...data, meta: { ...data.meta, description: e.target.value } })} />
           </div>
           <div className="space-y-1">
-            <Label>OG Görseli</Label>
+            <Label>{t('ogImage')}</Label>
             <div className="flex gap-2">
               <Input value={data.meta.ogImage} onChange={(e) => setData({ ...data, meta: { ...data.meta, ogImage: e.target.value } })} />
-              <Button variant="outline" onClick={() => openImageModal((url) => setData({ ...data, meta: { ...data.meta, ogImage: url } }))} className="gap-2 whitespace-nowrap"><ImageIcon size={16} /> Seç</Button>
+              <Button variant="outline" onClick={() => openImageModal((url) => setData({ ...data, meta: { ...data.meta, ogImage: url } }))} className="gap-2 whitespace-nowrap"><ImageIcon size={16} /> {t('select')}</Button>
             </div>
           </div>
         </CardContent>
@@ -40,10 +43,10 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
 
       <Card>
         <CardHeader>
-          <CardTitle>Navigasyon (Menü) İsimleri</CardTitle>
+          <CardTitle>{t('navNames')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-zinc-400 mb-4">Ana sayfanın en altında bulunan gezinme menüsündeki buton isimlerini buradan değiştirebilirsiniz.</p>
+          <p className="text-sm text-zinc-400 mb-4">{t('navHelp')}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1">
               <Label>Work</Label>
@@ -83,10 +86,10 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
 
       <Card>
         <CardHeader>
-          <CardTitle>Ana Sayfa Bölüm Başlıkları</CardTitle>
+          <CardTitle>{t('sectionTitles')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-zinc-400 mb-4">Sayfayı aşağı kaydırdıkça görünen bölümlerin büyük başlıklarını buradan değiştirebilirsiniz. Boş bırakırsanız varsayılan İngilizce başlıklar görünür.</p>
+          <p className="text-sm text-zinc-400 mb-4">{t('sectionHelp')}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="space-y-1">
               <Label className="text-emerald-400">Featured Work (Öne Çıkan Projeler)</Label>
