@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
 import { Image as ImageIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface BuildsTabProps {
   data: PortfolioData;
@@ -13,12 +14,14 @@ interface BuildsTabProps {
 }
 
 export default function BuildsTab({ data, setData, openImageModal }: BuildsTabProps) {
+  const t = useTranslations('BuildsTab');
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-medium">Ürünler (Builds)</h2>
-        <Button variant="default" onClick={() => setData({ ...data, builds: [...data.builds, { id: Date.now().toString(), title: 'Yeni Build', description: '', platformBadge: 'WEB', roleTags: [], iconUrl: '', links: {}, order: data.builds.length }] })}>
-          + Yeni Ürün Ekle
+        <h2 className="text-lg font-medium">{t('title')}</h2>
+        <Button variant="default" onClick={() => setData({ ...data, builds: [...data.builds, { id: Date.now().toString(), title: t('newBuild'), description: '', platformBadge: 'WEB', roleTags: [], iconUrl: '', links: {}, order: data.builds.length > 0 ? Math.max(...data.builds.map(b => b.order || 0)) + 1 : 1 }] })}>
+          {t('addBuild')}
         </Button>
       </div>
 
@@ -28,51 +31,51 @@ export default function BuildsTab({ data, setData, openImageModal }: BuildsTabPr
             <CardContent className="pt-6 space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div className="col-span-2 space-y-1">
-                  <Label>Başlık</Label>
+                  <Label>{t('buildTitle')}</Label>
                   <Input value={build.title} onChange={(e) => { const n = [...data.builds]; n[idx].title = e.target.value; setData({ ...data, builds: n }) }} />
                 </div>
                 <div className="space-y-1">
-                  <Label>Platform</Label>
+                  <Label>{t('platform')}</Label>
                   <Input value={build.platformBadge} onChange={(e) => { const n = [...data.builds]; n[idx].platformBadge = e.target.value; setData({ ...data, builds: n }) }} />
                 </div>
               </div>
               <div className="space-y-1">
-                <Label>Açıklama</Label>
+                <Label>{t('description')}</Label>
                 <Textarea value={build.description} onChange={(e) => { const n = [...data.builds]; n[idx].description = e.target.value; setData({ ...data, builds: n }) }} />
               </div>
               <div className="space-y-1">
-                <Label>İkon/Logo URL</Label>
+                <Label>{t('iconUrl')}</Label>
                 <div className="flex gap-2">
                   <Input value={build.iconUrl || ''} onChange={(e) => { const n = [...data.builds]; n[idx].iconUrl = e.target.value; setData({ ...data, builds: n }) }} />
-                  <Button variant="outline" onClick={() => openImageModal((url) => { const n = [...data.builds]; n[idx].iconUrl = url; setData({ ...data, builds: n }) })} className="whitespace-nowrap"><ImageIcon size={16} /> Seç</Button>
+                  <Button variant="outline" onClick={() => openImageModal((url) => { const n = [...data.builds]; n[idx].iconUrl = url; setData({ ...data, builds: n }) })} className="whitespace-nowrap"><ImageIcon size={16} /> {t('select')}</Button>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label>Roller (Virgülle ayırın)</Label>
+                  <Label>{t('roles')}</Label>
                   <Input value={build.roleTags.join(',')} onChange={(e) => { const n = [...data.builds]; n[idx].roleTags = e.target.value.split(','); setData({ ...data, builds: n }) }} />
                 </div>
                 <div className="space-y-1">
-                  <Label>Sıra</Label>
+                  <Label>{t('order')}</Label>
                   <Input type="number" value={build.order} onChange={(e) => { const n = [...data.builds]; n[idx].order = Number(e.target.value); setData({ ...data, builds: n }) }} />
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div className="space-y-1">
-                  <Label>Website URL</Label>
+                  <Label>{t('website')}</Label>
                   <Input value={build.links?.website || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, website: e.target.value }; setData({ ...data, builds: n }) }} />
                 </div>
                 <div className="space-y-1">
-                  <Label>Google Play URL</Label>
+                  <Label>{t('googlePlay')}</Label>
                   <Input value={build.links?.googlePlay || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, googlePlay: e.target.value }; setData({ ...data, builds: n }) }} />
                 </div>
                 <div className="space-y-1">
-                  <Label>App Store URL</Label>
+                  <Label>{t('appStore')}</Label>
                   <Input value={build.links?.appStore || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, appStore: e.target.value }; setData({ ...data, builds: n }) }} />
                 </div>
               </div>
               <div className="flex justify-end mt-4">
-                <Button variant="destructive" onClick={() => setData({ ...data, builds: data.builds.filter((_, i) => i !== idx) })}>Ürünü Sil</Button>
+                <Button variant="destructive" onClick={() => setData({ ...data, builds: data.builds.filter((_, i) => i !== idx) })}>{t('delete')}</Button>
               </div>
             </CardContent>
           </Card>
