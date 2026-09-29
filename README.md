@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Minimalist Developer Portfolio & Local CMS
+
+A modern, high-performance, and SEO-friendly personal portfolio website built with Next.js (App Router), React 19, and Tailwind CSS. It features a minimalist "Design Engineer" aesthetic and a built-in local CMS (Admin Panel) that saves your data directly to a local JSON file without needing any external database.
+
+## Features
+
+- **Local-First CMS:** Edit your portfolio data via a hidden `/admin` panel. Changes are saved directly to `src/data/portfolio.json`.
+- **Zero Database Required:** No SQL/NoSQL setup needed. Just commit your JSON file and push to deploy.
+- **Modern Tech Stack:** Next.js (App Router), React 19, TypeScript.
+- **Beautiful UI:** Tailwind CSS, Framer Motion for smooth animations, and Lucide React icons.
+- **Secure Admin Panel:** The `/admin` route is only accessible in development mode (guarded via environment variables) and returns a 404 in production to protect your data.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Installation
+
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+### 2. Environment Setup
+
+Check the `.env.local` file in the root directory or create one. Ensure the following variable is present to enable the admin panel during local development:
+
+```env
+ENABLE_ADMIN_PANEL=true
+```
+
+### 3. Development Server
+
+Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the live portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Admin Panel & Content Management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Navigate to [http://localhost:3000/admin](http://localhost:3000/admin) to access the built-in CMS. 
+Here you can manage:
+- General Info & Social Links
+- Featured Projects (Work)
+- Side Projects (Builds)
+- Skills & Tools
+- Work Experience
 
-## Learn More
+Once you save your changes in the admin panel, `src/data/portfolio.json` will be updated automatically.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Since the portfolio uses a local JSON file for data, deploying is as simple as pushing your code to a hosting provider like [Vercel](https://vercel.com/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Ensure your changes to `src/data/portfolio.json` are committed.
+2. Push your code to your repository.
+3. Import the repository into Vercel and deploy.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Note: In the production environment, the `/admin` panel is automatically disabled (returns 404) for security purposes.*
