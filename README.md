@@ -67,3 +67,7 @@ Since the portfolio uses a local JSON file for data, deploying is as simple as p
 3. Import the repository into Vercel and deploy.
 
 *Note: In the production environment, the `/admin` panel is automatically disabled (returns 404) for security purposes.*
+
+## Roadmap
+
+Interested in upcoming features or want to contribute? Check out our [Roadmap](ROADMAP.md) for planned features and future vision.

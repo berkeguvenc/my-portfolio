@@ -72,7 +72,7 @@ export default function Hero({ personal, socials }: { personal: PersonalInfo; so
         )}
         
         {socials.map((social, idx) => {
-          const Icon = social.platform ? (FaIcons as any)[social.platform] || (LucideIcons as any)[social.platform] || LucideIcons.ExternalLink : LucideIcons.ExternalLink;
+          const Icon = social.platform ? (FaIcons as unknown as Record<string, React.ElementType>)[social.platform] || (LucideIcons as unknown as Record<string, React.ElementType>)[social.platform] || LucideIcons.ExternalLink : LucideIcons.ExternalLink;
           return (
             <div key={idx}>
               <Link 

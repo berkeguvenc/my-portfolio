@@ -72,7 +72,7 @@
     "delete": "Sil"
   },
   "ExperienceTab": {
-    "title": "Deneyim (Experience)",
+    "title": "Deneyim",
     "addExperience": "+ Yeni Deneyim Ekle",
     "role": "Rol / Pozisyon",
     "company": "Şirket",
@@ -102,7 +102,7 @@
     "newCategory": "Yeni Kategori"
   },
   "BuildsTab": {
-    "title": "Ürünler (Builds)",
+    "title": "Ürünler",
     "addBuild": "+ Yeni Ürün Ekle",
     "buildTitle": "Başlık",
     "platform": "Platform",
