@@ -68,6 +68,33 @@ Portfolyo, veriler için yerel bir JSON dosyası kullandığından dolayı yayı
 
 *Not: Canlı ortamda (production), `/admin` paneli güvenlik amacıyla otomatik olarak devre dışı bırakılır (404 döndürür).*
 
+## 🔄 Şablonu Güncel Tutma
+
+Bu şablonu kullanarak kendi portfolyonuzu oluşturduktan sonra, ana depoya eklenen yeni özellikleri ve hata düzeltmelerini sitenize çekmek için şu adımları izleyebilirsiniz:
+
+### 1. Ana depoyu (upstream) ekleyin (sadece ilk seferde)
+```bash
+git remote add upstream https://github.com/berkeguvenc/my-portfolio.git
+```
+
+### 2. En son güncellemeleri çekin
+```bash
+git pull upstream main --allow-unrelated-histories --no-rebase
+```
+
+### 3. Kendi bilgilerinizi koruyun (çakışma olursa)
+Eğer `src/data/portfolio.json` dosyasında bir çakışma (conflict) çıkarsa, kendi kişisel bilgilerinizi korumak için şunu çalıştırın:
+```bash
+git checkout --ours src/data/portfolio.json
+git add .
+git commit -m "chore: merge upstream template updates"
+```
+
+### 4. Kendi deponuza gönderin
+```bash
+git push origin main
+```
+
 ## Yol Haritası
 
 Gelecek özelliklerle ilgileniyor veya projeye katkıda bulunmak mı istiyorsunuz? Planlanan özellikler ve gelecek vizyonumuz için [Yol Haritası](ROADMAP-tr.md) dokümanımıza göz atın.
