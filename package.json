@@ -9,6 +9,9 @@
     "url": "https://github.com/berkeguvenc/my-portfolio.git"
   },
   "scripts": {
+    "setup": "node -e \"const fs=require('fs'); if(!fs.existsSync('src/data/portfolio.json')) fs.copyFileSync('src/data/portfolio.example.json', 'src/data/portfolio.json')\"",
+    "predev": "npm run setup",
+    "prebuild": "npm run setup",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
