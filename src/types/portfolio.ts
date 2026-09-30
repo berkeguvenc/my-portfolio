@@ -65,6 +65,7 @@ export interface SiteMeta {
     title: string;
     description: string;
     ogImage: string;
+    favicon?: string;
 }
 
 export interface FooterInfo {
