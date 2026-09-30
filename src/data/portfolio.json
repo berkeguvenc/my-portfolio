@@ -2,7 +2,8 @@
   "meta": {
     "title": "John Doe — Senior Software Engineer",
     "description": "Senior Software Engineer with 6+ years of experience.",
-    "ogImage": "/og.png"
+    "ogImage": "/og.png",
+    "favicon": "/favicon.ico"
   },
   "personal": {
     "name": "John Doe",

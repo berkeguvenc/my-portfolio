@@ -121,6 +121,7 @@
     "seoMeta": "SEO Meta Information",
     "siteTitle": "Site Title",
     "siteDesc": "Site Description",
+    "favicon": "Site Icon (Favicon)",
     "ogImage": "OG Image",
     "select": "Select",
     "navNames": "Navigation (Menu) Names",

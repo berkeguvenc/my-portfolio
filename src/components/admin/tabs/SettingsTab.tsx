@@ -96,6 +96,13 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
             <Textarea value={data.meta.description} onChange={(e) => setData({ ...data, meta: { ...data.meta, description: e.target.value } })} />
           </div>
           <div className="space-y-1">
+            <Label>{t('favicon')}</Label>
+            <div className="flex gap-2">
+              <Input value={data.meta.favicon || ''} onChange={(e) => setData({ ...data, meta: { ...data.meta, favicon: e.target.value } })} />
+              <Button variant="outline" onClick={() => openImageModal((url) => setData({ ...data, meta: { ...data.meta, favicon: url } }))} className="gap-2 whitespace-nowrap"><ImageIcon size={16} /> {t('select')}</Button>
+            </div>
+          </div>
+          <div className="space-y-1">
             <Label>{t('ogImage')}</Label>
             <div className="flex gap-2">
               <Input value={data.meta.ogImage} onChange={(e) => setData({ ...data, meta: { ...data.meta, ogImage: e.target.value } })} />
