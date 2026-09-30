@@ -68,6 +68,33 @@ Since the portfolio uses a local JSON file for data, deploying is as simple as p
 
 *Note: In the production environment, the `/admin` panel is automatically disabled (returns 404) for security purposes.*
 
+## 🔄 Keeping Your Template Updated
+
+If you created your portfolio using this template and want to pull the latest features and bug fixes from the upstream repository, follow these simple steps:
+
+### 1. Add upstream remote (only once)
+```bash
+git remote add upstream https://github.com/berkeguvenc/my-portfolio.git
+```
+
+### 2. Pull the latest updates
+```bash
+git pull upstream main --allow-unrelated-histories --no-rebase
+```
+
+### 3. Keep your personal data (in case of conflict)
+If there is a conflict in `src/data/portfolio.json`, run this to keep your own personal information:
+```bash
+git checkout --ours src/data/portfolio.json
+git add .
+git commit -m "chore: merge upstream template updates"
+```
+
+### 4. Push to your own repository
+```bash
+git push origin main
+```
+
 ## Roadmap
 
 Interested in upcoming features or want to contribute? Check out our [Roadmap](ROADMAP.md) for planned features and future vision.
