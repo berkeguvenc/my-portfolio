@@ -25,12 +25,12 @@
     {
       "platform": "FaLinkedin",
       "label": "LinkedIn",
-      "url": "https://example.com"
+      "url": "https://linkedin.com/in/username"
     },
     {
       "platform": "FaEnvelope",
       "label": "Email",
-      "url": "https://example.com"
+      "url": "mailto:example@example.com"
     }
   ],
   "featuredProjects": [
