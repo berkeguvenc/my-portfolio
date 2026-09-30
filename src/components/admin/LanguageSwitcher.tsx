@@ -41,7 +41,7 @@ export default function LanguageSwitcher() {
       return;
     }
     
-    // Set the cookie for the locale
+    // eslint-disable-next-line react-hooks/immutability
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     
     startTransition(() => {

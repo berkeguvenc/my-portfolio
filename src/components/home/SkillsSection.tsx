@@ -17,7 +17,7 @@ export default function SkillsSection({ skills, title = "Skills & Tools" }: { sk
         
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-4">
           {skills.map((category, idx) => {
-            const IconComponent = category.lucideIcon ? (LucideIcons as any)[category.lucideIcon] : null;
+            const IconComponent = category.lucideIcon ? (LucideIcons as unknown as Record<string, React.ElementType>)[category.lucideIcon] : null;
 
             return (
             <motion.div

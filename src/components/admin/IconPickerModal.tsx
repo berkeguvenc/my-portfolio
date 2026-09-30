@@ -44,7 +44,7 @@ export default function IconPickerModal({ isOpen, onClose, type, onSelect }: Ico
         <CardContent className="overflow-y-auto pt-6">
           <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
             {(type === 'socials' ? socialFaIcons : commonLucideIcons).map((iconName) => {
-              const Icon = type === 'socials' ? (FaIcons as any)[iconName] : (LucideIcons as any)[iconName];
+              const Icon = type === 'socials' ? (FaIcons as unknown as Record<string, React.ElementType>)[iconName] : (LucideIcons as unknown as Record<string, React.ElementType>)[iconName];
               if (!Icon) return null;
               return (
                 <div 
