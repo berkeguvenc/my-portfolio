@@ -67,3 +67,7 @@ Portfolyo, veriler için yerel bir JSON dosyası kullandığından dolayı yayı
 3. Deponuzu Vercel'e aktarın ve dağıtımı başlatın.
 
 *Not: Canlı ortamda (production), `/admin` paneli güvenlik amacıyla otomatik olarak devre dışı bırakılır (404 döndürür).*
+
+## Yol Haritası
+
+Gelecek özelliklerle ilgileniyor veya projeye katkıda bulunmak mı istiyorsunuz? Planlanan özellikler ve gelecek vizyonumuz için [Yol Haritası](ROADMAP-tr.md) dokümanımıza göz atın.
