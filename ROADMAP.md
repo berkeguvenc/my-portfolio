@@ -11,6 +11,10 @@ This document outlines the current state and future vision for the Minimalist De
 - [x] **Backup System:** JSON Export/Import capabilities for easy backups and migrations.
 
 ## Phase 2: Next Steps (Planned)
+- [ ] **Dynamic Section Management (Modular Section Builder & Drag-and-Drop):**
+  - Render sections (`Hero`, `Work`, `Builds`, `Skills`, `Experience`, etc.) dynamically via a sortable `sections` array in `portfolio.json`.
+  - Add drag-and-drop support in the admin panel (via `@dnd-kit` or `framer-motion (Reorder)`) to reorder sections.
+  - Implement a repeater architecture allowing the community to easily add/remove custom sections (e.g., Testimonials, Contact Form, Blog).
 - [ ] **Dynamic Detail Pages:** Rich text (Markdown) support for individual Work and Builds pages (e.g., `/work/project-slug`).
 - [ ] **Multi-language Admin Panel:** Expanded i18n support adding German (de), Spanish (es), French (fr), and Italian (it).
 - [ ] **Pre-set UI Themes:** Ability for the admin to select predefined UI themes (Dark, Light, Neon) that are globally applied for all visitors.
