@@ -18,7 +18,10 @@ import { getPortfolioData } from '@/lib/portfolio';
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getPortfolioData();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+
   return {
+    metadataBase: new URL(baseUrl),
     title: data.meta.title || "Portfolio",
     description: data.meta.description || "Portfolio Description",
     openGraph: {
