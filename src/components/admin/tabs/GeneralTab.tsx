@@ -34,7 +34,20 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
       });
       if (res.ok) {
         const uploadedData = await res.json();
-        setData({ ...data, personal: { ...data.personal, resumeUrl: uploadedData.url } });
+        const newUrl = uploadedData.url;
+        const newFooter = data.footer ? { ...data.footer } : {};
+        if (newFooter.links) {
+          newFooter.links = newFooter.links.map(link => 
+            link.label.toLowerCase() === 'resume' || link.label.toLowerCase() === 'cv' 
+              ? { ...link, url: newUrl } 
+              : link
+          );
+        }
+        setData({ 
+          ...data, 
+          personal: { ...data.personal, resumeUrl: newUrl },
+          footer: newFooter as typeof data.footer
+        });
       }
     } catch (error) {
       console.error('CV upload failed', error);
@@ -75,7 +88,22 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
             <div className="flex gap-2">
               <Input 
                 value={data.personal.resumeUrl || ''} 
-                onChange={(e) => setData({ ...data, personal: { ...data.personal, resumeUrl: e.target.value } })} 
+                onChange={(e) => {
+                  const newUrl = e.target.value;
+                  const newFooter = data.footer ? { ...data.footer } : {};
+                  if (newFooter.links) {
+                    newFooter.links = newFooter.links.map(link => 
+                      link.label.toLowerCase() === 'resume' || link.label.toLowerCase() === 'cv' 
+                        ? { ...link, url: newUrl } 
+                        : link
+                    );
+                  }
+                  setData({ 
+                    ...data, 
+                    personal: { ...data.personal, resumeUrl: newUrl },
+                    footer: newFooter as typeof data.footer
+                  });
+                }} 
                 placeholder={t('cvPlaceholder')}
                 className="flex-1"
               />
