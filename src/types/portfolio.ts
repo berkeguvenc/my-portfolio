@@ -23,7 +23,7 @@ export interface FeaturedProject {
     description: string;
     categoryTags: string[];
     coverImage: string;
-    demoUrl?: string;
+    websiteUrl?: string;
     githubUrl?: string;
     featured: boolean;
     order: number;

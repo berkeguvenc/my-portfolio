@@ -20,7 +20,7 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium">{t('title')}</h2>
-        <Button variant="default" onClick={() => setData({ ...data, featuredProjects: [...data.featuredProjects, { id: Date.now().toString(), title: t('newProjectTitle'), description: '', categoryTags: [], coverImage: '', demoUrl: '', githubUrl: '', featured: true, order: data.featuredProjects.length > 0 ? Math.max(...data.featuredProjects.map(p => p.order || 0)) + 1 : 1 }] })}>
+        <Button variant="default" onClick={() => setData({ ...data, featuredProjects: [...data.featuredProjects, { id: Date.now().toString(), title: t('newProjectTitle'), description: '', categoryTags: [], coverImage: '', websiteUrl: '', githubUrl: '', featured: true, order: data.featuredProjects.length > 0 ? Math.max(...data.featuredProjects.map(p => p.order || 0)) + 1 : 1 }] })}>
           {t('addProject')}
         </Button>
       </div>
@@ -56,8 +56,8 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label>{t('liveDemo')}</Label>
-                  <Input value={project.demoUrl || ''} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].demoUrl = e.target.value; setData({ ...data, featuredProjects: n }) }} />
+                  <Label>{t('websiteUrl')}</Label>
+                  <Input value={project.websiteUrl || ''} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].websiteUrl = e.target.value; setData({ ...data, featuredProjects: n }) }} />
                 </div>
                 <div className="space-y-1">
                   <Label>{t('githubUrl')}</Label>

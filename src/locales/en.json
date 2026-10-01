@@ -21,7 +21,7 @@
     "imageUrl": "Image URL",
     "select": "Select",
     "categoryTags": "Category Tags (comma separated)",
-    "liveDemo": "Live Demo URL",
+    "websiteUrl": "Website URL",
     "githubUrl": "Github URL",
     "deleteProject": "Delete Project"
   },

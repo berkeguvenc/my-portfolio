@@ -21,7 +21,7 @@
     "imageUrl": "Görsel URL",
     "select": "Seç",
     "categoryTags": "Kategori Etiketleri (Virgülle ayırın)",
-    "liveDemo": "Canlı Demo Linki",
+    "websiteUrl": "Website Linki",
     "githubUrl": "Github Linki",
     "deleteProject": "Projeyi Sil"
   },
