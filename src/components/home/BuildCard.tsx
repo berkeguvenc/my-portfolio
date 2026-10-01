@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { BuildProject } from '@/types/portfolio';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
-import { FaGooglePlay, FaApple } from 'react-icons/fa';
+import { FaGooglePlay, FaApple, FaGithub } from 'react-icons/fa';
 
 export default function BuildCard({ build, index }: { build: BuildProject; index: number }) {
-  const mainUrl = build.links?.website || build.links?.appStore || build.links?.googlePlay || '#';
+  const mainUrl = build.links?.website || build.links?.appStore || build.links?.googlePlay || build.links?.githubUrl || '#';
 
   return (
     <motion.div
@@ -68,6 +68,15 @@ export default function BuildCard({ build, index }: { build: BuildProject; index
                   className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
                 >
                   <ExternalLink size={16} /> <span className="group-hover/link:underline">Website</span>
+                </Link>
+              )}
+              {build.links?.githubUrl && (
+                <Link
+                  href={build.links.githubUrl}
+                  target="_blank"
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <FaGithub size={16} /> <span className="group-hover/link:underline">Github</span>
                 </Link>
               )}
               {build.links?.googlePlay && (

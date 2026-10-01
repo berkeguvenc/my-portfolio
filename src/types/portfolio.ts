@@ -40,6 +40,7 @@ export interface BuildProject {
         website?: string;
         googlePlay?: string;
         appStore?: string;
+        githubUrl?: string;
     };
     order: number;
 }
