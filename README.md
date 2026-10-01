@@ -95,6 +95,10 @@ git commit -m "chore: merge upstream template updates"
 git push origin main
 ```
 
+## Support
+
+If you found this template helpful, consider supporting my work on [Kreosus](https://kreosus.com/berkeguvenc/about)! ❤️
+
 ## Roadmap
 
 Interested in upcoming features or want to contribute? Check out our [Roadmap](ROADMAP.md) for planned features and future vision.

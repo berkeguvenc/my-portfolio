@@ -95,6 +95,10 @@ git commit -m "chore: merge upstream template updates"
 git push origin main
 ```
 
+## Destek
+
+Bu şablonu faydalı bulduysanız, çalışmalarımı [Kreosus](https://kreosus.com/berkeguvenc/about) üzerinden destekleyebilirsiniz! ❤️
+
 ## Yol Haritası
 
 Gelecek özelliklerle ilgileniyor veya projeye katkıda bulunmak mı istiyorsunuz? Planlanan özellikler ve gelecek vizyonumuz için [Yol Haritası](ROADMAP-tr.md) dokümanımıza göz atın.
