@@ -107,6 +107,16 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
         </div>
         
         <div className="flex items-center gap-3 relative">
+          <a 
+            href="https://kreosus.com/berkeguvenc/about" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-pink-400 bg-pink-500/10 border border-pink-500/20 rounded-lg hover:bg-pink-500/20 transition-colors"
+            title="Support the Developer"
+          >
+            <LucideIcons.Heart size={16} />
+            Support
+          </a>
           <LanguageSwitcher />
           
           <div className="absolute top-full right-0 mt-3 z-50">
