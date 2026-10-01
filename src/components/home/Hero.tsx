@@ -15,7 +15,7 @@ export default function Hero({ personal, socials }: { personal: PersonalInfo; so
       className="mt-8 mb-20 md:mt-[100px] md:mb-36"
     >
       <div className="mb-6 flex flex-col gap-6 md:mb-8 md:gap-8">
-        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <div className="flex items-center gap-4">
           {personal.avatarUrl && (
             <div 
               className="relative h-16 w-16 shrink-0 rounded-full p-[1px] md:h-20 md:w-20"
@@ -41,7 +41,7 @@ export default function Hero({ personal, socials }: { personal: PersonalInfo; so
           )}
           
           {personal.isAvailableForWork && (
-            <div className="flex items-center gap-2 rounded-[20px] border border-gray-200/60 bg-white/50 backdrop-blur-md px-3 py-1.5 text-sm font-medium text-gray-900 shadow-sm mt-2 sm:mt-0">
+            <div className="flex items-center gap-2 rounded-[20px] border border-gray-200/60 bg-white/50 backdrop-blur-md px-3 py-1.5 text-sm font-medium text-gray-900 shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
