@@ -44,7 +44,7 @@
         "LANDING PAGE"
       ],
       "coverImage": "https://s3-cdn.cmlabs.co/page/2024/02/03/what-is-a-platform-definition-functions-types-examples-379001.webp",
-      "demoUrl": "https://example.com",
+      "websiteUrl": "https://example.com",
       "featured": true,
       "order": 1,
       "githubUrl": "https://github.com/berkeguvenc"

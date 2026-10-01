@@ -23,7 +23,7 @@ export interface FeaturedProject {
     description: string;
     categoryTags: string[];
     coverImage: string;
-    demoUrl?: string;
+    websiteUrl?: string;
     githubUrl?: string;
     featured: boolean;
     order: number;
@@ -40,6 +40,7 @@ export interface BuildProject {
         website?: string;
         googlePlay?: string;
         appStore?: string;
+        githubUrl?: string;
     };
     order: number;
 }

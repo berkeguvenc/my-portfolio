@@ -8,7 +8,7 @@ import { FaGithub } from 'react-icons/fa';
 
 export default function ProjectCard({ project, index }: { project: FeaturedProject; index: number }) {
   // Using the first available URL as the main link for the card wrapper
-  const mainUrl = project.demoUrl || project.githubUrl || '#';
+  const mainUrl = project.websiteUrl || project.githubUrl || '#';
 
   return (
     <motion.div
@@ -57,13 +57,13 @@ export default function ProjectCard({ project, index }: { project: FeaturedProje
 
             {/* Clickable Action Links */}
             <div className="flex items-center gap-4 mt-2 relative z-10">
-              {project.demoUrl && (
+              {project.websiteUrl && (
                 <Link
-                  href={project.demoUrl}
+                  href={project.websiteUrl}
                   target="_blank"
                   className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] text-[#878787] hover:text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
                 >
-                  <ExternalLink size={16} /> <span className="group-hover/link:underline">Live Demo</span>
+                  <ExternalLink size={16} /> <span className="group-hover/link:underline">Website</span>
                 </Link>
               )}
               {project.githubUrl && (

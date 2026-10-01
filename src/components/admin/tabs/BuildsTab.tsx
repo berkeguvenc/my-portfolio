@@ -60,10 +60,14 @@ export default function BuildsTab({ data, setData, openImageModal }: BuildsTabPr
                   <Input type="number" value={build.order} onChange={(e) => { const n = [...data.builds]; n[idx].order = Number(e.target.value); setData({ ...data, builds: n }) }} />
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <Label>{t('website')}</Label>
                   <Input value={build.links?.website || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, website: e.target.value }; setData({ ...data, builds: n }) }} />
+                </div>
+                <div className="space-y-1">
+                  <Label>{t('githubUrl')}</Label>
+                  <Input value={build.links?.githubUrl || ''} onChange={(e) => { const n = [...data.builds]; n[idx].links = { ...n[idx].links, githubUrl: e.target.value }; setData({ ...data, builds: n }) }} />
                 </div>
                 <div className="space-y-1">
                   <Label>{t('googlePlay')}</Label>

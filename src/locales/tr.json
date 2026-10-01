@@ -21,7 +21,7 @@
     "imageUrl": "Görsel URL",
     "select": "Seç",
     "categoryTags": "Kategori Etiketleri (Virgülle ayırın)",
-    "liveDemo": "Canlı Demo Linki",
+    "websiteUrl": "Website Linki",
     "githubUrl": "Github Linki",
     "deleteProject": "Projeyi Sil"
   },
@@ -114,6 +114,7 @@
     "website": "Website URL",
     "googlePlay": "Google Play URL",
     "appStore": "App Store URL",
+    "githubUrl": "Github Linki",
     "delete": "Ürünü Sil",
     "newBuild": "Yeni Build"
   },
