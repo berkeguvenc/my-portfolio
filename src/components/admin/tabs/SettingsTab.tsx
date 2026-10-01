@@ -124,7 +124,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               <Input 
                 value={data.navTitles?.work || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, work: e.target.value } })} 
-                placeholder="Örn: Work" 
+                placeholder="Work" 
               />
             </div>
             <div className="space-y-1">
@@ -132,7 +132,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               <Input 
                 value={data.navTitles?.builds || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, builds: e.target.value } })} 
-                placeholder="Örn: Builds" 
+                placeholder="Builds" 
               />
             </div>
             <div className="space-y-1">
@@ -140,7 +140,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               <Input 
                 value={data.navTitles?.skills || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, skills: e.target.value } })} 
-                placeholder="Örn: Skills" 
+                placeholder="Skills" 
               />
             </div>
             <div className="space-y-1">
@@ -148,7 +148,7 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               <Input 
                 value={data.navTitles?.about || ''} 
                 onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, about: e.target.value } })} 
-                placeholder="Örn: About" 
+                placeholder="About" 
               />
             </div>
           </div>
@@ -163,35 +163,35 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
           <p className="text-sm text-zinc-400 mb-4">{t('sectionHelp')}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="space-y-1">
-              <Label className="text-emerald-400">Featured Work (Öne Çıkan Projeler)</Label>
+              <Label className="text-emerald-400">Featured Work</Label>
               <Input 
                 value={data.sectionTitles?.featuredProjects || ''} 
                 onChange={(e) => setData({ ...data, sectionTitles: { ...data.sectionTitles, featuredProjects: e.target.value } })} 
-                placeholder="Örn: Featured Work" 
+                placeholder="Featured Work" 
               />
             </div>
             <div className="space-y-1">
-              <Label className="text-emerald-400">Projects (Ürünler)</Label>
+              <Label className="text-emerald-400">Projects</Label>
               <Input 
                 value={data.sectionTitles?.builds || ''} 
                 onChange={(e) => setData({ ...data, sectionTitles: { ...data.sectionTitles, builds: e.target.value } })} 
-                placeholder="Örn: Projects" 
+                placeholder="Projects" 
               />
             </div>
             <div className="space-y-1">
-              <Label className="text-emerald-400">Skills & Tools (Yetenekler)</Label>
+              <Label className="text-emerald-400">Skills & Tools</Label>
               <Input 
                 value={data.sectionTitles?.skills || ''} 
                 onChange={(e) => setData({ ...data, sectionTitles: { ...data.sectionTitles, skills: e.target.value } })} 
-                placeholder="Örn: Skills & Tools" 
+                placeholder="Skills & Tools" 
               />
             </div>
             <div className="space-y-1">
-              <Label className="text-emerald-400">Experience (Deneyim)</Label>
+              <Label className="text-emerald-400">Experience</Label>
               <Input 
                 value={data.sectionTitles?.experiences || ''} 
                 onChange={(e) => setData({ ...data, sectionTitles: { ...data.sectionTitles, experiences: e.target.value } })} 
-                placeholder="Örn: Experience" 
+                placeholder="Experience" 
               />
             </div>
           </div>
