@@ -11,6 +11,10 @@ Bu doküman, Minimalist Geliştirici Portfolyosu projesinin mevcut durumunu ve g
 - [x] **Yedekleme Sistemi:** Kolay yedekleme ve taşıma için JSON Dışa/İçe Aktar (Export/Import) özellikleri.
 
 ## Faz 2: Sıradaki Adımlar (Planlanan)
+- [ ] **Dinamik Bölüm Yönetimi (Modular Section Builder & Drag-and-Drop):**
+  - Ana sayfadaki bölümlerin (`Hero`, `Work`, `Builds`, `Skills`, `Experience` vb.) `portfolio.json` içinde sıralanabilir bir `sections` dizisi üzerinden dinamik render edilmesi.
+  - Admin paneline `@dnd-kit` veya `framer-motion (Reorder)` kullanılarak bölümlerin yerini yukarı/aşağı veya sürükle-bırak yöntemiyle değiştirebilecek bir arayüz eklenmesi.
+  - Repeater mantığıyla topluluk tarafından geliştirilecek yeni özel bölümlerin (örn. Testimonials, Contact Form, Blog) kolayca eklenip çıkarılabilmesi altyapısı.
 - [ ] **Dinamik Detay Sayfaları:** Projeler ve Ürünler için zengin metin (Markdown) destekli özel detay sayfaları (örn., `/work/proje-adi`).
 - [ ] **Çok Dilli Yönetim Paneli:** Almanca (de), İspanyolca (es), Fransızca (fr) ve İtalyanca (it) dillerinin i18n altyapısına eklenmesi.
 - [ ] **Önceden Ayarlanmış Önyüz Temaları:** Adminin önceden tanımlanmış UI temalarını (Dark, Light, Neon) seçebilmesi ve tüm ziyaretçiler için global olarak uygulanması.
