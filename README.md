@@ -8,7 +8,7 @@ A modern, high-performance, and SEO-friendly personal portfolio website built wi
 - **Zero Database Required:** No SQL/NoSQL setup needed. Just commit your JSON file and push to deploy.
 - **Modern Tech Stack:** Next.js (App Router), React 19, TypeScript.
 - **Beautiful UI:** Tailwind CSS, Framer Motion for smooth animations, and Lucide React icons.
-- **Secure Admin Panel:** The `/admin` route is only accessible in development mode (guarded via environment variables) and returns a 404 in production to protect your data.
+- **Secure Admin Panel:** The `/admin` route is completely disabled in production (returns a 404). During local development, it is protected by Basic Authentication using your environment variables to ensure maximum security.
 
 ## Getting Started
 
@@ -28,10 +28,14 @@ bun install
 
 ### 2. Environment Setup
 
-Check the `.env.local` file in the root directory or create one. Ensure the following variable is present to enable the admin panel during local development:
+Check the `.env.local` file in the root directory or create one based on `.env.example`. Ensure the following variables are present to enable and secure the admin panel during local development:
 
 ```env
 ENABLE_ADMIN_PANEL=true
+
+# Admin Panel Basic Authentication
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=your_secure_password
 ```
 
 ### 3. Development Server
@@ -48,7 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### 4. Admin Panel & Content Management
 
-Navigate to [http://localhost:3000/admin](http://localhost:3000/admin) to access the built-in CMS. 
+Navigate to [http://localhost:3000/admin](http://localhost:3000/admin) to access the built-in CMS. You will be prompted to enter the `ADMIN_USERNAME` and `ADMIN_PASSWORD` defined in your `.env.local` file.
 Here you can manage:
 - General Info & Social Links
 - Featured Projects (Work)
