@@ -8,7 +8,7 @@ Next.js (App Router), React 19 ve Tailwind CSS ile geliştirilmiş modern, yüks
 - **Veritabanı Gerektirmez:** Herhangi bir SQL/NoSQL kurulumuna ihtiyaç duymaz. Sadece JSON dosyanızı commit edip (kaydedip) yayınlamanız yeterlidir.
 - **Modern Teknoloji Yığını:** Next.js (App Router), React 19, TypeScript.
 - **Şık Arayüz:** Tailwind CSS, akıcı animasyonlar için Framer Motion ve Lucide React ikonları.
-- **Güvenli Yönetim Paneli:** `/admin` sayfasına sadece geliştirme ortamında (ortam değişkenleri ile korunur) erişilebilir ve verilerinizi korumak için canlı ortamda (production) 404 sayfası döndürür.
+- **Güvenli Yönetim Paneli:** `/admin` sayfası verilerinizi korumak için canlı ortamda (production) tamamen kapatılmıştır (404 döndürür). Yerel geliştirme ortamında (localhost) ise Basic Authentication (Temel Kimlik Doğrulama) ile şifrelenerek ekstra güvenlik sağlanmıştır.
 
 ## Başlarken
 
@@ -28,10 +28,14 @@ bun install
 
 ### 2. Ortam Değişkenleri Ayarları
 
-Kök dizinde `.env.local` dosyasını kontrol edin veya oluşturun. Yerel geliştirme sırasında yönetim panelini etkinleştirmek için aşağıdaki değişkenin bulunduğundan emin olun:
+Kök dizinde `.env.local` dosyasını kontrol edin veya `.env.example` dosyasını kopyalayarak oluşturun. Yerel geliştirme sırasında yönetim panelini etkinleştirmek ve güvenliğini sağlamak için aşağıdaki değişkenlerin bulunduğundan emin olun:
 
 ```env
 ENABLE_ADMIN_PANEL=true
+
+# Yönetim Paneli Şifresi (Basic Auth)
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=kendi_guvenli_sifreniz
 ```
 
 ### 3. Geliştirme Sunucusu
@@ -48,7 +52,7 @@ Canlı portfolyoyu görmek için tarayıcınızda [http://localhost:3000](http:/
 
 ### 4. Yönetim Paneli & İçerik Yönetimi
 
-Yerleşik CMS'e erişmek için [http://localhost:3000/admin](http://localhost:3000/admin) adresine gidin. 
+Yerleşik CMS'e erişmek için [http://localhost:3000/admin](http://localhost:3000/admin) adresine gidin. Giriş yapabilmek için `.env.local` dosyasında belirlediğiniz kullanıcı adı ve şifreyi girmeniz istenecektir.
 Buradan şunları yönetebilirsiniz:
 - Genel Bilgiler & Sosyal Medya Bağlantıları
 - Öne Çıkan Projeler (Work)
