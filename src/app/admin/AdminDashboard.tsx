@@ -8,6 +8,7 @@ import { Save, Loader2, Image as ImageIcon, X, Upload, LayoutGrid } from 'lucide
 import IconPickerModal from '@/components/admin/IconPickerModal';
 import HelpModals from '@/components/admin/HelpModals';
 import ImagePickerModal from '@/components/admin/ImagePickerModal';
+import ConfirmModal from '@/components/admin/ConfirmModal';
 import LanguageSwitcher from '@/components/admin/LanguageSwitcher';
 import { useTranslations } from 'next-intl';
 
@@ -16,6 +17,7 @@ import ProjectsTab from '@/components/admin/tabs/ProjectsTab';
 import BuildsTab from '@/components/admin/tabs/BuildsTab';
 import SkillsTab from '@/components/admin/tabs/SkillsTab';
 import ExperienceTab from '@/components/admin/tabs/ExperienceTab';
+import LayoutTab from '@/components/admin/tabs/LayoutTab';
 import SettingsTab from '@/components/admin/tabs/SettingsTab';
 
 import { Button } from '@/components/ui/Button';
@@ -41,6 +43,14 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
   const [isLucideHelpOpen, setIsLucideHelpOpen] = useState(false);
   const [isFaHelpOpen, setIsFaHelpOpen] = useState(false);
   const [isSimpleIconsHelpOpen, setIsSimpleIconsHelpOpen] = useState(false);
+
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [confirmModalData, setConfirmModalData] = useState({ title: '', description: '', onConfirm: () => {} });
+
+  const openConfirmModal = (title: string, description: string, onConfirm: () => void) => {
+    setConfirmModalData({ title, description, onConfirm });
+    setIsConfirmModalOpen(true);
+  };
 
   const openImageModal = (callback: (url: string) => void) => {
     setImageModalTarget(() => callback);
@@ -131,12 +141,13 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
       </div>
 
       <Tabs defaultValue="genel">
-        <TabsList className="grid grid-cols-6 bg-zinc-900/50 p-1 mb-6 rounded-lg w-full overflow-x-auto">
+        <TabsList className="grid grid-cols-7 bg-zinc-900/50 p-1 mb-6 rounded-lg w-full overflow-x-auto">
           <TabsTrigger value="genel">{t('tabs.general')}</TabsTrigger>
           <TabsTrigger value="work">{t('tabs.projects')}</TabsTrigger>
           <TabsTrigger value="builds">{t('tabs.builds')}</TabsTrigger>
           <TabsTrigger value="skills">{t('tabs.skills')}</TabsTrigger>
           <TabsTrigger value="experience">{t('tabs.experience')}</TabsTrigger>
+          <TabsTrigger value="layout">{t('tabs.layout')}</TabsTrigger>
           <TabsTrigger value="settings">{t('tabs.settings')}</TabsTrigger>
         </TabsList>
 
@@ -147,15 +158,16 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
             openImageModal={openImageModal} 
             openIconModal={openIconModal}
             openFaHelp={() => setIsFaHelpOpen(true)}
+            openConfirmModal={openConfirmModal}
           />
         </TabsContent>
 
         <TabsContent value="work">
-          <ProjectsTab data={data} setData={setData} openImageModal={openImageModal} />
+          <ProjectsTab data={data} setData={setData} openImageModal={openImageModal} openConfirmModal={openConfirmModal} />
         </TabsContent>
 
         <TabsContent value="builds">
-          <BuildsTab data={data} setData={setData} openImageModal={openImageModal} />
+          <BuildsTab data={data} setData={setData} openImageModal={openImageModal} openConfirmModal={openConfirmModal} />
         </TabsContent>
 
         <TabsContent value="skills">
@@ -165,11 +177,16 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
             openIconModal={openIconModal} 
             openLucideHelp={() => setIsLucideHelpOpen(true)}
             openSimpleIconsHelp={() => setIsSimpleIconsHelpOpen(true)}
+            openConfirmModal={openConfirmModal}
           />
         </TabsContent>
 
         <TabsContent value="experience">
-          <ExperienceTab data={data} setData={setData} />
+          <ExperienceTab data={data} setData={setData} openConfirmModal={openConfirmModal} />
+        </TabsContent>
+
+        <TabsContent value="layout">
+          <LayoutTab data={data} setData={setData} />
         </TabsContent>
 
         <TabsContent value="settings">
@@ -205,6 +222,14 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
         onFaClose={() => setIsFaHelpOpen(false)}
         isSimpleIconsOpen={isSimpleIconsHelpOpen}
         onSimpleIconsClose={() => setIsSimpleIconsHelpOpen(false)}
+      />
+
+      <ConfirmModal
+        isOpen={isConfirmModalOpen}
+        title={confirmModalData.title}
+        description={confirmModalData.description}
+        onConfirm={confirmModalData.onConfirm}
+        onClose={() => setIsConfirmModalOpen(false)}
       />
     </div>
   );

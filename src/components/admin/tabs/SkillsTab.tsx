@@ -3,8 +3,10 @@ import { Card, CardContent } from '@/components/ui/Card';
 import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
-import { LayoutGrid } from 'lucide-react';
+import { LayoutGrid, GripVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Reorder } from 'framer-motion';
+import { SkillCategory } from '@/types/portfolio';
 
 interface SkillsTabProps {
   data: PortfolioData;
@@ -12,11 +14,16 @@ interface SkillsTabProps {
   openIconModal: (type: 'common' | 'socials', callback: (iconName: string) => void) => void;
   openLucideHelp: () => void;
   openSimpleIconsHelp: () => void;
+  openConfirmModal: (title: string, desc: string, onConfirm: () => void) => void;
 }
 
-export default function SkillsTab({ data, setData, openIconModal, openLucideHelp, openSimpleIconsHelp }: SkillsTabProps) {
+export default function SkillsTab({ data, setData, openIconModal, openLucideHelp, openSimpleIconsHelp, openConfirmModal }: SkillsTabProps) {
   const t = useTranslations('SkillsTab');
   
+  const handleReorder = (newOrder: SkillCategory[]) => {
+    setData({ ...data, skills: newOrder });
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -26,10 +33,14 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
         </Button>
       </div>
 
-      <div className="grid gap-6">
+      <Reorder.Group axis="y" values={data.skills} onReorder={handleReorder} className="grid gap-6">
         {data.skills.map((category, idx) => (
-          <Card key={idx} className="relative group">
-            <CardContent className="pt-6 space-y-4">
+          <Reorder.Item key={category.categoryName || idx.toString()} value={category}>
+          <Card className="relative group">
+            <div className="absolute top-4 left-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors">
+              <GripVertical size={20} />
+            </div>
+            <CardContent className="pt-12 space-y-4">
               <div className="space-y-1">
                 <Label>{t('categoryName')}</Label>
                 <Input value={category.categoryName} onChange={(e) => { const n = [...data.skills]; n[idx].categoryName = e.target.value; setData({ ...data, skills: n }); }} className="font-medium" />
@@ -72,12 +83,13 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
                 </div>
               </div>
               <div className="flex justify-end mt-4">
-                <Button variant="destructive" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>{t('delete')}</Button>
+                <Button variant="destructive" onClick={() => openConfirmModal(t('deleteConfirmTitle'), t('deleteConfirmDesc'), () => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) }))}>{t('delete')}</Button>
               </div>
             </CardContent>
           </Card>
+          </Reorder.Item>
         ))}
-      </div>
+      </Reorder.Group>
     </div>
   );
 }

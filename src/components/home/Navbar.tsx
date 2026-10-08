@@ -2,16 +2,19 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { NavTitles } from '@/types/portfolio';
+import { NavTitles, PortfolioSection } from '@/types/portfolio';
 
-export default function Navbar({ navTitles }: { navTitles?: NavTitles }) {
-  const [activeSection, setActiveSection] = useState('work');
+export default function Navbar({ navTitles, sections }: { navTitles?: NavTitles, sections: PortfolioSection[] }) {
+  // Use sections to determine the active list of IDs.
+  // Exclude 'Hero' since it's the top and usually doesn't need a nav button, or if it does, it's 'home'.
+  const dynamicSections = sections.filter(s => s.visible && s.type !== 'Hero').map(s => s.id);
+  
+  const [activeSection, setActiveSection] = useState(dynamicSections[0] || 'work');
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['work', 'builds', 'skills', 'about'];
       let current = '';
-      for (const section of sections) {
+      for (const section of dynamicSections) {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
@@ -40,12 +43,17 @@ export default function Navbar({ navTitles }: { navTitles?: NavTitles }) {
     }
   };
 
-  const navItems = [
-    { id: 'work', label: navTitles?.work || 'Work' },
-    { id: 'builds', label: navTitles?.builds || 'Builds' },
-    { id: 'skills', label: navTitles?.skills || 'Skills' },
-    { id: 'about', label: navTitles?.about || 'About' }
-  ];
+  const navItems = sections
+    .filter(s => s.visible && s.type !== 'Hero')
+    .map((s) => {
+      let label: string = s.type;
+      if (s.type === 'Work') label = navTitles?.work || 'Work';
+      if (s.type === 'Builds') label = navTitles?.builds || 'Builds';
+      if (s.type === 'Skills') label = navTitles?.skills || 'Skills';
+      if (s.type === 'Experience') label = navTitles?.experience || 'Experience';
+      if (s.type === 'About') label = navTitles?.about || 'About';
+      return { id: s.id, label };
+    });
 
   return (
     <motion.div 

@@ -23,7 +23,9 @@
     "categoryTags": "Category Tags (comma separated)",
     "websiteUrl": "Website URL",
     "githubUrl": "Github URL",
-    "deleteProject": "Delete Project"
+    "deleteProject": "Delete Project",
+    "deleteConfirmTitle": "Delete Project",
+    "deleteConfirmDesc": "Are you sure you want to delete this project? This action cannot be undone."
   },
   "AdminDashboard": {
     "title": "Portfolio Admin Panel",
@@ -39,6 +41,7 @@
       "builds": "Builds",
       "skills": "Skills",
       "experience": "Experience",
+      "layout": "Layout & Sections",
       "settings": "Site Settings"
     }
   },
@@ -69,7 +72,9 @@
     "iconPlaceholder": "Icon (e.g. Github)",
     "howToUse": "How to use?",
     "labelPlaceholder": "e.g. GitHub, Twitter",
-    "delete": "Delete"
+    "delete": "Delete",
+    "deleteConfirmTitle": "Delete Social Link",
+    "deleteConfirmDesc": "Are you sure you want to delete this social link? This action cannot be undone."
   },
   "ExperienceTab": {
     "title": "Experience",
@@ -84,7 +89,9 @@
     "order": "Order",
     "delete": "Delete Experience",
     "newExperience": "Role",
-    "newCompany": "Company"
+    "newCompany": "Company",
+    "deleteConfirmTitle": "Delete Experience",
+    "deleteConfirmDesc": "Are you sure you want to delete this experience? This action cannot be undone."
   },
   "SkillsTab": {
     "title": "Skill Categories",
@@ -99,7 +106,9 @@
     "techLogos": "Technology Logos (SimpleIcons slug)",
     "logosPlaceholder": "e.g. typescript, react, nodedotjs",
     "delete": "Delete Category",
-    "newCategory": "New Category"
+    "newCategory": "New Category",
+    "deleteConfirmTitle": "Delete Category",
+    "deleteConfirmDesc": "Are you sure you want to delete this category? This action cannot be undone."
   },
   "BuildsTab": {
     "title": "Builds",
@@ -116,7 +125,9 @@
     "appStore": "App Store URL",
     "githubUrl": "Github URL",
     "delete": "Delete Build",
-    "newBuild": "New Build"
+    "newBuild": "New Build",
+    "deleteConfirmTitle": "Delete Build",
+    "deleteConfirmDesc": "Are you sure you want to delete this build? This action cannot be undone."
   },
   "SettingsTab": {
     "seoMeta": "SEO Meta Information",
@@ -136,6 +147,18 @@
     "jsonCopied": "JSON copied to clipboard!",
     "importSuccess": "JSON loaded! Don't forget to save.",
     "importError": "Invalid JSON file."
+  },
+  "LayoutTab": {
+    "title": "Dynamic Section Management",
+    "description": "Drag and drop to reorder sections. Toggle visibility to hide them from the homepage.",
+    "sectionNames": {
+      "Hero": "Hero Section",
+      "Work": "Featured Work",
+      "Builds": "Builds",
+      "Skills": "Skills",
+      "Experience": "Experience",
+      "About": "About Me"
+    }
   },
   "Modals": {
     "HelpModals": {
@@ -171,6 +194,10 @@
       "uploadText": "Upload New Image (Click or Drag)",
       "availableImages": "Available Images",
       "noImages": "No images found."
+    },
+    "ConfirmModal": {
+      "cancel": "Cancel",
+      "confirm": "Delete"
     }
   }
 }

@@ -3,6 +3,7 @@
 Bu doküman, Minimalist Geliştirici Portfolyosu projesinin mevcut durumunu ve gelecekteki vizyonunu özetlemektedir. Geliştirme sürecini yönlendirmeyi ve açık kaynak katkıda bulunanların projenin nereye gittiğini anlamasına yardımcı olmayı amaçlamaktadır.
 
 ## Faz 1: MVP (Mevcut Durum)
+
 - [x] **Yerel (Local-first) JSON Veri Kaynağı:** Tüm portfolyo içeriği `portfolio.json` dosyasında tutulur.
 - [x] **Güvenli Yönetim Paneli:** Koda dokunmadan içeriği yönetmek için sadece yerel geliştirmede çalışan `/admin` rotası.
 - [x] **Minimalist Arayüz:** Framer Motion mikro etkileşimleri ile desteklenmiş temiz "Design Engineer" estetiği.
@@ -11,15 +12,19 @@ Bu doküman, Minimalist Geliştirici Portfolyosu projesinin mevcut durumunu ve g
 - [x] **Yedekleme Sistemi:** Kolay yedekleme ve taşıma için JSON Dışa/İçe Aktar (Export/Import) özellikleri.
 
 ## Faz 2: Sıradaki Adımlar (Planlanan)
-- [ ] **Dinamik Bölüm Yönetimi (Modular Section Builder & Drag-and-Drop):**
+
+- [x] **Dinamik Bölüm Yönetimi (Modular Section Builder & Drag-and-Drop):**
   - Ana sayfadaki bölümlerin (`Hero`, `Work`, `Builds`, `Skills`, `Experience` vb.) `portfolio.json` içinde sıralanabilir bir `sections` dizisi üzerinden dinamik render edilmesi.
   - Admin paneline `@dnd-kit` veya `framer-motion (Reorder)` kullanılarak bölümlerin yerini yukarı/aşağı veya sürükle-bırak yöntemiyle değiştirebilecek bir arayüz eklenmesi.
   - Repeater mantığıyla topluluk tarafından geliştirilecek yeni özel bölümlerin (örn. Testimonials, Contact Form, Blog) kolayca eklenip çıkarılabilmesi altyapısı.
+- [x] **İçerik Düzeyinde Sürükle-Bırak:** Admin panelinde projelerin, deneyimlerin ve yeteneklerin kendi içlerinde (sekmelerinde) kolayca yeniden sıralanabilmesi.
 - [ ] **Dinamik Detay Sayfaları:** Projeler ve Ürünler için zengin metin (Markdown) destekli özel detay sayfaları (örn., `/work/proje-adi`).
 - [ ] **Çok Dilli Yönetim Paneli:** Almanca (de), İspanyolca (es), Fransızca (fr) ve İtalyanca (it) dillerinin i18n altyapısına eklenmesi.
-- [ ] **Önceden Ayarlanmış Önyüz Temaları:** Adminin önceden tanımlanmış UI temalarını (Dark, Light, Neon) seçebilmesi ve tüm ziyaretçiler için global olarak uygulanması.
 
 ## Faz 3: Gelecek Vizyonu (Fikirler)
-- [ ] **Sürükle-Bırak Sıralama:** Admin panelinde projeleri, deneyimleri ve yetenekleri kolayca yeniden sıralayabilme.
+
+- [ ] **Özel Bölüm (Section) Oluşturucu:** Admin panelinden dinamik olarak tamamen yeni bölümler (SSS, Özel Markdown vb.) ekleme, düzenleme ve yönetme yapısı. Yeni bölümler için özelleştirilebilir navbar ikon ve isim desteği içerir.
+- [ ] **Bölüm Gruplama (Konteyner Bileşeni):** Sayfanın dikeyde çok uzamasını önlemek için benzer bölümleri (Örn: Yetenekler, Deneyim, Eğitim) tek bir alan içinde sekmeler (Tabs) veya akordiyon şeklinde gruplama özelliği.
 - [ ] **Blog / Notlar Bölümü:** Teknik makaleler için Markdown tabanlı minimalist bir blog.
 - [ ] **Özel Alan Adı & Analitik Rehberi:** Gizlilik odaklı entegre bir analitik eklentisi ve açık kaynak kullanıcıları için kurulum talimatları.
+- [ ] **Önceden Ayarlanmış Önyüz Temaları:** Adminin önceden tanımlanmış UI temalarını (Dark, Light, Neon) seçebilmesi ve tüm ziyaretçiler için global olarak uygulanması.

@@ -78,6 +78,7 @@ export interface NavTitles {
     work?: string;
     builds?: string;
     skills?: string;
+    experience?: string;
     about?: string;
 }
 
@@ -86,6 +87,13 @@ export interface SectionTitles {
     builds?: string;
     skills?: string;
     experiences?: string;
+}
+
+export interface PortfolioSection {
+    id: string;
+    type: 'Hero' | 'Work' | 'Builds' | 'Skills' | 'Experience' | 'About';
+    visible: boolean;
+    order: number;
 }
 
 export interface PortfolioData {
@@ -99,4 +107,5 @@ export interface PortfolioData {
     footer?: FooterInfo;
     sectionTitles?: SectionTitles;
     navTitles?: NavTitles;
+    sections?: PortfolioSection[];
 }
