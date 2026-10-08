@@ -12,9 +12,10 @@ import { ExperienceItem } from '@/types/portfolio';
 interface ExperienceTabProps {
   data: PortfolioData;
   setData: (data: PortfolioData) => void;
+  openConfirmModal: (title: string, desc: string, onConfirm: () => void) => void;
 }
 
-export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
+export default function ExperienceTab({ data, setData, openConfirmModal }: ExperienceTabProps) {
   const t = useTranslations('ExperienceTab');
 
   const handleReorder = (newOrder: ExperienceItem[]) => {
@@ -62,7 +63,7 @@ export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
                 <Input value={exp.companyUrl || ''} onChange={(e) => { const n = [...data.experiences]; n[idx].companyUrl = e.target.value; setData({ ...data, experiences: n }); }} />
               </div>
               <div className="flex justify-end mt-4">
-                <Button variant="destructive" onClick={() => setData({ ...data, experiences: data.experiences.filter((_, i) => i !== idx) })}>{t('delete')}</Button>
+                <Button variant="destructive" onClick={() => openConfirmModal(t('deleteConfirmTitle'), t('deleteConfirmDesc'), () => setData({ ...data, experiences: data.experiences.filter((_, i) => i !== idx) }))}>{t('delete')}</Button>
               </div>
             </CardContent>
           </Card>

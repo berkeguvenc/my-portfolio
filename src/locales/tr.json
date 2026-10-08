@@ -23,7 +23,9 @@
     "categoryTags": "Kategori Etiketleri (Virgülle ayırın)",
     "websiteUrl": "Website Linki",
     "githubUrl": "Github Linki",
-    "deleteProject": "Projeyi Sil"
+    "deleteProject": "Projeyi Sil",
+    "deleteConfirmTitle": "Projeyi Sil",
+    "deleteConfirmDesc": "Bu projeyi silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
   },
   "AdminDashboard": {
     "title": "Portfolyo Yönetim Paneli",
@@ -70,7 +72,9 @@
     "iconPlaceholder": "İkon (örn: Github)",
     "howToUse": "Nasıl Kullanılır?",
     "labelPlaceholder": "örn: GitHub, Twitter",
-    "delete": "Sil"
+    "delete": "Sil",
+    "deleteConfirmTitle": "Sosyal Linki Sil",
+    "deleteConfirmDesc": "Bu sosyal medya bağlantısını silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
   },
   "ExperienceTab": {
     "title": "Deneyim",
@@ -85,7 +89,9 @@
     "order": "Sıra",
     "delete": "Deneyimi Sil",
     "newExperience": "Rol",
-    "newCompany": "Şirket"
+    "newCompany": "Şirket",
+    "deleteConfirmTitle": "Deneyimi Sil",
+    "deleteConfirmDesc": "Bu deneyimi silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
   },
   "SkillsTab": {
     "title": "Yetenek Kategorileri",
@@ -100,7 +106,9 @@
     "techLogos": "Teknoloji Logoları (SimpleIcons slug)",
     "logosPlaceholder": "Örn: typescript, react, nodedotjs",
     "delete": "Kategoriyi Sil",
-    "newCategory": "Yeni Kategori"
+    "newCategory": "Yeni Kategori",
+    "deleteConfirmTitle": "Kategoriyi Sil",
+    "deleteConfirmDesc": "Bu yetenek kategorisini silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
   },
   "BuildsTab": {
     "title": "Ürünler",
@@ -117,7 +125,9 @@
     "appStore": "App Store URL",
     "githubUrl": "Github Linki",
     "delete": "Ürünü Sil",
-    "newBuild": "Yeni Build"
+    "newBuild": "Yeni Build",
+    "deleteConfirmTitle": "Ürünü Sil",
+    "deleteConfirmDesc": "Bu ürünü silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
   },
   "SettingsTab": {
     "seoMeta": "SEO Meta Bilgileri",
@@ -184,6 +194,10 @@
       "uploadText": "Yeni Görsel Yükle (Tıkla veya Sürükle)",
       "availableImages": "Mevcut Görseller",
       "noImages": "Hiç görsel bulunamadı."
+    },
+    "ConfirmModal": {
+      "cancel": "İptal",
+      "confirm": "Sil"
     }
   }
 }

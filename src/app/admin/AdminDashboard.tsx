@@ -8,6 +8,7 @@ import { Save, Loader2, Image as ImageIcon, X, Upload, LayoutGrid } from 'lucide
 import IconPickerModal from '@/components/admin/IconPickerModal';
 import HelpModals from '@/components/admin/HelpModals';
 import ImagePickerModal from '@/components/admin/ImagePickerModal';
+import ConfirmModal from '@/components/admin/ConfirmModal';
 import LanguageSwitcher from '@/components/admin/LanguageSwitcher';
 import { useTranslations } from 'next-intl';
 
@@ -42,6 +43,14 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
   const [isLucideHelpOpen, setIsLucideHelpOpen] = useState(false);
   const [isFaHelpOpen, setIsFaHelpOpen] = useState(false);
   const [isSimpleIconsHelpOpen, setIsSimpleIconsHelpOpen] = useState(false);
+
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [confirmModalData, setConfirmModalData] = useState({ title: '', description: '', onConfirm: () => {} });
+
+  const openConfirmModal = (title: string, description: string, onConfirm: () => void) => {
+    setConfirmModalData({ title, description, onConfirm });
+    setIsConfirmModalOpen(true);
+  };
 
   const openImageModal = (callback: (url: string) => void) => {
     setImageModalTarget(() => callback);
@@ -149,15 +158,16 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
             openImageModal={openImageModal} 
             openIconModal={openIconModal}
             openFaHelp={() => setIsFaHelpOpen(true)}
+            openConfirmModal={openConfirmModal}
           />
         </TabsContent>
 
         <TabsContent value="work">
-          <ProjectsTab data={data} setData={setData} openImageModal={openImageModal} />
+          <ProjectsTab data={data} setData={setData} openImageModal={openImageModal} openConfirmModal={openConfirmModal} />
         </TabsContent>
 
         <TabsContent value="builds">
-          <BuildsTab data={data} setData={setData} openImageModal={openImageModal} />
+          <BuildsTab data={data} setData={setData} openImageModal={openImageModal} openConfirmModal={openConfirmModal} />
         </TabsContent>
 
         <TabsContent value="skills">
@@ -167,11 +177,12 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
             openIconModal={openIconModal} 
             openLucideHelp={() => setIsLucideHelpOpen(true)}
             openSimpleIconsHelp={() => setIsSimpleIconsHelpOpen(true)}
+            openConfirmModal={openConfirmModal}
           />
         </TabsContent>
 
         <TabsContent value="experience">
-          <ExperienceTab data={data} setData={setData} />
+          <ExperienceTab data={data} setData={setData} openConfirmModal={openConfirmModal} />
         </TabsContent>
 
         <TabsContent value="layout">
@@ -211,6 +222,14 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
         onFaClose={() => setIsFaHelpOpen(false)}
         isSimpleIconsOpen={isSimpleIconsHelpOpen}
         onSimpleIconsClose={() => setIsSimpleIconsHelpOpen(false)}
+      />
+
+      <ConfirmModal
+        isOpen={isConfirmModalOpen}
+        title={confirmModalData.title}
+        description={confirmModalData.description}
+        onConfirm={confirmModalData.onConfirm}
+        onClose={() => setIsConfirmModalOpen(false)}
       />
     </div>
   );

@@ -14,9 +14,10 @@ interface GeneralTabProps {
   openImageModal: (callback: (url: string) => void) => void;
   openIconModal: (type: 'common' | 'socials', callback: (iconName: string) => void) => void;
   openFaHelp: () => void;
+  openConfirmModal: (title: string, desc: string, onConfirm: () => void) => void;
 }
 
-export default function GeneralTab({ data, setData, openImageModal, openIconModal, openFaHelp }: GeneralTabProps) {
+export default function GeneralTab({ data, setData, openImageModal, openIconModal, openFaHelp, openConfirmModal }: GeneralTabProps) {
   const t = useTranslations('GeneralTab');
   const [isUploadingCV, setIsUploadingCV] = useState(false);
 
@@ -206,7 +207,7 @@ export default function GeneralTab({ data, setData, openImageModal, openIconModa
               <Input className="w-full md:w-[25%]" value={social.label} onChange={(e) => { const s = [...data.socials]; s[idx].label = e.target.value; setData({ ...data, socials: s }) }} placeholder={t('labelPlaceholder')} />
               <div className="w-full flex-1 flex gap-3">
                 <Input value={social.url} onChange={(e) => { const s = [...data.socials]; s[idx].url = e.target.value; setData({ ...data, socials: s }) }} placeholder="URL" />
-                <Button variant="destructive" className="shrink-0" onClick={() => { const s = data.socials.filter((_, i) => i !== idx); setData({ ...data, socials: s }) }}>{t('delete')}</Button>
+                <Button variant="destructive" className="shrink-0" onClick={() => openConfirmModal(t('deleteConfirmTitle'), t('deleteConfirmDesc'), () => { const s = data.socials.filter((_, i) => i !== idx); setData({ ...data, socials: s }) })}>{t('delete')}</Button>
               </div>
             </div>
           ))}

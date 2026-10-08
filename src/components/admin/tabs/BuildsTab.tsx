@@ -13,9 +13,10 @@ interface BuildsTabProps {
   data: PortfolioData;
   setData: (data: PortfolioData) => void;
   openImageModal: (callback: (url: string) => void) => void;
+  openConfirmModal: (title: string, desc: string, onConfirm: () => void) => void;
 }
 
-export default function BuildsTab({ data, setData, openImageModal }: BuildsTabProps) {
+export default function BuildsTab({ data, setData, openImageModal, openConfirmModal }: BuildsTabProps) {
   const t = useTranslations('BuildsTab');
   
   const handleReorder = (newOrder: BuildProject[]) => {
@@ -84,7 +85,7 @@ export default function BuildsTab({ data, setData, openImageModal }: BuildsTabPr
                 </div>
               </div>
               <div className="flex justify-end mt-4">
-                <Button variant="destructive" onClick={() => setData({ ...data, builds: data.builds.filter((_, i) => i !== idx) })}>{t('delete')}</Button>
+                <Button variant="destructive" onClick={() => openConfirmModal(t('deleteConfirmTitle'), t('deleteConfirmDesc'), () => setData({ ...data, builds: data.builds.filter((_, i) => i !== idx) }))}>{t('delete')}</Button>
               </div>
             </CardContent>
           </Card>

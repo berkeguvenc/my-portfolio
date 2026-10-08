@@ -14,9 +14,10 @@ interface SkillsTabProps {
   openIconModal: (type: 'common' | 'socials', callback: (iconName: string) => void) => void;
   openLucideHelp: () => void;
   openSimpleIconsHelp: () => void;
+  openConfirmModal: (title: string, desc: string, onConfirm: () => void) => void;
 }
 
-export default function SkillsTab({ data, setData, openIconModal, openLucideHelp, openSimpleIconsHelp }: SkillsTabProps) {
+export default function SkillsTab({ data, setData, openIconModal, openLucideHelp, openSimpleIconsHelp, openConfirmModal }: SkillsTabProps) {
   const t = useTranslations('SkillsTab');
   
   const handleReorder = (newOrder: SkillCategory[]) => {
@@ -82,7 +83,7 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
                 </div>
               </div>
               <div className="flex justify-end mt-4">
-                <Button variant="destructive" onClick={() => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) })}>{t('delete')}</Button>
+                <Button variant="destructive" onClick={() => openConfirmModal(t('deleteConfirmTitle'), t('deleteConfirmDesc'), () => setData({ ...data, skills: data.skills.filter((_, i) => i !== idx) }))}>{t('delete')}</Button>
               </div>
             </CardContent>
           </Card>
