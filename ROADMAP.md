@@ -17,13 +17,13 @@ This document outlines the current state and future vision for the Minimalist De
   - Render sections (`Hero`, `Work`, `Builds`, `Skills`, `Experience`, etc.) dynamically via a sortable `sections` array in `portfolio.json`.
   - Add drag-and-drop support in the admin panel (via `@dnd-kit` or `framer-motion (Reorder)`) to reorder sections.
   - Implement a repeater architecture allowing the community to easily add/remove custom sections (e.g., Testimonials, Contact Form, Blog).
-- [ ] **Item-Level Drag & Drop:** Ability to easily reorder individual items (projects, experiences, skills) within their respective tabs in the admin panel.
+- [x] **Item-Level Drag & Drop:** Ability to easily reorder individual items (projects, experiences, skills) within their respective tabs in the admin panel.
 - [ ] **Dynamic Detail Pages:** Rich text (Markdown) support for individual Work and Builds pages (e.g., `/work/project-slug`).
 - [ ] **Multi-language Admin Panel:** Expanded i18n support adding German (de), Spanish (es), French (fr), and Italian (it).
-- [ ] **Pre-set UI Themes:** Ability for the admin to select predefined UI themes (Dark, Light, Neon) that are globally applied for all visitors.
 
 ## Phase 3: Future Vision (Ideas)
 
 - [ ] **Custom Section Builder:** An interface in the admin panel to create, edit, and manage completely new custom sections dynamically.
 - [ ] **Blog / Notes Section:** A minimalist markdown-based blog for technical articles.
 - [ ] **Custom Domain & Analytics Guide:** Integrated, privacy-friendly analytics plugin and instructions for open-source users.
+- [ ] **Pre-set UI Themes:** Ability for the admin to select predefined UI themes (Dark, Light, Neon) that are globally applied for all visitors.

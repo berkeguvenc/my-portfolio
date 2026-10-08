@@ -4,8 +4,10 @@ import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
-import { Image as ImageIcon } from 'lucide-react';
+import { Image as ImageIcon, GripVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Reorder } from 'framer-motion';
+import { FeaturedProject } from '@/types/portfolio';
 
 interface ProjectsTabProps {
   data: PortfolioData;
@@ -16,6 +18,11 @@ interface ProjectsTabProps {
 export default function ProjectsTab({ data, setData, openImageModal }: ProjectsTabProps) {
   const t = useTranslations('ProjectsTab');
   
+  const handleReorder = (newOrder: FeaturedProject[]) => {
+    const updated = newOrder.map((item, index) => ({ ...item, order: index + 1 }));
+    setData({ ...data, featuredProjects: updated });
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -25,20 +32,18 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
         </Button>
       </div>
 
-      <div className="grid gap-6">
+      <Reorder.Group axis="y" values={data.featuredProjects} onReorder={handleReorder} className="grid gap-6">
         {data.featuredProjects.map((project, idx) => (
-          <Card key={project.id} className="relative group">
-            <CardContent className="pt-6 space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+          <Reorder.Item key={project.id} value={project}>
+            <Card className="relative group">
+              <div className="absolute top-4 left-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors">
+                <GripVertical size={20} />
+              </div>
+              <CardContent className="pt-12 space-y-4">
                 <div className="space-y-1">
                   <Label>{t('projectTitle')}</Label>
                   <Input value={project.title} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].title = e.target.value; setData({ ...data, featuredProjects: n }) }} />
                 </div>
-                <div className="space-y-1">
-                  <Label>{t('order')}</Label>
-                  <Input type="number" value={project.order} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].order = Number(e.target.value); setData({ ...data, featuredProjects: n }) }} />
-                </div>
-              </div>
               <div className="space-y-1">
                 <Label>{t('description')}</Label>
                 <Textarea value={project.description} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].description = e.target.value; setData({ ...data, featuredProjects: n }) }} />
@@ -69,8 +74,9 @@ export default function ProjectsTab({ data, setData, openImageModal }: ProjectsT
               </div>
             </CardContent>
           </Card>
+          </Reorder.Item>
         ))}
-      </div>
+      </Reorder.Group>
     </div>
   );
 }

@@ -4,7 +4,10 @@ import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
+import { GripVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Reorder } from 'framer-motion';
+import { ExperienceItem } from '@/types/portfolio';
 
 interface ExperienceTabProps {
   data: PortfolioData;
@@ -13,6 +16,11 @@ interface ExperienceTabProps {
 
 export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
   const t = useTranslations('ExperienceTab');
+
+  const handleReorder = (newOrder: ExperienceItem[]) => {
+    const updated = newOrder.map((item, index) => ({ ...item, order: index + 1 }));
+    setData({ ...data, experiences: updated });
+  };
 
   return (
     <div className="space-y-6">
@@ -23,10 +31,14 @@ export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
         </Button>
       </div>
 
-      <div className="grid gap-6">
+      <Reorder.Group axis="y" values={data.experiences} onReorder={handleReorder} className="grid gap-6">
         {data.experiences.map((exp, idx) => (
-          <Card key={exp.id} className="relative group">
-            <CardContent className="pt-6 space-y-4">
+          <Reorder.Item key={exp.id} value={exp}>
+          <Card className="relative group">
+            <div className="absolute top-4 left-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors">
+              <GripVertical size={20} />
+            </div>
+            <CardContent className="pt-12 space-y-4">
               <div className="space-y-1">
                 <Label>{t('role')}</Label>
                 <Input value={exp.role} onChange={(e) => { const n = [...data.experiences]; n[idx].role = e.target.value; setData({ ...data, experiences: n }); }} />
@@ -45,23 +57,18 @@ export default function ExperienceTab({ data, setData }: ExperienceTabProps) {
                 <Label>{t('description')}</Label>
                 <Textarea value={exp.description || ''} onChange={(e) => { const n = [...data.experiences]; n[idx].description = e.target.value; setData({ ...data, experiences: n }); }} placeholder={t('descriptionPlaceholder')} rows={3} />
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <Label>{t('companyUrl')}</Label>
-                  <Input value={exp.companyUrl || ''} onChange={(e) => { const n = [...data.experiences]; n[idx].companyUrl = e.target.value; setData({ ...data, experiences: n }); }} />
-                </div>
-                <div className="space-y-1">
-                  <Label>{t('order')}</Label>
-                  <Input type="number" value={exp.order} onChange={(e) => { const n = [...data.experiences]; n[idx].order = Number(e.target.value); setData({ ...data, experiences: n }); }} />
-                </div>
+              <div className="space-y-1">
+                <Label>{t('companyUrl')}</Label>
+                <Input value={exp.companyUrl || ''} onChange={(e) => { const n = [...data.experiences]; n[idx].companyUrl = e.target.value; setData({ ...data, experiences: n }); }} />
               </div>
               <div className="flex justify-end mt-4">
                 <Button variant="destructive" onClick={() => setData({ ...data, experiences: data.experiences.filter((_, i) => i !== idx) })}>{t('delete')}</Button>
               </div>
             </CardContent>
           </Card>
+          </Reorder.Item>
         ))}
-      </div>
+      </Reorder.Group>
     </div>
   );
 }
