@@ -88,6 +88,13 @@ export interface SectionTitles {
     experiences?: string;
 }
 
+export interface PortfolioSection {
+    id: string;
+    type: 'Hero' | 'Work' | 'Builds' | 'Skills' | 'Experience' | 'About';
+    visible: boolean;
+    order: number;
+}
+
 export interface PortfolioData {
     meta: SiteMeta;
     personal: PersonalInfo;
@@ -99,4 +106,5 @@ export interface PortfolioData {
     footer?: FooterInfo;
     sectionTitles?: SectionTitles;
     navTitles?: NavTitles;
+    sections?: PortfolioSection[];
 }

@@ -16,6 +16,7 @@ import ProjectsTab from '@/components/admin/tabs/ProjectsTab';
 import BuildsTab from '@/components/admin/tabs/BuildsTab';
 import SkillsTab from '@/components/admin/tabs/SkillsTab';
 import ExperienceTab from '@/components/admin/tabs/ExperienceTab';
+import LayoutTab from '@/components/admin/tabs/LayoutTab';
 import SettingsTab from '@/components/admin/tabs/SettingsTab';
 
 import { Button } from '@/components/ui/Button';
@@ -131,12 +132,13 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
       </div>
 
       <Tabs defaultValue="genel">
-        <TabsList className="grid grid-cols-6 bg-zinc-900/50 p-1 mb-6 rounded-lg w-full overflow-x-auto">
+        <TabsList className="grid grid-cols-7 bg-zinc-900/50 p-1 mb-6 rounded-lg w-full overflow-x-auto">
           <TabsTrigger value="genel">{t('tabs.general')}</TabsTrigger>
           <TabsTrigger value="work">{t('tabs.projects')}</TabsTrigger>
           <TabsTrigger value="builds">{t('tabs.builds')}</TabsTrigger>
           <TabsTrigger value="skills">{t('tabs.skills')}</TabsTrigger>
           <TabsTrigger value="experience">{t('tabs.experience')}</TabsTrigger>
+          <TabsTrigger value="layout">{t('tabs.layout')}</TabsTrigger>
           <TabsTrigger value="settings">{t('tabs.settings')}</TabsTrigger>
         </TabsList>
 
@@ -170,6 +172,10 @@ export default function AdminDashboard({ initialData }: { initialData: Portfolio
 
         <TabsContent value="experience">
           <ExperienceTab data={data} setData={setData} />
+        </TabsContent>
+
+        <TabsContent value="layout">
+          <LayoutTab data={data} setData={setData} />
         </TabsContent>
 
         <TabsContent value="settings">

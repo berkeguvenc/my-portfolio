@@ -39,6 +39,7 @@
       "builds": "Builds",
       "skills": "Skills",
       "experience": "Experience",
+      "layout": "Layout & Sections",
       "settings": "Site Settings"
     }
   },
@@ -136,6 +137,18 @@
     "jsonCopied": "JSON copied to clipboard!",
     "importSuccess": "JSON loaded! Don't forget to save.",
     "importError": "Invalid JSON file."
+  },
+  "LayoutTab": {
+    "title": "Dynamic Section Management",
+    "description": "Drag and drop to reorder sections. Toggle visibility to hide them from the homepage.",
+    "sectionNames": {
+      "Hero": "Hero Section",
+      "Work": "Featured Work",
+      "Builds": "Builds",
+      "Skills": "Skills",
+      "Experience": "Experience",
+      "About": "About Me"
+    }
   },
   "Modals": {
     "HelpModals": {

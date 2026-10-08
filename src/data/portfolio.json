@@ -187,5 +187,43 @@
         "url": "/resume.pdf"
       }
     ]
-  }
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "type": "Hero",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "id": "work",
+      "type": "Work",
+      "visible": true,
+      "order": 2
+    },
+    {
+      "id": "builds",
+      "type": "Builds",
+      "visible": true,
+      "order": 3
+    },
+    {
+      "id": "skills",
+      "type": "Skills",
+      "visible": true,
+      "order": 4
+    },
+    {
+      "id": "experience",
+      "type": "Experience",
+      "visible": true,
+      "order": 5
+    },
+    {
+      "id": "about",
+      "type": "About",
+      "visible": true,
+      "order": 6
+    }
+  ]
 }

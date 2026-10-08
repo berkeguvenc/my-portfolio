@@ -39,6 +39,7 @@
       "builds": "Ürünler",
       "skills": "Yetenekler",
       "experience": "Deneyim",
+      "layout": "Düzen & Bölümler",
       "settings": "Site Ayarları"
     }
   },
@@ -136,6 +137,18 @@
     "jsonCopied": "JSON panoya kopyalandı!",
     "importSuccess": "JSON yüklendi! Kaydetmeyi unutmayın.",
     "importError": "Geçersiz JSON dosyası."
+  },
+  "LayoutTab": {
+    "title": "Dinamik Bölüm Yönetimi",
+    "description": "Bölümleri sürükleyip bırakarak sıralayabilirsiniz. Ana sayfada gizlemek için görünürlüğünü kapatın.",
+    "sectionNames": {
+      "Hero": "Karşılama Ekranı (Hero)",
+      "Work": "Öne Çıkan Projeler",
+      "Builds": "Ürünler",
+      "Skills": "Yetenekler",
+      "Experience": "Deneyim",
+      "About": "Hakkımda"
+    }
   },
   "Modals": {
     "HelpModals": {
