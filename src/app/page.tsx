@@ -26,7 +26,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-gray-200 selection:text-gray-900">
-      <Navbar navTitles={data.navTitles} />
+      <Navbar navTitles={data.navTitles} sections={sortedSections} />
 
       <main className="max-w-[1200px] mx-auto px-4 md:px-6 py-4 space-y-20 md:space-y-36">
         {sortedSections.filter(s => s.visible).map((section) => {

@@ -23,13 +23,17 @@ export default function LayoutTab({ data, setData }: LayoutTabProps) {
 
   const sections = data.sections || defaultSections;
   const sortedSections = [...sections].sort((a, b) => a.order - b.order);
+  
+  const heroSection = sortedSections.find(s => s.type === 'Hero') || sortedSections[0];
+  const draggableSections = sortedSections.filter(s => s.type !== 'Hero');
 
   const handleReorder = (newOrder: PortfolioSection[]) => {
-    const updatedSections = newOrder.map((section, index) => ({
+    const updatedHero = { ...heroSection, order: 1 };
+    const updatedOthers = newOrder.map((section, index) => ({
       ...section,
-      order: index + 1,
+      order: index + 2,
     }));
-    setData({ ...data, sections: updatedSections });
+    setData({ ...data, sections: [updatedHero, ...updatedOthers] });
   };
 
   const toggleVisibility = (id: string) => {
@@ -49,15 +53,38 @@ export default function LayoutTab({ data, setData }: LayoutTabProps) {
         <p className="text-sm text-zinc-400">{t('description')}</p>
       </CardHeader>
       <CardContent>
-        <Reorder.Group 
-          axis="y" 
-          values={sortedSections} 
-          onReorder={handleReorder}
-          className="space-y-3"
-        >
-          {sortedSections.map((section) => (
-            <Reorder.Item 
-              key={section.id} 
+        <div className="space-y-3">
+          {heroSection && (
+            <div className="flex items-center justify-between p-4 bg-zinc-900 border border-zinc-700/50 rounded-lg">
+              <div className="flex items-center gap-4 opacity-70">
+                <GripVertical className="text-zinc-600" size={20} />
+                <span className="font-medium text-zinc-400">
+                  {t(`sectionNames.${heroSection.type}`)} (Locked)
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => toggleVisibility(heroSection.id)}
+                className={`p-2 rounded-md transition-colors ${
+                  heroSection.visible 
+                    ? 'text-emerald-400 hover:bg-emerald-400/10' 
+                    : 'text-zinc-500 hover:bg-zinc-700'
+                }`}
+                title={heroSection.visible ? 'Visible' : 'Hidden'}
+              >
+                {heroSection.visible ? <Eye size={18} /> : <EyeOff size={18} />}
+              </button>
+            </div>
+          )}
+          <Reorder.Group 
+            axis="y" 
+            values={draggableSections} 
+            onReorder={handleReorder}
+            className="space-y-3"
+          >
+            {draggableSections.map((section) => (
+              <Reorder.Item 
+                key={section.id} 
               value={section}
               className="flex items-center justify-between p-4 bg-zinc-800/50 border border-zinc-700/50 rounded-lg cursor-grab active:cursor-grabbing hover:border-emerald-500/30 transition-colors"
             >
@@ -84,7 +111,8 @@ export default function LayoutTab({ data, setData }: LayoutTabProps) {
               </button>
             </Reorder.Item>
           ))}
-        </Reorder.Group>
+          </Reorder.Group>
+        </div>
       </CardContent>
     </Card>
   );

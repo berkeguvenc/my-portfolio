@@ -23,7 +23,8 @@ This document outlines the current state and future vision for the Minimalist De
 
 ## Phase 3: Future Vision (Ideas)
 
-- [ ] **Custom Section Builder:** An interface in the admin panel to create, edit, and manage completely new custom sections dynamically.
+- [ ] **Custom Section Builder:** An interface in the admin panel to create, edit, and manage completely new custom sections dynamically (e.g., FAQ, Custom Markdown). Includes customizable navbar icons and labels for new sections.
+- [ ] **Section Grouping (Container Component):** Ability to group similar sections (e.g., Skills, Experience, Education) into a single tabbed or accordion container to prevent excessive vertical scrolling.
 - [ ] **Blog / Notes Section:** A minimalist markdown-based blog for technical articles.
 - [ ] **Custom Domain & Analytics Guide:** Integrated, privacy-friendly analytics plugin and instructions for open-source users.
 - [ ] **Pre-set UI Themes:** Ability for the admin to select predefined UI themes (Dark, Light, Neon) that are globally applied for all visitors.

@@ -144,6 +144,14 @@ export default function SettingsTab({ data, setData, openImageModal }: SettingsT
               />
             </div>
             <div className="space-y-1">
+              <Label>Experience</Label>
+              <Input 
+                value={data.navTitles?.experience || ''} 
+                onChange={(e) => setData({ ...data, navTitles: { ...data.navTitles, experience: e.target.value } })} 
+                placeholder="Experience" 
+              />
+            </div>
+            <div className="space-y-1">
               <Label>About</Label>
               <Input 
                 value={data.navTitles?.about || ''} 

@@ -23,7 +23,8 @@ Bu doküman, Minimalist Geliştirici Portfolyosu projesinin mevcut durumunu ve g
 
 ## Faz 3: Gelecek Vizyonu (Fikirler)
 
-- [ ] **Özel Bölüm (Section) Oluşturucu:** Admin panelinden dinamik olarak tamamen yeni bölümler ekleme, düzenleme ve yönetme yapısı.
+- [ ] **Özel Bölüm (Section) Oluşturucu:** Admin panelinden dinamik olarak tamamen yeni bölümler (SSS, Özel Markdown vb.) ekleme, düzenleme ve yönetme yapısı. Yeni bölümler için özelleştirilebilir navbar ikon ve isim desteği içerir.
+- [ ] **Bölüm Gruplama (Konteyner Bileşeni):** Sayfanın dikeyde çok uzamasını önlemek için benzer bölümleri (Örn: Yetenekler, Deneyim, Eğitim) tek bir alan içinde sekmeler (Tabs) veya akordiyon şeklinde gruplama özelliği.
 - [ ] **Blog / Notlar Bölümü:** Teknik makaleler için Markdown tabanlı minimalist bir blog.
 - [ ] **Özel Alan Adı & Analitik Rehberi:** Gizlilik odaklı entegre bir analitik eklentisi ve açık kaynak kullanıcıları için kurulum talimatları.
 - [ ] **Önceden Ayarlanmış Önyüz Temaları:** Adminin önceden tanımlanmış UI temalarını (Dark, Light, Neon) seçebilmesi ve tüm ziyaretçiler için global olarak uygulanması.

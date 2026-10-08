@@ -78,6 +78,7 @@ export interface NavTitles {
     work?: string;
     builds?: string;
     skills?: string;
+    experience?: string;
     about?: string;
 }
 
