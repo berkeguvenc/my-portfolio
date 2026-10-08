@@ -64,7 +64,7 @@
       "iconUrl": "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-large_2x.jpg",
       "links": {
         "website": "https://example.com",
-        "github": "https://example.com",
+        "githubUrl": "https://example.com",
         "appStore": "https://example.com"
       },
       "order": 1
@@ -195,5 +195,18 @@
     { "id": "skills", "type": "Skills", "visible": true, "order": 4 },
     { "id": "experience", "type": "Experience", "visible": true, "order": 5 },
     { "id": "about", "type": "About", "visible": true, "order": 6 }
-  ]
+  ],
+  "navTitles": {
+    "work": "Work",
+    "builds": "Builds",
+    "skills": "Skills",
+    "experience": "Experience",
+    "about": "About"
+  },
+  "sectionTitles": {
+    "featuredProjects": "Featured Work",
+    "builds": "Builds",
+    "skills": "Skills & Tools",
+    "experiences": "Experience"
+  }
 }

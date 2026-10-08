@@ -64,7 +64,7 @@
       "iconUrl": "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-large_2x.jpg",
       "links": {
         "website": "https://example.com",
-        "github": "https://example.com",
+        "githubUrl": "https://example.com",
         "appStore": "https://example.com"
       },
       "order": 1
