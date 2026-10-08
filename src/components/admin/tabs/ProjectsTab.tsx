@@ -8,6 +8,7 @@ import { Image as ImageIcon, GripVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Reorder } from 'framer-motion';
 import { FeaturedProject } from '@/types/portfolio';
+import DraggableItem from '@/components/admin/DraggableItem';
 
 interface ProjectsTabProps {
   data: PortfolioData;
@@ -35,12 +36,19 @@ export default function ProjectsTab({ data, setData, openImageModal, openConfirm
 
       <Reorder.Group axis="y" values={data.featuredProjects} onReorder={handleReorder} className="grid gap-6">
         {data.featuredProjects.map((project, idx) => (
-          <Reorder.Item key={project.id} value={project}>
-            <Card className="relative group">
-              <div className="absolute top-4 left-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors">
-                <GripVertical size={20} />
-              </div>
-              <CardContent className="pt-12 space-y-4">
+          <DraggableItem key={project.id} value={project}>
+            {(controls) => (
+              <Card className="relative group">
+                <div 
+                  className="absolute top-4 right-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors touch-none select-none"
+                  onPointerDown={(e) => {
+                    controls.start(e);
+                    e.preventDefault();
+                  }}
+                >
+                  <GripVertical size={20} />
+                </div>
+                <CardContent className="pt-12 space-y-4">
                 <div className="space-y-1">
                   <Label>{t('projectTitle')}</Label>
                   <Input value={project.title} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].title = e.target.value; setData({ ...data, featuredProjects: n }) }} />
@@ -75,7 +83,8 @@ export default function ProjectsTab({ data, setData, openImageModal, openConfirm
               </div>
             </CardContent>
           </Card>
-          </Reorder.Item>
+            )}
+          </DraggableItem>
         ))}
       </Reorder.Group>
     </div>

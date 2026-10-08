@@ -7,6 +7,7 @@ import { LayoutGrid, GripVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Reorder } from 'framer-motion';
 import { SkillCategory } from '@/types/portfolio';
+import DraggableItem from '@/components/admin/DraggableItem';
 
 interface SkillsTabProps {
   data: PortfolioData;
@@ -35,12 +36,19 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
 
       <Reorder.Group axis="y" values={data.skills} onReorder={handleReorder} className="grid gap-6">
         {data.skills.map((category, idx) => (
-          <Reorder.Item key={category.categoryName || idx.toString()} value={category}>
-          <Card className="relative group">
-            <div className="absolute top-4 left-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors">
-              <GripVertical size={20} />
-            </div>
-            <CardContent className="pt-12 space-y-4">
+          <DraggableItem key={category.categoryName || idx.toString()} value={category}>
+            {(controls) => (
+              <Card className="relative group">
+                <div 
+                  className="absolute top-4 right-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors touch-none select-none"
+                  onPointerDown={(e) => {
+                    controls.start(e);
+                    e.preventDefault();
+                  }}
+                >
+                  <GripVertical size={20} />
+                </div>
+                <CardContent className="pt-12 space-y-4">
               <div className="space-y-1">
                 <Label>{t('categoryName')}</Label>
                 <Input value={category.categoryName} onChange={(e) => { const n = [...data.skills]; n[idx].categoryName = e.target.value; setData({ ...data, skills: n }); }} className="font-medium" />
@@ -87,7 +95,8 @@ export default function SkillsTab({ data, setData, openIconModal, openLucideHelp
               </div>
             </CardContent>
           </Card>
-          </Reorder.Item>
+            )}
+          </DraggableItem>
         ))}
       </Reorder.Group>
     </div>

@@ -8,6 +8,7 @@ import { GripVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Reorder } from 'framer-motion';
 import { ExperienceItem } from '@/types/portfolio';
+import DraggableItem from '@/components/admin/DraggableItem';
 
 interface ExperienceTabProps {
   data: PortfolioData;
@@ -34,12 +35,19 @@ export default function ExperienceTab({ data, setData, openConfirmModal }: Exper
 
       <Reorder.Group axis="y" values={data.experiences} onReorder={handleReorder} className="grid gap-6">
         {data.experiences.map((exp, idx) => (
-          <Reorder.Item key={exp.id} value={exp}>
-          <Card className="relative group">
-            <div className="absolute top-4 left-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors">
-              <GripVertical size={20} />
-            </div>
-            <CardContent className="pt-12 space-y-4">
+          <DraggableItem key={exp.id} value={exp}>
+            {(controls) => (
+              <Card className="relative group">
+                <div 
+                  className="absolute top-4 right-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors touch-none select-none"
+                  onPointerDown={(e) => {
+                    controls.start(e);
+                    e.preventDefault();
+                  }}
+                >
+                  <GripVertical size={20} />
+                </div>
+                <CardContent className="pt-12 space-y-4">
               <div className="space-y-1">
                 <Label>{t('role')}</Label>
                 <Input value={exp.role} onChange={(e) => { const n = [...data.experiences]; n[idx].role = e.target.value; setData({ ...data, experiences: n }); }} />
@@ -67,7 +75,8 @@ export default function ExperienceTab({ data, setData, openConfirmModal }: Exper
               </div>
             </CardContent>
           </Card>
-          </Reorder.Item>
+            )}
+          </DraggableItem>
         ))}
       </Reorder.Group>
     </div>

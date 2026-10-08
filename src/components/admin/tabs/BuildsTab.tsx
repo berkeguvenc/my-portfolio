@@ -8,6 +8,7 @@ import { Image as ImageIcon, GripVertical } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Reorder } from 'framer-motion';
 import { BuildProject } from '@/types/portfolio';
+import DraggableItem from '@/components/admin/DraggableItem';
 
 interface BuildsTabProps {
   data: PortfolioData;
@@ -35,12 +36,19 @@ export default function BuildsTab({ data, setData, openImageModal, openConfirmMo
 
       <Reorder.Group axis="y" values={data.builds} onReorder={handleReorder} className="grid gap-6">
         {data.builds.map((build, idx) => (
-          <Reorder.Item key={build.id} value={build}>
-          <Card className="relative group">
-            <div className="absolute top-4 left-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors">
-              <GripVertical size={20} />
-            </div>
-            <CardContent className="pt-12 space-y-4">
+          <DraggableItem key={build.id} value={build}>
+            {(controls) => (
+              <Card className="relative group">
+                <div 
+                  className="absolute top-4 right-4 cursor-grab active:cursor-grabbing z-10 text-zinc-500 hover:text-zinc-300 transition-colors touch-none select-none"
+                  onPointerDown={(e) => {
+                    controls.start(e);
+                    e.preventDefault();
+                  }}
+                >
+                  <GripVertical size={20} />
+                </div>
+                <CardContent className="pt-12 space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div className="col-span-2 space-y-1">
                   <Label>{t('buildTitle')}</Label>
@@ -89,7 +97,8 @@ export default function BuildsTab({ data, setData, openImageModal, openConfirmMo
               </div>
             </CardContent>
           </Card>
-          </Reorder.Item>
+            )}
+          </DraggableItem>
         ))}
       </Reorder.Group>
     </div>
