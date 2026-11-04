@@ -18,7 +18,7 @@ This document outlines the current state and future vision for the Minimalist De
   - Add drag-and-drop support in the admin panel (via `@dnd-kit` or `framer-motion (Reorder)`) to reorder sections.
   - Implement a repeater architecture allowing the community to easily add/remove custom sections (e.g., Testimonials, Contact Form, Blog).
 - [x] **Item-Level Drag & Drop:** Ability to easily reorder individual items (projects, experiences, skills) within their respective tabs in the admin panel.
-- [ ] **Dynamic Detail Pages:** Rich text (Markdown) support for individual Work and Builds pages (e.g., `/work/project-slug`).
+- [x] **Dynamic Detail Pages:** Rich text (Markdown) support for individual Work and Builds pages (e.g., `/work/project-slug`).
 - [ ] **Multi-language Admin Panel:** Expanded i18n support adding German (de), Spanish (es), French (fr), and Italian (it).
 
 ## Phase 3: Future Vision (Ideas)

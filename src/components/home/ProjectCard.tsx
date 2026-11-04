@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { FeaturedProject } from '@/types/portfolio';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
 export default function ProjectCard({ project, index }: { project: FeaturedProject; index: number }) {
@@ -57,6 +57,14 @@ export default function ProjectCard({ project, index }: { project: FeaturedProje
 
             {/* Clickable Action Links */}
             <div className="flex items-center gap-4 mt-2 relative z-10">
+              {project.content && (
+                <Link
+                  href={`/work/${project.id}`}
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] font-medium text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <span className="group-hover/link:underline">Read more</span> <ArrowRight size={16} />
+                </Link>
+              )}
               {project.websiteUrl && (
                 <Link
                   href={project.websiteUrl}

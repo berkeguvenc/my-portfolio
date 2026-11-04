@@ -47,7 +47,8 @@
       "websiteUrl": "https://example.com",
       "featured": true,
       "order": 1,
-      "githubUrl": "https://github.com/berkeguvenc"
+      "githubUrl": "https://github.com/berkeguvenc",
+      "content": "## Overview\n\nThis is a **Markdown** detail page. Describe the problem, your approach and the result.\n\n- Built with Next.js\n- Supports lists, links and tables"
     }
   ],
   "builds": [
