@@ -25,7 +25,9 @@
     "githubUrl": "Github Linki",
     "deleteProject": "Projeyi Sil",
     "deleteConfirmTitle": "Projeyi Sil",
-    "deleteConfirmDesc": "Bu projeyi silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
+    "deleteConfirmDesc": "Bu projeyi silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+    "content": "Detay Sayfası İçeriği (Markdown, opsiyonel)",
+    "contentPlaceholder": "Boş bırakırsanız detay sayfası gösterilmez. Markdown desteklenir."
   },
   "AdminDashboard": {
     "title": "Portfolyo Yönetim Paneli",
@@ -127,7 +129,9 @@
     "delete": "Ürünü Sil",
     "newBuild": "Yeni Build",
     "deleteConfirmTitle": "Ürünü Sil",
-    "deleteConfirmDesc": "Bu ürünü silmek istediğinize emin misiniz? Bu işlem geri alınamaz."
+    "deleteConfirmDesc": "Bu ürünü silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+    "content": "Detay Sayfası İçeriği (Markdown, opsiyonel)",
+    "contentPlaceholder": "Boş bırakırsanız detay sayfası gösterilmez. Markdown desteklenir."
   },
   "SettingsTab": {
     "seoMeta": "SEO Meta Bilgileri",

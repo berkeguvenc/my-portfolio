@@ -26,6 +26,7 @@ export interface FeaturedProject {
     websiteUrl?: string;
     githubUrl?: string;
     featured: boolean;
+    content?: string;
     order: number;
 }
 
@@ -42,6 +43,7 @@ export interface BuildProject {
         appStore?: string;
         githubUrl?: string;
     };
+    content?: string;
     order: number;
 }
 
