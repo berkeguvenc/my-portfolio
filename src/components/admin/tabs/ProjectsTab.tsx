@@ -58,6 +58,10 @@ export default function ProjectsTab({ data, setData, openImageModal, openConfirm
                 <Textarea value={project.description} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].description = e.target.value; setData({ ...data, featuredProjects: n }) }} />
               </div>
               <div className="space-y-1">
+                <Label>{t('content')}</Label>
+                <Textarea className="min-h-[160px] font-mono text-sm" placeholder={t('contentPlaceholder')} value={project.content || ''} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].content = e.target.value; setData({ ...data, featuredProjects: n }) }} />
+              </div>
+              <div className="space-y-1">
                 <Label>{t('imageUrl')}</Label>
                 <div className="flex gap-2">
                   <Input value={project.coverImage} onChange={(e) => { const n = [...data.featuredProjects]; n[idx].coverImage = e.target.value; setData({ ...data, featuredProjects: n }) }} />

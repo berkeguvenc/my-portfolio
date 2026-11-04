@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { BuildProject } from '@/types/portfolio';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { FaGooglePlay, FaApple, FaGithub } from 'react-icons/fa';
 
 export default function BuildCard({ build, index }: { build: BuildProject; index: number }) {
@@ -60,7 +60,15 @@ export default function BuildCard({ build, index }: { build: BuildProject; index
             )}
             
             {/* Clickable Action Links */}
-            <div className="flex items-center gap-4 mt-2">
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              {build.content && (
+                <Link
+                  href={`/builds/${build.id}`}
+                  className="group/link flex items-center gap-1.5 text-[14px] tracking-[-0.28px] font-medium text-black transition-colors md:text-[16px] md:tracking-[-0.32px]"
+                >
+                  <span className="group-hover/link:underline">Read more</span> <ArrowRight size={16} />
+                </Link>
+              )}
               {build.links?.website && (
                 <Link
                   href={build.links.website}

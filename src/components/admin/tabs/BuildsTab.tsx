@@ -64,6 +64,10 @@ export default function BuildsTab({ data, setData, openImageModal, openConfirmMo
                 <Textarea value={build.description} onChange={(e) => { const n = [...data.builds]; n[idx].description = e.target.value; setData({ ...data, builds: n }) }} />
               </div>
               <div className="space-y-1">
+                <Label>{t('content')}</Label>
+                <Textarea className="min-h-[160px] font-mono text-sm" placeholder={t('contentPlaceholder')} value={build.content || ''} onChange={(e) => { const n = [...data.builds]; n[idx].content = e.target.value; setData({ ...data, builds: n }) }} />
+              </div>
+              <div className="space-y-1">
                 <Label>{t('iconUrl')}</Label>
                 <div className="flex gap-2">
                   <Input value={build.iconUrl || ''} onChange={(e) => { const n = [...data.builds]; n[idx].iconUrl = e.target.value; setData({ ...data, builds: n }) }} />

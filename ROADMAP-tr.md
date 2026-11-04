@@ -18,7 +18,7 @@ Bu doküman, Minimalist Geliştirici Portfolyosu projesinin mevcut durumunu ve g
   - Admin paneline `@dnd-kit` veya `framer-motion (Reorder)` kullanılarak bölümlerin yerini yukarı/aşağı veya sürükle-bırak yöntemiyle değiştirebilecek bir arayüz eklenmesi.
   - Repeater mantığıyla topluluk tarafından geliştirilecek yeni özel bölümlerin (örn. Testimonials, Contact Form, Blog) kolayca eklenip çıkarılabilmesi altyapısı.
 - [x] **İçerik Düzeyinde Sürükle-Bırak:** Admin panelinde projelerin, deneyimlerin ve yeteneklerin kendi içlerinde (sekmelerinde) kolayca yeniden sıralanabilmesi.
-- [ ] **Dinamik Detay Sayfaları:** Projeler ve Ürünler için zengin metin (Markdown) destekli özel detay sayfaları (örn., `/work/proje-adi`).
+- [x] **Dinamik Detay Sayfaları:** Projeler ve Ürünler için zengin metin (Markdown) destekli özel detay sayfaları (örn., `/work/proje-adi`).
 - [ ] **Çok Dilli Yönetim Paneli:** Almanca (de), İspanyolca (es), Fransızca (fr) ve İtalyanca (it) dillerinin i18n altyapısına eklenmesi.
 
 ## Faz 3: Gelecek Vizyonu (Fikirler)
